@@ -73,6 +73,57 @@
     }
     .nav-links a:hover { color: var(--ocre); }
 
+    /* ── BURGER MENU ── */
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--gris1);
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .nav-burger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 58px;
+        left: 0; right: 0;
+        background: rgba(10,10,10,0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 0.5px solid var(--border);
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { border-top: 0.5px solid var(--border); }
+      .nav-links a {
+        display: block;
+        padding: 18px 48px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+      nav { padding: 0 24px; }
+      #hero { padding: 120px 24px 80px; }
+      #apropos { padding: 80px 24px; }
+      #offres { padding: 80px 24px; }
+      #contact { padding: 80px 24px; }
+      footer { padding: 28px 24px; }
+    }
+
     /* ── HERO ── */
     #hero {
       min-height: 100vh;
@@ -521,6 +572,9 @@
   <!-- NAV -->
   <nav>
     <a href="#hero" class="nav-logo">Cap <span>IA</span></a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <ul class="nav-links">
       <li><a href="#offres">Offres</a></li>
       <li><a href="#apropos">À propos</a></li>
@@ -667,9 +721,9 @@
         <div class="ocre-line reveal"></div>
         <p class="contact-sub reveal">Vous avez un projet, une question, ou simplement envie de savoir si l'IA peut vous aider ? Écrivez-moi, je réponds sous 48h.</p>
         <div class="contact-links reveal">
-          <a href="mailto:fonfreyde.antoine@gmail.com" class="contact-link-item">
+          <a href="mailto:antoine@cap-ia.pro" class="contact-link-item">
             <p class="contact-link-label">Email</p>
-            <p class="contact-link-value">fonfreyde.antoine@gmail.com</p>
+            <p class="contact-link-value">antoine@cap-ia.pro</p>
           </a>
           <a href="https://linkedin.com/in/antoinefonfreyde" target="_blank" class="contact-link-item">
             <p class="contact-link-label">LinkedIn</p>
@@ -723,14 +777,32 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
-    // Formulaire
+    // Formulaire — feedback visuel à la soumission
     function handleSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
       btn.textContent = 'Message envoyé !';
       btn.style.background = '#3A3530';
       btn.disabled = true;
+      e.target.submit();
     }
+    document.querySelector('form').addEventListener('submit', handleSubmit);
+
+    // Menu burger
+    const burger = document.querySelector('.nav-burger');
+    const navLinks = document.querySelector('.nav-links');
+    burger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', false);
+      });
+    });
   </script>
 </body>
 </html>
