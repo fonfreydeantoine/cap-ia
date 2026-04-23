@@ -569,6 +569,21 @@
     }
     .footer-logo span { color: var(--ocre); }
 
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .footer-legal a {
+      font-size: 12px;
+      color: var(--gris2);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--ocre); }
+
     .footer-copy {
       font-size: 12px;
       color: var(--gris2);
@@ -969,6 +984,10 @@
   <footer>
     <div class="footer-logo">Cap <span>IA</span></div>
     <p class="footer-copy" data-fr="© 2026 Cap IA — Antoine Fonfreyde" data-en="© 2026 Cap IA — Antoine Fonfreyde">© 2026 Cap IA — Antoine Fonfreyde</p>
+    <div class="footer-legal">
+      <a href="/mentions-legales.html">Mentions légales</a>
+      <a href="/confidentialite.html">Politique de confidentialité</a>
+    </div>
   </footer>
 
   <script>
