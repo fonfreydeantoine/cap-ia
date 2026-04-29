@@ -712,9 +712,7 @@
       <li><a href="#offres" data-fr="Offres" data-en="Services">Offres</a></li>
       <li><a href="#apropos" data-fr="À propos" data-en="About">À propos</a></li>
       <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
-      <li>
-        <button id="lang-toggle" onclick="toggleLang()" style="background:none;border:1px solid var(--ocre);color:var(--ocre);padding:4px 12px;border-radius:4px;cursor:pointer;font-size:12px;font-family:inherit;letter-spacing:1px;transition:background 0.2s;">EN</button>
-      </li>
+
     </ul>
   </nav>
 
@@ -1031,35 +1029,7 @@
     });
   </script>
 
-  <script>
-    let currentLang = 'fr';
 
-    function toggleLang() {
-      currentLang = currentLang === 'fr' ? 'en' : 'fr';
-      const btn = document.getElementById('lang-toggle');
-      btn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
-      document.documentElement.lang = currentLang;
-
-      // Traduire tous les éléments avec data-fr / data-en
-      document.querySelectorAll('[data-fr]').forEach(el => {
-        const val = el.getAttribute('data-' + currentLang);
-        if (val) el.textContent = val;
-      });
-
-      // Placeholders
-      const nom = document.getElementById('nom');
-      const email = document.getElementById('email');
-      const msg = document.getElementById('message');
-      if (nom) nom.placeholder = currentLang === 'fr' ? 'Votre nom' : 'Your name';
-      if (email) email.placeholder = currentLang === 'fr' ? 'votre@email.com' : 'your@email.com';
-      if (msg) msg.placeholder = currentLang === 'fr' ? 'Votre message...' : 'Your message...';
-
-      // Titre page
-      document.title = currentLang === 'fr'
-        ? 'Cap IA — Conception & Déploiement d\'Agents IA'
-        : 'Cap IA — AI Agent Design & Deployment';
-    }
-  </script>
 
 </body>
 </html>
