@@ -304,7 +304,256 @@
       color: #3A3530;
     }
 
-    /* ── OFFRES ── */
+    /* ── ROB SECTION ── */
+    #rob {
+      background: #111108;
+      padding: 100px 48px;
+      border-top: 0.5px solid #2A2A1A;
+      border-bottom: 0.5px solid #2A2A1A;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #rob::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245,200,0,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .rob-inner { max-width: 960px; }
+
+    .rob-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      margin-bottom: 52px;
+    }
+
+    .rob-logo {
+      width: 72px;
+      height: 72px;
+      flex-shrink: 0;
+    }
+
+    .rob-header-text { flex: 1; }
+
+    .rob-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #F5C800;
+      margin-bottom: 8px;
+    }
+
+    .rob-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .rob-subtitle {
+      font-size: 14px;
+      color: #888877;
+      letter-spacing: 0.3px;
+    }
+
+    .rob-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(245,200,0,0.08);
+      border: 1px solid rgba(245,200,0,0.2);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: 12px;
+      color: #F5C800;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    .rob-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #F5C800;
+      animation: pulse-rob 2s infinite;
+    }
+
+    @keyframes pulse-rob {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .rob-context {
+      font-size: 15px;
+      color: #AAAAAA;
+      line-height: 1.8;
+      margin-bottom: 48px;
+      max-width: 680px;
+    }
+
+    .rob-context strong { color: #DDDDDD; font-weight: 500; }
+
+    .rob-avantapres {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #2A2A1A;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 600px) {
+      .rob-avantapres { grid-template-columns: 1fr; }
+    }
+
+    .rob-avant {
+      background: #1A1A10;
+      padding: 32px 36px;
+      border-right: 1px solid #2A2A1A;
+    }
+
+    .rob-apres {
+      background: rgba(245,200,0,0.05);
+      padding: 32px 36px;
+    }
+
+    .rob-col-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .rob-col-label-avant { color: #444433; }
+    .rob-col-label-apres { color: #F5C800; }
+
+    .rob-col-time {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(42px, 5vw, 60px);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .time-avant { color: #333322; }
+    .time-apres { color: #F5C800; }
+
+    .rob-col-unit {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    .unit-avant { color: #444433; }
+    .unit-apres { color: #888855; }
+
+    .rob-col-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rob-col-list li {
+      font-size: 13px;
+      line-height: 1.5;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .rob-col-list li::before {
+      content: '—';
+      flex-shrink: 0;
+    }
+
+    .list-avant li { color: #555544; }
+    .list-avant li::before { color: #333322; }
+    .list-apres li { color: #AAAAAA; }
+    .list-apres li::before { color: #F5C800; }
+
+    .rob-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #2A2A1A;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 760px) {
+      .rob-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .rob-stat {
+      background: #111108;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .rob-stat-val {
+      font-family: 'EB Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #F5C800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .rob-stat-label {
+      font-size: 11px;
+      color: #666655;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+    }
+
+    .rob-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+
+    .rob-stack-badge {
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #2A2A1A;
+      color: #666655;
+      background: #1A1A10;
+      letter-spacing: 0.3px;
+    }
+
+    .rob-stack-badge.primary {
+      border-color: rgba(245,200,0,0.25);
+      color: #F5C800;
+      background: rgba(245,200,0,0.06);
+    }
+
+    .rob-note {
+      font-size: 12px;
+      color: #333322;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    @media (max-width: 768px) {
+      #rob { padding: 80px 24px; }
+      .rob-header { flex-direction: column; gap: 16px; }
+      .rob-avant { border-right: none; border-bottom: 1px solid #2A2A1A; }
+    }
+
+  
     #offres {
       background: var(--charbon);
       padding: 100px 48px;
@@ -324,7 +573,7 @@
 
     .offres-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       align-items: stretch;
     }
@@ -710,6 +959,7 @@
     </button>
     <ul class="nav-links">
       <li><a href="#offres" data-fr="Offres" data-en="Services">Offres</a></li>
+      <li><a href="#rob" data-fr="Rob" data-en="Rob">Rob</a></li>
       <li><a href="#apropos" data-fr="À propos" data-en="About">À propos</a></li>
       <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
 
@@ -724,8 +974,8 @@
         <span data-fr="L'IA n'assiste plus." data-en="AI no longer assists.">L'IA n'assiste plus.</span><br>
         <span class="accent" data-fr="Elle produit." data-en="It produces.">Elle produit.</span>
       </h1>
-      <p class="hero-sub" data-fr="70 à 80 % d'un livrable généré par un agent IA. Mon rôle : concevoir ce système pour vous, le déployer dans votre activité, et le rendre autonome." data-en="70 to 80% of a deliverable generated by an AI agent. My role: design this system for you, deploy it in your business, and make it autonomous.">
-        70 à 80 % d'un livrable généré par un agent IA. Mon rôle : concevoir ce système pour vous, le déployer dans votre activité, et le rendre autonome.
+      <p class="hero-sub" data-fr="Vos process répétitifs, traités en moins d'une minute. Je conçois et déploie l'agent IA qui le fait — de A à Z, dans votre activité, pour votre équipe." data-en="Your repetitive processes, handled in under a minute. I design and deploy the AI agent that does it — end to end, in your business, for your team.">
+        Vos process répétitifs, traités en moins d'une minute. Je conçois et déploie l'agent IA qui le fait entièrement, dans votre activité, pour votre équipe.
       </p>
       <div class="hero-ctas">
         <a href="#contact" class="btn-primary" data-fr="Prendre contact" data-en="Get in touch">Prendre contact</a>
@@ -796,6 +1046,102 @@
     </div>
   </section>
 
+  <!-- ROB -->
+  <section id="rob">
+    <div class="rob-inner">
+
+      <div class="rob-header reveal">
+        <svg class="rob-logo" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+          <!-- fond noir arrondi carré tournée 45° -->
+          <rect x="6" y="6" width="60" height="60" rx="14" ry="14" fill="#111" transform="rotate(45 36 36)"/>
+          <!-- losange jaune -->
+          <rect x="10" y="10" width="52" height="52" rx="11" ry="11" fill="#F5C800" transform="rotate(45 36 36)"/>
+          <!-- encoche keyhole en haut -->
+          <circle cx="36" cy="17" r="3.5" fill="#111"/>
+          <rect x="34" y="17" width="4" height="6" rx="1" fill="#111"/>
+          <!-- yeux -->
+          <circle cx="27" cy="34" r="5" fill="#111"/>
+          <circle cx="45" cy="34" r="5" fill="#111"/>
+          <!-- reflets yeux -->
+          <circle cx="25.5" cy="32.5" r="1.5" fill="#F5C800"/>
+          <circle cx="43.5" cy="32.5" r="1.5" fill="#F5C800"/>
+          <!-- sourire -->
+          <path d="M26 44 Q36 52 46 44" stroke="#111" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="rob-header-text">
+          <p class="rob-eyebrow">Cas client · En production</p>
+          <h2 class="rob-title">Rob</h2>
+          <p class="rob-subtitle">Agent IA interne · Liberty Incentives &amp; Congresses France · Pôle FIT</p>
+          <span class="rob-badge"><span class="rob-badge-dot"></span>En ligne · v2.0 · 6 utilisateurs actifs</span>
+        </div>
+      </div>
+
+      <p class="rob-context reveal">
+        Le pôle FIT (Flexible Independent Travellers, voyages sur mesure haut de gamme) traitait chaque dossier client à la main : lecture du TMT, rédaction de <strong>8 à 10 mails prestataires</strong>, construction de la fiche de coordination, mise en forme du devis Word, transmission des factures en comptabilité. <strong>30 à 45 minutes par dossier</strong>, répétées par chacun des 6 chefs de projet, chaque jour.
+      </p>
+
+      <div class="rob-avantapres reveal">
+        <div class="rob-avant">
+          <p class="rob-col-label rob-col-label-avant">Avant Rob</p>
+          <p class="rob-col-time time-avant">45 min</p>
+          <p class="rob-col-unit unit-avant">par dossier · à la main</p>
+          <ul class="rob-col-list list-avant">
+            <li>Lire le TMT (4 pages)</li>
+            <li>Trier les services manuellement</li>
+            <li>Rédiger 8 à 10 mails un par un</li>
+            <li>Construire la fiche de coordination</li>
+            <li>Vérifier chaque détail</li>
+            <li>Envoyer et transmettre en compta</li>
+          </ul>
+        </div>
+        <div class="rob-apres">
+          <p class="rob-col-label rob-col-label-apres">Après Rob</p>
+          <p class="rob-col-time time-apres">&lt; 1 min</p>
+          <p class="rob-col-unit unit-apres">par dossier · automatisé</p>
+          <ul class="rob-col-list list-apres">
+            <li>Parsing du dossier automatique</li>
+            <li>Triage et détection des services</li>
+            <li>Mails rédigés et envoyés</li>
+            <li>Fiche de coordination générée</li>
+            <li>Points de vigilance flaggés</li>
+            <li>Devis Word et factures transmis</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rob-stats reveal">
+        <div class="rob-stat">
+          <p class="rob-stat-val">6</p>
+          <p class="rob-stat-label">Chefs de projet<br>utilisateurs actifs</p>
+        </div>
+        <div class="rob-stat">
+          <p class="rob-stat-val">5</p>
+          <p class="rob-stat-label">Modules<br>en production</p>
+        </div>
+        <div class="rob-stat">
+          <p class="rob-stat-val">&lt;1 min</p>
+          <p class="rob-stat-label">Par dossier<br>traité</p>
+        </div>
+        <div class="rob-stat">
+          <p class="rob-stat-val">0</p>
+          <p class="rob-stat-label">Code métier<br>à maintenir</p>
+        </div>
+      </div>
+
+      <div class="rob-stack reveal">
+        <span class="rob-stack-badge primary">Anthropic API</span>
+        <span class="rob-stack-badge">Make</span>
+        <span class="rob-stack-badge">Supabase</span>
+        <span class="rob-stack-badge">Notion</span>
+        <span class="rob-stack-badge">HTML / CSS / JS</span>
+        <span class="rob-stack-badge">Gmail API</span>
+      </div>
+
+      <p class="rob-note reveal">Premier cas Cap IA. Conçu, déployé, utilisé chaque jour.</p>
+
+    </div>
+  </section>
+
   <!-- OFFRES -->
   <section id="offres">
     <div class="offres-header reveal">
@@ -806,68 +1152,49 @@
     <div class="offres-grid">
 
       <div class="offre-card reveal">
-        <p class="offre-tag">Diagnostic</p>
+        <p class="offre-tag">Découvrir</p>
         <h3 class="offre-title">Audit IA</h3>
         <div class="offre-body">
-          <p>2h d'échange sur votre activité, vos outils et votre quotidien — en visio ou en présentiel.</p>
-          <p>Sous 48h, vous recevez un document écrit avec l'analyse complète, les gains à espérer et les pistes concrètes pour commencer.</p>
-          <p>Peut se suffire à lui-même ou ouvrir sur un accompagnement.</p>
+          <p>30 minutes offertes pour identifier ce qu'on peut automatiser chez vous. Sans engagement, sans jargon.</p>
+          <p>Si vous souhaitez aller plus loin : 2h d'analyse complète de vos process, livrée sous 48h en document écrit — avec les gains à espérer et les pistes concrètes pour commencer.</p>
         </div>
         <div class="offre-footer">
           <div>
-            <div class="offre-tarif">250 €</div>
-            <div class="offre-tarif-sub">Livrable écrit sous 48h</div>
+            <div class="offre-tarif">30 min offertes</div>
+            <div class="offre-tarif-sub">Audit complet à 250 € · livrable sous 48h</div>
           </div>
           <a href="#contact" class="offre-arrow">→</a>
         </div>
       </div>
 
-      <div class="offre-card reveal">
-        <p class="offre-tag">Conception & déploiement</p>
+      <div class="offre-card reveal" style="border-color: rgba(200,118,58,0.35);">
+        <p class="offre-tag">Construire</p>
         <h3 class="offre-title">Agent IA sur mesure</h3>
         <div class="offre-body">
-          <p>Analyse de vos process, conception d'un agent no-code / low-code qui produit vos livrables récurrents.</p>
-          <p>Itinéraires, propositions commerciales, emails clients, documents internes — le système apprend votre métier et produit à votre place.</p>
-          <p>Déploiement, formation de l'équipe et suivi inclus.</p>
+          <p>J'identifie le process qui vous coûte le plus de temps, je conçois l'agent qui le traite à votre place — et je le déploie dans votre activité.</p>
+          <p>Automatisations Make, intégrations API, interfaces HTML/CSS : tout est livré prêt à l'usage. Formation de l'équipe et suivi inclus.</p>
+          <p style="color: var(--ocre); font-size: 13px;">Exemple : Rob — 45 min par dossier ramenées à moins d'1 minute.</p>
         </div>
         <div class="offre-footer">
           <div>
             <div class="offre-tarif">Sur devis</div>
-            <div class="offre-tarif-sub">No-code / Low-code</div>
+            <div class="offre-tarif-sub">No-code / Low-code · Formation incluse</div>
           </div>
           <a href="#contact" class="offre-arrow">→</a>
         </div>
       </div>
 
       <div class="offre-card reveal">
-        <p class="offre-tag">Montée en compétence</p>
-        <h3 class="offre-title">Maîtrise</h3>
+        <p class="offre-tag">Installer</p>
+        <h3 class="offre-title">Site & Formation</h3>
         <div class="offre-body">
-          <p>Prise en main des outils IA adaptés à votre métier et à vos cas réels.</p>
-          <p>Structuration de prompts, workflows IA, sessions pratiques en solo ou en équipe. En présentiel, à distance, y compris en soirée ou le week-end.</p>
-          <p>Durée et contenu adaptés à votre niveau et vos objectifs.</p>
-        </div>
-        <div class="offre-footer">
-          <div>
-            <div class="offre-tarif">Sur devis</div>
-            <div class="offre-tarif-sub">À partir d'une demi-journée</div>
-          </div>
-          <a href="#contact" class="offre-arrow">→</a>
-        </div>
-      </div>
-
-      <div class="offre-card reveal">
-        <p class="offre-tag">Création web</p>
-        <h3 class="offre-title">Site sur mesure</h3>
-        <div class="offre-body">
-          <p>Un site sobre et professionnel, conçu sur mesure en HTML/CSS, sans template. Mis en ligne clés en main.</p>
-          <p>Vitrine 1 page à partir de 450 €. Multi-pages avec formulaire à partir de 700 €. Paiement en ligne intégré (Stripe, PayPal) à partir de 950 €.</p>
-          <p>Nom de domaine et hébergement inclus dans la prestation.</p>
+          <p><strong style="color:var(--blanc); font-weight:500;">Site web sur mesure</strong> — HTML/CSS, sans CMS, sans template. Vitrine 1 page à 450 €, multi-pages à partir de 700 €. Domaine et hébergement inclus.</p>
+          <p><strong style="color:var(--blanc); font-weight:500;">Formation équipe</strong> — Prise en main des outils IA adaptés à votre métier. Prompts, workflows, sessions pratiques en présentiel ou à distance.</p>
         </div>
         <div class="offre-footer">
           <div>
             <div class="offre-tarif">À partir de 450 €</div>
-            <div class="offre-tarif-sub">Clés en main · 1 page vitrine</div>
+            <div class="offre-tarif-sub">Site clés en main · Formation sur devis</div>
           </div>
           <a href="#contact" class="offre-arrow">→</a>
         </div>
@@ -975,9 +1302,9 @@
     <div class="contact-inner">
       <div>
         <p class="section-label reveal">Contact</p>
-        <h2 class="contact-title reveal" data-fr="Parlons-en." data-en="Let's talk.">Parlons-en.</h2>
+        <h2 class="contact-title reveal" data-fr="30 minutes pour identifier ce qu'on peut automatiser chez vous." data-en="30 minutes to identify what we can automate for you.">30 minutes pour identifier ce qu'on peut automatiser chez vous.</h2>
         <div class="ocre-line reveal"></div>
-        <p class="contact-sub reveal" data-fr="Vous avez un projet, une question, ou simplement envie de savoir si l'IA peut vous aider ? Écrivez-moi, je réponds sous 48h." data-en="Got a project, a question, or just curious about what AI could do for you? Write to me — I respond within 48 hours.">Vous avez un projet, une question, ou simplement envie de savoir si l'IA peut vous aider ? Écrivez-moi, je réponds sous 48h.</p>
+        <p class="contact-sub reveal" data-fr="Sans engagement, sans jargon. Je regarde vos process, j'identifie les gains réels, et je vous dis ce qui est faisable. Écrivez-moi, je réponds sous 48h." data-en="No commitment, no jargon. I look at your processes, identify real gains, and tell you what's feasible. Write to me — I respond within 48 hours.">Sans engagement, sans jargon. Je regarde vos process, j'identifie les gains réels, et je vous dis ce qui est faisable. Écrivez-moi, je réponds sous 48h.</p>
         <div class="contact-links reveal">
           <a href="mailto:antoine@cap-ia.pro" class="contact-link-item">
             <p class="contact-link-label">Email</p>
