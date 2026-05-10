@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Audit — Cap IA</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --charbon: #141414;
+      --graphite: #1E1E1E;
+      --graphite2: #252525;
+      --ocre: #C8763A;
+      --ocre-dark: #A85E28;
+      --blanc: #FFFFFF;
+      --gris1: #AAAAAA;
+      --gris2: #666666;
+      --gris3: #333333;
+      --border: #2A2A2A;
+      --vert: #2D6A4F;
+      --rouge: #8B1A1A;
+      --orange: #7A4A00;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--charbon);
+      color: var(--blanc);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+    }
+    .nav-logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--blanc); text-decoration: none;
+    }
+    .nav-logo span { color: var(--ocre); font-weight: 400; }
+    .nav-badge {
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gris2); padding: 4px 12px;
+      border: 0.5px solid var(--border); border-radius: 20px;
+    }
+    @media (max-width: 600px) { nav { padding: 0 20px; } }
+
+    /* ÉCRAN MOT DE PASSE */
+    #lockScreen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lock-box {
+      width: 100%; max-width: 380px;
+      text-align: center;
+    }
+    .lock-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--graphite);
+      border: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 22px;
+    }
+    .lock-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 26px; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .lock-sub {
+      font-size: 13px; color: var(--gris1);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+    .lock-input {
+      width: 100%;
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 13px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; color: var(--blanc);
+      outline: none; text-align: center;
+      letter-spacing: 2px;
+      transition: border-color 0.2s;
+      margin-bottom: 12px;
+    }
+    .lock-input:focus { border-color: var(--ocre); }
+    .lock-input.error { border-color: #8B1A1A; }
+    .lock-btn {
+      width: 100%;
+      background: var(--ocre); color: #1A0A00;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 500;
+      padding: 13px 28px; border-radius: 6px;
+      border: none; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .lock-btn:hover { background: var(--ocre-dark); }
+    .lock-error {
+      font-size: 12px; color: #C0504A;
+      margin-top: 10px; display: none;
+    }
+
+    /* CONTENU PRINCIPAL */
+    #mainContent { display: none; }
+
+    /* HEADER PAGE */
+    .audit-header {
+      padding: 88px 40px 44px;
+      border-bottom: 0.5px solid var(--border);
+      display: flex; align-items: flex-end;
+      justify-content: space-between; gap: 24px;
+      flex-wrap: wrap;
+    }
+    .audit-header-left { max-width: 560px; }
+    .audit-eyebrow {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 3px; color: var(--ocre);
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .audit-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 700; line-height: 1.15;
+    }
+    .audit-meta {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .audit-meta-item {
+      font-size: 12px; color: var(--gris2);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .audit-meta-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%; background: var(--ocre);
+    }
+    .timer-display {
+      font-family: 'EB Garamond', serif;
+      font-size: 42px; font-weight: 400;
+      color: var(--ocre); letter-spacing: -1px;
+      text-align: right;
+    }
+    .timer-label {
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gris2);
+      text-align: right; margin-top: 4px;
+    }
+    .timer-controls { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
+    .timer-btn {
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      color: var(--gris1); font-size: 11px;
+      padding: 5px 12px; border-radius: 4px;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .timer-btn:hover { border-color: var(--ocre); color: var(--blanc); }
+
+    @media (max-width: 600px) {
+      .audit-header { padding: 80px 20px 32px; }
+      .timer-display { font-size: 32px; }
+    }
+
+    /* FORMULAIRE */
+    .audit-body { padding: 40px; max-width: 900px; }
+    @media (max-width: 600px) { .audit-body { padding: 24px 20px; } }
+
+    /* BLOC */
+    .q-bloc {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .q-bloc:last-of-type { border-bottom: none; }
+
+    .bloc-header {
+      display: flex; align-items: center;
+      gap: 14px; margin-bottom: 20px;
+    }
+    .bloc-num {
+      font-size: 10px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--ocre);
+      flex-shrink: 0;
+    }
+    .bloc-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px; font-weight: 700;
+    }
+    .bloc-time {
+      margin-left: auto;
+      font-size: 10px; letter-spacing: 1px;
+      color: var(--gris2);
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      padding: 3px 10px; border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* QUESTION */
+    .question { margin-bottom: 20px; }
+    .q-label {
+      font-size: 13px; font-weight: 500;
+      color: var(--blanc); margin-bottom: 4px;
+    }
+    .q-hint {
+      font-size: 11.5px; color: var(--gris2);
+      margin-bottom: 10px; line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* CHOIX BOUTONS */
+    .choices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 0; }
+    .choice-btn {
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      border-radius: 5px;
+      padding: 8px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; color: var(--gris1);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .choice-btn:hover { border-color: var(--ocre); color: var(--blanc); }
+    .choice-btn.selected {
+      border-color: var(--ocre);
+      background: rgba(200,118,58,0.12);
+      color: var(--blanc);
+    }
+
+    /* INPUTS */
+    .form-input, .form-textarea {
+      width: 100%;
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; color: var(--blanc);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--gris3); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--ocre); }
+    .form-textarea { resize: vertical; min-height: 80px; }
+
+    /* GRID */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* SIGNAUX */
+    .signaux-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 8px; margin-top: 10px;
+    }
+    .signal-item {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      border-radius: 5px; padding: 8px 12px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      font-size: 12px; color: var(--gris1);
+    }
+    .signal-item:hover { border-color: var(--gris2); }
+    .signal-item.on-vert { border-color: #2D6A4F; background: rgba(45,106,79,0.1); color: var(--blanc); }
+    .signal-item.on-orange { border-color: #C8763A; background: rgba(200,118,58,0.1); color: var(--blanc); }
+    .signal-item.on-rouge { border-color: #8B1A1A; background: rgba(139,26,26,0.1); color: var(--blanc); }
+    .signal-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .dot-vert { background: #4CAF50; }
+    .dot-orange { background: #C8763A; }
+    .dot-rouge { background: #C0504A; }
+
+    /* DÉCISION */
+    .decision-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 10px; margin-top: 10px;
+    }
+    @media (max-width: 500px) { .decision-grid { grid-template-columns: 1fr; } }
+    .decision-cell {
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px;
+      text-align: center; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .decision-cell:hover { border-color: var(--gris2); }
+    .decision-cell.selected-proposition { border-color: #2D6A4F; background: rgba(45,106,79,0.1); }
+    .decision-cell.selected-approfondir { border-color: #C8763A; background: rgba(200,118,58,0.1); }
+    .decision-cell.selected-hors-cible { border-color: #8B1A1A; background: rgba(139,26,26,0.1); }
+    .decision-label {
+      font-size: 10px; letter-spacing: 1px;
+      text-transform: uppercase; font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .decision-desc { font-size: 11px; color: var(--gris1); line-height: 1.4; }
+
+    /* IDENTITÉ */
+    .id-section {
+      background: var(--graphite);
+      border: 0.5px solid var(--border);
+      border-radius: 8px; padding: 24px;
+      margin-bottom: 32px;
+    }
+    .id-title {
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--ocre);
+      margin-bottom: 16px;
+    }
+
+    /* SUBMIT */
+    .submit-zone { margin-top: 36px; }
+    .note-envoi {
+      font-size: 12px; color: var(--gris2);
+      margin-bottom: 16px; line-height: 1.6;
+      padding-left: 14px;
+      border-left: 2px solid var(--border);
+    }
+    .btn-primary {
+      background: var(--ocre); color: #1A0A00;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 500;
+      padding: 14px 28px; border-radius: 6px;
+      border: none; cursor: pointer;
+      transition: background 0.2s;
+      width: 100%; text-align: center;
+    }
+    .btn-primary:hover { background: var(--ocre-dark); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* CONFIRM */
+    .confirm-box {
+      display: none;
+      background: rgba(200,118,58,0.06);
+      border: 1px solid rgba(200,118,58,0.2);
+      border-radius: 10px; padding: 40px;
+      text-align: center; margin-top: 20px;
+    }
+    .confirm-box.visible { display: block; }
+    .confirm-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .confirm-sub { font-size: 14px; color: var(--gris1); line-height: 1.7; }
+
+    /* SÉPARATEUR */
+    .sep { border: none; border-top: 0.5px solid var(--border); margin: 0; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Cap <span>IA</span></a>
+    <span class="nav-badge">Outil interne</span>
+  </nav>
+
+  <!-- ÉCRAN MOT DE PASSE -->
+  <div id="lockScreen">
+    <div class="lock-box">
+      <div class="lock-icon">🔒</div>
+      <h1 class="lock-title">Accès réservé</h1>
+      <p class="lock-sub">Outil interne Cap IA — ambassadeurs et équipe uniquement.</p>
+      <input type="password" class="lock-input" id="pwdInput" placeholder="Mot de passe" autocomplete="off"/>
+      <button class="lock-btn" onclick="checkPassword()">Accéder</button>
+      <p class="lock-error" id="lockError">Mot de passe incorrect.</p>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div id="mainContent">
+
+    <!-- HEADER AVEC TIMER -->
+    <div class="audit-header">
+      <div class="audit-header-left">
+        <p class="audit-eyebrow">Cap IA — Guide d'audit</p>
+        <h1 class="audit-title">Entretien de découverte<br>30 minutes</h1>
+        <div class="audit-meta">
+          <span class="audit-meta-item"><span class="audit-meta-dot"></span>Remplir en live pendant l'appel</span>
+          <span class="audit-meta-item"><span class="audit-meta-dot"></span>Récap envoyé par email à la fin</span>
+        </div>
+      </div>
+      <div>
+        <div class="timer-display" id="timerDisplay">30:00</div>
+        <div class="timer-label">Temps restant</div>
+        <div class="timer-controls">
+          <button class="timer-btn" onclick="startTimer()">Démarrer</button>
+          <button class="timer-btn" onclick="resetTimer()">Réinitialiser</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="audit-body">
+      <form id="auditForm" action="https://formspree.io/f/mzdygppn" method="POST">
+        <input type="hidden" name="_subject" value="Audit 30 min — Cap IA"/>
+        <input type="hidden" name="secteur_selectionne" id="h_secteur"/>
+        <input type="hidden" name="api_selectionne" id="h_api"/>
+        <input type="hidden" name="input_selectionne" id="h_input"/>
+        <input type="hidden" name="urgence_selectionnee" id="h_urgence"/>
+        <input type="hidden" name="calendrier_selectionne" id="h_calendrier"/>
+        <input type="hidden" name="decision_sortie" id="h_decision"/>
+        <input type="hidden" name="signaux_detectes" id="h_signaux"/>
+
+        <!-- IDENTITÉ PROSPECT -->
+        <div class="id-section">
+          <p class="id-title">Identification</p>
+          <div class="grid-3" style="margin-bottom:12px;">
+            <div>
+              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Ambassadeur</div>
+              <input class="form-input" type="text" name="ambassadeur" placeholder="Votre prénom"/>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Prospect — Nom</div>
+              <input class="form-input" type="text" name="prospect_nom" placeholder="Nom du prospect"/>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Structure</div>
+              <input class="form-input" type="text" name="prospect_structure" placeholder="Entreprise"/>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div>
+              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Email prospect</div>
+              <input class="form-input" type="email" name="prospect_email" placeholder="email@domaine.com"/>
+            </div>
+            <div>
+              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Date</div>
+              <input class="form-input" type="date" name="date_entretien"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOC 1 -->
+        <div class="q-bloc">
+          <div class="bloc-header">
+            <span class="bloc-num">01</span>
+            <span class="bloc-title">Contexte métier</span>
+            <span class="bloc-time">10 min</span>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Secteur d'activité</p>
+            <div class="choices" data-field="secteur">
+              <button type="button" class="choice-btn" data-value="Tourisme / DMC / Voyage d'affaires">Tourisme / DMC</button>
+              <button type="button" class="choice-btn" data-value="Immobilier">Immobilier</button>
+              <button type="button" class="choice-btn" data-value="Conseil / Cabinet">Conseil / Cabinet</button>
+              <button type="button" class="choice-btn" data-value="Communication / PR">Communication / PR</button>
+              <button type="button" class="choice-btn" data-value="RH / Recrutement">RH / Recrutement</button>
+              <button type="button" class="choice-btn" data-value="Commerce">Commerce</button>
+              <button type="button" class="choice-btn" data-value="Indépendant">Indépendant</button>
+              <button type="button" class="choice-btn" data-value="Autre">Autre</button>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Activité principale et organisation</p>
+            <p class="q-hint">Taille, effectif concerné, multi-sites, solo</p>
+            <textarea class="form-textarea" name="activite_principale" placeholder="Décrivez l'activité et l'organisation..."></textarea>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Outils utilisés au quotidien</p>
+            <div class="choices" data-field="outils" data-multi="true">
+              <button type="button" class="choice-btn" data-value="Gmail">Gmail</button>
+              <button type="button" class="choice-btn" data-value="Outlook">Outlook</button>
+              <button type="button" class="choice-btn" data-value="Notion">Notion</button>
+              <button type="button" class="choice-btn" data-value="Google Sheets">Sheets</button>
+              <button type="button" class="choice-btn" data-value="Airtable">Airtable</button>
+              <button type="button" class="choice-btn" data-value="Slack">Slack</button>
+              <button type="button" class="choice-btn" data-value="Teams">Teams</button>
+              <button type="button" class="choice-btn" data-value="CRM">CRM</button>
+              <button type="button" class="choice-btn" data-value="Logiciel métier">Logiciel métier</button>
+            </div>
+            <input class="form-input" type="text" name="outils_autres" placeholder="Préciser si logiciel métier spécifique..." style="margin-top:8px;"/>
+          </div>
+
+          <div class="question">
+            <p class="q-label">API ou export disponible sur les outils ?</p>
+            <p class="q-hint">Critique pour la faisabilité technique</p>
+            <div class="choices" data-field="api">
+              <button type="button" class="choice-btn" data-value="API disponible">API disponible</button>
+              <button type="button" class="choice-btn" data-value="Export CSV / Excel">Export CSV / Excel</button>
+              <button type="button" class="choice-btn" data-value="Webhooks">Webhooks</button>
+              <button type="button" class="choice-btn" data-value="Aucun — copier-coller uniquement">Aucun — copier-coller</button>
+              <button type="button" class="choice-btn" data-value="Inconnu">Inconnu</button>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Qui piloterait l'agent au quotidien ?</p>
+            <input class="form-input" type="text" name="pilote_agent" placeholder="Profil, nombre d'utilisateurs, niveau technique..."/>
+          </div>
+        </div>
+
+        <!-- BLOC 2 -->
+        <div class="q-bloc">
+          <div class="bloc-header">
+            <span class="bloc-num">02</span>
+            <span class="bloc-title">Diagnostic workflow</span>
+            <span class="bloc-time">12 min</span>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Tâche qui consomme le plus de temps répétitif</p>
+            <p class="q-hint">Qui fait quoi, avec quoi, combien de fois par jour ou semaine</p>
+            <textarea class="form-textarea" name="tache_principale" placeholder="Décrire concrètement..." style="min-height:90px;"></textarea>
+          </div>
+
+          <div class="grid-2">
+            <div class="question">
+              <p class="q-label">Volume traité</p>
+              <input class="form-input" type="text" name="volume" placeholder="X dossiers / emails / documents par jour..."/>
+            </div>
+            <div class="question">
+              <p class="q-label">Temps par occurrence</p>
+              <input class="form-input" type="text" name="temps_occurrence" placeholder="Ex : 30 à 45 minutes"/>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Format de l'input</p>
+            <p class="q-hint">D'où vient l'information que l'agent devra traiter</p>
+            <div class="choices" data-field="input" data-multi="true">
+              <button type="button" class="choice-btn" data-value="Email">Email</button>
+              <button type="button" class="choice-btn" data-value="PDF">PDF</button>
+              <button type="button" class="choice-btn" data-value="Formulaire">Formulaire</button>
+              <button type="button" class="choice-btn" data-value="Tableur">Tableur</button>
+              <button type="button" class="choice-btn" data-value="Texte libre">Texte libre</button>
+              <button type="button" class="choice-btn" data-value="Données structurées">Données structurées</button>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Output attendu — résultat produit par l'agent</p>
+            <input class="form-input" type="text" name="output" placeholder="Document, email, fiche, entrée logiciel..."/>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Expérience IA ou automatisation préalable</p>
+            <p class="q-hint">ChatGPT, Zapier, macro Excel, prestataire. Ce qui a marché ou échoué.</p>
+            <textarea class="form-textarea" name="experience_ia" placeholder="Ce qu'ils ont déjà essayé..."></textarea>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Règles métier spécifiques à respecter</p>
+            <p class="q-hint">Formats imposés, données sensibles, cas particuliers fréquents</p>
+            <textarea class="form-textarea" name="regles_metier" placeholder="Contraintes, nomenclatures, cas particuliers..."></textarea>
+          </div>
+        </div>
+
+        <!-- BLOC 3 -->
+        <div class="q-bloc">
+          <div class="bloc-header">
+            <span class="bloc-num">03</span>
+            <span class="bloc-title">Qualification commerciale</span>
+            <span class="bloc-time">8 min</span>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Décideur final</p>
+            <input class="form-input" type="text" name="decideur" placeholder="Personne en face ? DG, DAF, IT à convaincre ?"/>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Niveau d'urgence perçu</p>
+            <div class="choices" data-field="urgence">
+              <button type="button" class="choice-btn" data-value="Problème quotidien douloureux">Problème quotidien douloureux</button>
+              <button type="button" class="choice-btn" data-value="Inconfort gérable">Inconfort gérable</button>
+              <button type="button" class="choice-btn" data-value="Curiosité / exploration">Curiosité / exploration</button>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="question">
+              <p class="q-label">Budget évoqué</p>
+              <input class="form-input" type="text" name="budget" placeholder="Montant ou fourchette..."/>
+            </div>
+            <div class="question">
+              <p class="q-label">Calendrier souhaité</p>
+              <div class="choices" data-field="calendrier" style="flex-direction:column; gap:6px;">
+                <button type="button" class="choice-btn" data-value="Immédiat — moins d'1 mois">Immédiat — moins d'1 mois</button>
+                <button type="button" class="choice-btn" data-value="Court terme — 1 à 3 mois">Court terme — 1 à 3 mois</button>
+                <button type="button" class="choice-btn" data-value="Moyen terme — 3 à 6 mois">Moyen terme — 3 à 6 mois</button>
+                <button type="button" class="choice-btn" data-value="Pas de calendrier défini">Pas de calendrier défini</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Notes libres — qualification commerciale</p>
+            <textarea class="form-textarea" name="notes_commerciales" placeholder="Contraintes budget, parties prenantes, contexte décision..."></textarea>
+          </div>
+        </div>
+
+        <!-- BLOC 4 : DÉCISION -->
+        <div class="q-bloc">
+          <div class="bloc-header">
+            <span class="bloc-num">04</span>
+            <span class="bloc-title">Décision de sortie</span>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Signaux détectés pendant l'appel</p>
+            <p class="q-hint">Cliquez pour activer / désactiver</p>
+            <div class="signaux-grid">
+              <div class="signal-item" data-color="vert" onclick="toggleSignal(this)"><span class="signal-dot dot-vert"></span>Tâche volumineuse</div>
+              <div class="signal-item" data-color="vert" onclick="toggleSignal(this)"><span class="signal-dot dot-vert"></span>Input structuré</div>
+              <div class="signal-item" data-color="vert" onclick="toggleSignal(this)"><span class="signal-dot dot-vert"></span>Outils connectables</div>
+              <div class="signal-item" data-color="vert" onclick="toggleSignal(this)"><span class="signal-dot dot-vert"></span>Décideur présent</div>
+              <div class="signal-item" data-color="vert" onclick="toggleSignal(this)"><span class="signal-dot dot-vert"></span>Urgence réelle</div>
+              <div class="signal-item" data-color="orange" onclick="toggleSignal(this)"><span class="signal-dot dot-orange"></span>Budget flou</div>
+              <div class="signal-item" data-color="orange" onclick="toggleSignal(this)"><span class="signal-dot dot-orange"></span>IT à convaincre</div>
+              <div class="signal-item" data-color="orange" onclick="toggleSignal(this)"><span class="signal-dot dot-orange"></span>Règles très complexes</div>
+              <div class="signal-item" data-color="rouge" onclick="toggleSignal(this)"><span class="signal-dot dot-rouge"></span>Volume trop faible</div>
+              <div class="signal-item" data-color="rouge" onclick="toggleSignal(this)"><span class="signal-dot dot-rouge"></span>Pas de décideur</div>
+              <div class="signal-item" data-color="rouge" onclick="toggleSignal(this)"><span class="signal-dot dot-rouge"></span>Pas d'urgence</div>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Décision</p>
+            <div class="decision-grid">
+              <div class="decision-cell" onclick="selectDecision(this, 'PROPOSITION — Envoyer le formulaire de cadrage et proposer dans la foulée', 'selected-proposition')">
+                <div class="decision-label" style="color:#4CAF50;">Proposition</div>
+                <div class="decision-desc">Cas clair, décideur présent, urgence réelle. Envoyer le cadrage et proposer.</div>
+              </div>
+              <div class="decision-cell" onclick="selectDecision(this, 'À APPROFONDIR — Envoyer le formulaire de cadrage avant de proposer', 'selected-approfondir')">
+                <div class="decision-label" style="color:var(--ocre);">À approfondir</div>
+                <div class="decision-desc">Potentiel identifié mais éléments manquants. Envoyer le cadrage d'abord.</div>
+              </div>
+              <div class="decision-cell" onclick="selectDecision(this, 'HORS CIBLE — Ne pas engager davantage', 'selected-hors-cible')">
+                <div class="decision-label" style="color:#C0504A;">Hors cible</div>
+                <div class="decision-desc">Volume insuffisant, pas de décideur, pas d'urgence. Ne pas engager.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="question">
+            <p class="q-label">Notes libres — suite à donner</p>
+            <textarea class="form-textarea" name="notes_suite" placeholder="Ce qu'il faut retenir, prochaine étape, ce qui a surpris..." style="min-height:90px;"></textarea>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="submit-zone">
+          <p class="note-envoi">Le récap complet de cet entretien sera envoyé à antoine@cap-ia.pro avec toutes les réponses.</p>
+          <button type="submit" class="btn-primary" id="submitBtn">Envoyer le récap à Antoine</button>
+        </div>
+
+      </form>
+
+      <div class="confirm-box" id="confirmBox">
+        <div class="confirm-title">Récap envoyé.</div>
+        <p class="confirm-sub">Antoine a reçu le compte rendu de cet entretien. Merci pour ce diagnostic.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // MOT DE PASSE
+    const PWD = 'C@pIA2026';
+
+    document.getElementById('pwdInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    function checkPassword() {
+      const val = document.getElementById('pwdInput').value;
+      if (val === PWD) {
+        document.getElementById('lockScreen').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+        sessionStorage.setItem('auditAccess', '1');
+        document.getElementById('dateField') && (document.getElementById('dateField').valueAsDate = new Date());
+      } else {
+        document.getElementById('pwdInput').classList.add('error');
+        document.getElementById('lockError').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('pwdInput').classList.remove('error');
+        }, 600);
+      }
+    }
+
+    if (sessionStorage.getItem('auditAccess') === '1') {
+      document.getElementById('lockScreen').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }
+
+    // Pré-remplir la date
+    window.addEventListener('load', function() {
+      const dateInput = document.querySelector('input[name="date_entretien"]');
+      if (dateInput) dateInput.valueAsDate = new Date();
+    });
+
+    // TIMER
+    let timerInterval = null;
+    let secondsLeft = 30 * 60;
+
+    function updateDisplay() {
+      const m = Math.floor(secondsLeft / 60);
+      const s = secondsLeft % 60;
+      document.getElementById('timerDisplay').textContent =
+        String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+      if (secondsLeft <= 300) {
+        document.getElementById('timerDisplay').style.color = '#C0504A';
+      }
+    }
+
+    function startTimer() {
+      if (timerInterval) return;
+      timerInterval = setInterval(() => {
+        if (secondsLeft <= 0) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+          return;
+        }
+        secondsLeft--;
+        updateDisplay();
+      }, 1000);
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      secondsLeft = 30 * 60;
+      document.getElementById('timerDisplay').style.color = 'var(--ocre)';
+      updateDisplay();
+    }
+
+    // CHOIX BOUTONS
+    document.querySelectorAll('.choices').forEach(group => {
+      const isMulti = group.dataset.multi === 'true';
+      const field = group.dataset.field;
+      const hiddenInput = document.getElementById('h_' + field);
+
+      group.querySelectorAll('.choice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (isMulti) {
+            btn.classList.toggle('selected');
+          } else {
+            group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+          }
+          if (hiddenInput) {
+            const selected = Array.from(group.querySelectorAll('.choice-btn.selected')).map(b => b.dataset.value);
+            hiddenInput.value = selected.join(', ');
+          }
+        });
+      });
+    });
+
+    // SIGNAUX
+    function toggleSignal(el) {
+      const color = el.dataset.color;
+      const cls = 'on-' + color;
+      if (el.classList.contains(cls)) {
+        el.classList.remove(cls);
+      } else {
+        el.classList.add(cls);
+      }
+      syncSignaux();
+    }
+
+    function syncSignaux() {
+      const actifs = Array.from(document.querySelectorAll('.signal-item.on-vert, .signal-item.on-orange, .signal-item.on-rouge'))
+        .map(el => el.textContent.trim());
+      document.getElementById('h_signaux').value = actifs.join(', ');
+    }
+
+    // DÉCISION
+    function selectDecision(el, value, cls) {
+      document.querySelectorAll('.decision-cell').forEach(c => {
+        c.classList.remove('selected-proposition', 'selected-approfondir', 'selected-hors-cible');
+      });
+      el.classList.add(cls);
+      document.getElementById('h_decision').value = value;
+    }
+
+    // SOUMISSION
+    const form = document.getElementById('auditForm');
+    const confirmBox = document.getElementById('confirmBox');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
+      try {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST', body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          form.style.display = 'none';
+          confirmBox.classList.add('visible');
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer le récap à Antoine';
+          alert('Erreur. Contactez antoine@cap-ia.pro directement.');
+        }
+      } catch(err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer le récap à Antoine';
+        alert('Erreur. Contactez antoine@cap-ia.pro directement.');
+      }
+    });
+  </script>
+
+</body>
+</html>
