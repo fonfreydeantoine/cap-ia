@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Diagnostic gratuit — Cap IA</title>
+  <meta name="description" content="Répondez à 5 questions pour savoir si un agent IA peut vous faire gagner du temps. Réponse sous 48h.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charbon: #141414;
+      --graphite: #1E1E1E;
+      --graphite2: #252525;
+      --ocre: #C8763A;
+      --ocre-dark: #A85E28;
+      --creme: #F5F0EB;
+      --creme2: #EAE3D8;
+      --blanc: #FFFFFF;
+      --gris1: #AAAAAA;
+      --gris2: #666666;
+      --gris3: #333333;
+      --border: #2A2A2A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--charbon);
+      color: var(--blanc);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+    }
+
+    .nav-logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--blanc);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .nav-logo span { color: var(--ocre); font-weight: 400; }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--gris2);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-back:hover { color: var(--ocre); }
+    .nav-back::before { content: '←'; font-size: 14px; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+    }
+
+    /* HERO */
+    .diag-hero {
+      padding: 140px 48px 80px;
+      max-width: 760px;
+    }
+
+    .diag-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--ocre);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.1s forwards;
+    }
+
+    .diag-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.25s forwards;
+    }
+
+    .diag-sub {
+      font-size: 16px;
+      color: var(--gris1);
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.4s forwards;
+    }
+
+    .diag-promise {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s 0.55s forwards;
+      margin-bottom: 0;
+    }
+
+    .diag-promise-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--gris1);
+    }
+
+    .diag-promise-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--ocre);
+      flex-shrink: 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .diag-hero { padding: 110px 24px 60px; }
+    }
+
+    /* FORMULAIRE SECTION */
+    .diag-form-section {
+      background: var(--graphite);
+      border-top: 0.5px solid var(--border);
+      padding: 72px 48px 100px;
+    }
+
+    .diag-form-inner {
+      max-width: 680px;
+    }
+
+    @media (max-width: 768px) {
+      .diag-form-section { padding: 52px 24px 80px; }
+    }
+
+    /* BLOCS QUESTIONS */
+    .q-bloc {
+      margin-bottom: 44px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .q-bloc.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .q-num {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--ocre);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .q-label {
+      font-family: 'EB Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--blanc);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .q-hint {
+      font-size: 13px;
+      color: var(--gris2);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    /* CHOIX MULTIPLES */
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 0;
+    }
+
+    .choice-btn {
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 11px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--gris1);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      user-select: none;
+    }
+
+    .choice-btn:hover {
+      border-color: var(--ocre);
+      color: var(--blanc);
+    }
+
+    .choice-btn.selected {
+      border-color: var(--ocre);
+      background: rgba(200,118,58,0.12);
+      color: var(--blanc);
+    }
+
+    /* CHAMPS TEXTE */
+    .form-group { margin-bottom: 0; }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: var(--graphite2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--blanc);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--gris3); }
+
+    .form-input:focus,
+    .form-textarea:focus { border-color: var(--ocre); }
+
+    .form-textarea { resize: vertical; min-height: 100px; }
+
+    /* IDENTITE */
+    .id-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 560px) {
+      .id-grid { grid-template-columns: 1fr; }
+    }
+
+    /* SEPARATEUR */
+    .form-sep {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 44px 0;
+    }
+
+    /* NOTE AVANT ENVOI */
+    .form-note {
+      font-size: 13px;
+      color: var(--gris2);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      padding-left: 16px;
+      border-left: 2px solid var(--border);
+    }
+
+    /* BOUTON SUBMIT */
+    .btn-primary {
+      background: var(--ocre);
+      color: #1A0A00;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 16px 36px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+    .btn-primary:hover { background: var(--ocre-dark); transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* CONFIRMATION */
+    .confirm-box {
+      display: none;
+      background: rgba(200,118,58,0.08);
+      border: 1px solid rgba(200,118,58,0.25);
+      border-radius: 10px;
+      padding: 36px;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .confirm-box.visible { display: block; }
+
+    .confirm-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(200,118,58,0.15);
+      border: 1px solid rgba(200,118,58,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 22px;
+    }
+
+    .confirm-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--blanc);
+      margin-bottom: 12px;
+    }
+
+    .confirm-sub {
+      font-size: 14px;
+      color: var(--gris1);
+      line-height: 1.75;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0E0E0E;
+      border-top: 0.5px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-logo {
+      font-family: 'EB Garamond', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--blanc);
+    }
+    .footer-logo span { color: var(--ocre); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--gris2);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-legal a {
+      font-size: 12px;
+      color: var(--gris3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--gris1); }
+
+    @media (max-width: 768px) {
+      footer { padding: 28px 24px; }
+      .footer-legal { display: none; }
+    }
+
+    /* HIDDEN FIELDS */
+    .hidden-field { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Cap <span>IA</span></a>
+    <a href="/" class="nav-back">Retour au site</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="diag-hero">
+    <p class="diag-eyebrow">Diagnostic gratuit</p>
+    <h1 class="diag-title">Est-ce qu'un agent IA<br>peut vous faire gagner du temps ?</h1>
+    <p class="diag-sub">5 questions. 3 minutes. Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
+    <div class="diag-promise">
+      <div class="diag-promise-item"><div class="diag-promise-dot"></div>Sans engagement</div>
+      <div class="diag-promise-item"><div class="diag-promise-dot"></div>Sans jargon</div>
+      <div class="diag-promise-item"><div class="diag-promise-dot"></div>Réponse sous 48h</div>
+    </div>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="diag-form-section">
+    <div class="diag-form-inner">
+
+      <form id="diagForm" action="https://formspree.io/f/mzdygppn" method="POST">
+        <input type="hidden" name="_subject" value="Nouveau diagnostic — Cap IA"/>
+        <input type="hidden" name="secteur_selectionne" id="hidden_secteur"/>
+        <input type="hidden" name="volume_selectionne" id="hidden_volume"/>
+        <input type="hidden" name="input_selectionne" id="hidden_input"/>
+        <input type="hidden" name="urgence_selectionnee" id="hidden_urgence"/>
+
+        <!-- Q1 -->
+        <div class="q-bloc">
+          <p class="q-num">Question 01 / 05</p>
+          <p class="q-label">Quel est votre secteur d'activité ?</p>
+          <p class="q-hint">Choisissez ce qui correspond le mieux. Si rien ne correspond, précisez en bas.</p>
+          <div class="choices" data-field="secteur">
+            <button type="button" class="choice-btn" data-value="Tourisme / DMC / Voyage d'affaires">Tourisme / DMC / Voyage d'affaires</button>
+            <button type="button" class="choice-btn" data-value="Immobilier">Immobilier</button>
+            <button type="button" class="choice-btn" data-value="Conseil / Cabinet">Conseil / Cabinet</button>
+            <button type="button" class="choice-btn" data-value="Communication / PR / Marketing">Communication / PR / Marketing</button>
+            <button type="button" class="choice-btn" data-value="RH / Recrutement">RH / Recrutement</button>
+            <button type="button" class="choice-btn" data-value="Commerce / E-commerce">Commerce / E-commerce</button>
+            <button type="button" class="choice-btn" data-value="Indépendant / Freelance">Indépendant / Freelance</button>
+            <button type="button" class="choice-btn" data-value="Autre">Autre</button>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="q-bloc">
+          <p class="q-num">Question 02 / 05</p>
+          <p class="q-label">Quelle tâche vous prend le plus de temps de façon répétitive ?</p>
+          <p class="q-hint">Décrivez en une ou deux phrases. Inutile d'être exhaustif : ce qui vous vient en premier est souvent ce qui coûte le plus cher en temps.</p>
+          <div class="form-group">
+            <textarea class="form-textarea" name="tache_principale" placeholder="Ex : Je rédige manuellement les mêmes emails prestataires sur chaque dossier, ça me prend 30 minutes à chaque fois..." required></textarea>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="q-bloc">
+          <p class="q-num">Question 03 / 05</p>
+          <p class="q-label">D'où vient l'information que vous traitez ?</p>
+          <p class="q-hint">Plusieurs choix possibles.</p>
+          <div class="choices" data-field="input" data-multi="true">
+            <button type="button" class="choice-btn" data-value="Emails entrants">Emails entrants</button>
+            <button type="button" class="choice-btn" data-value="Documents PDF">Documents PDF</button>
+            <button type="button" class="choice-btn" data-value="Formulaires en ligne">Formulaires en ligne</button>
+            <button type="button" class="choice-btn" data-value="Tableurs Excel / Google Sheets">Tableurs Excel / Google Sheets</button>
+            <button type="button" class="choice-btn" data-value="Textes / briefs libres">Textes / briefs libres</button>
+            <button type="button" class="choice-btn" data-value="Logiciel métier spécifique">Logiciel métier spécifique</button>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="q-bloc">
+          <p class="q-num">Question 04 / 05</p>
+          <p class="q-label">À quelle fréquence cette tâche revient-elle ?</p>
+          <div class="choices" data-field="volume">
+            <button type="button" class="choice-btn" data-value="Plusieurs fois par jour">Plusieurs fois par jour</button>
+            <button type="button" class="choice-btn" data-value="Chaque jour">Chaque jour</button>
+            <button type="button" class="choice-btn" data-value="Plusieurs fois par semaine">Plusieurs fois par semaine</button>
+            <button type="button" class="choice-btn" data-value="Quelques fois par mois">Quelques fois par mois</button>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="q-bloc">
+          <p class="q-num">Question 05 / 05</p>
+          <p class="q-label">Où en êtes-vous avec l'IA aujourd'hui ?</p>
+          <div class="choices" data-field="urgence">
+            <button type="button" class="choice-btn" data-value="Je n'ai encore rien testé, je veux comprendre ce qui est possible">Je n'ai encore rien testé</button>
+            <button type="button" class="choice-btn" data-value="J'utilise ChatGPT de temps en temps mais rien n'est vraiment automatisé">J'utilise ChatGPT, sans automatisation</button>
+            <button type="button" class="choice-btn" data-value="J'ai essayé des outils mais ça n'a pas vraiment fonctionné">J'ai essayé, sans succès réel</button>
+            <button type="button" class="choice-btn" data-value="Je sais ce que je veux, je cherche quelqu'un pour le faire">Je sais ce que je veux</button>
+          </div>
+        </div>
+
+        <hr class="form-sep"/>
+
+        <!-- IDENTITÉ -->
+        <div class="q-bloc">
+          <p class="q-num">Pour vous répondre</p>
+          <p class="q-label">Comment vous joindre ?</p>
+          <p class="q-hint">Je reviens vers vous personnellement sous 48h avec une analyse de votre situation.</p>
+          <div class="id-grid" style="margin-bottom: 14px;">
+            <div class="form-group">
+              <input class="form-input" type="text" name="prenom_nom" placeholder="Prénom et nom" required/>
+            </div>
+            <div class="form-group">
+              <input class="form-input" type="text" name="structure" placeholder="Votre structure / entreprise"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <input class="form-input" type="email" name="email" placeholder="Votre adresse email" required style="margin-bottom: 14px;"/>
+          </div>
+          <div class="form-group">
+            <textarea class="form-textarea" name="complement" placeholder="Quelque chose à ajouter ? Un contexte particulier, une contrainte, une question..." style="min-height: 80px;"></textarea>
+          </div>
+        </div>
+
+        <p class="form-note">Vos réponses restent confidentielles. Je ne les partage avec personne et je ne vous contacte que pour donner suite à ce diagnostic.</p>
+
+        <button type="submit" class="btn-primary" id="submitBtn">Envoyer le diagnostic</button>
+
+      </form>
+
+      <!-- CONFIRMATION -->
+      <div class="confirm-box" id="confirmBox">
+        <div class="confirm-icon">✓</div>
+        <p class="confirm-title">Diagnostic reçu.</p>
+        <p class="confirm-sub">Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Cap <span>IA</span></div>
+    <p class="footer-copy">© 2026 Cap IA — Antoine Fonfreyde</p>
+    <div class="footer-legal">
+      <a href="/mentions-legales.html">Mentions légales</a>
+      <a href="/confidentialite.html">Politique de confidentialité</a>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const blocs = document.querySelectorAll('.q-bloc');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    blocs.forEach(el => obs.observe(el));
+
+    // Choix boutons
+    document.querySelectorAll('.choices').forEach(group => {
+      const isMulti = group.dataset.multi === 'true';
+      const field = group.dataset.field;
+      const hiddenInput = document.getElementById('hidden_' + field);
+
+      group.querySelectorAll('.choice-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (isMulti) {
+            btn.classList.toggle('selected');
+          } else {
+            group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+          }
+
+          if (hiddenInput) {
+            const selected = Array.from(group.querySelectorAll('.choice-btn.selected')).map(b => b.dataset.value);
+            hiddenInput.value = selected.join(', ');
+          }
+        });
+      });
+    });
+
+    // Soumission
+    const form = document.getElementById('diagForm');
+    const confirmBox = document.getElementById('confirmBox');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours...';
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          confirmBox.classList.add('visible');
+          window.scrollTo({ top: document.querySelector('.diag-form-section').offsetTop - 80, behavior: 'smooth' });
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Envoyer le diagnostic';
+          alert('Une erreur est survenue. Contactez-moi directement à antoine@cap-ia.pro');
+        }
+      } catch(err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer le diagnostic';
+        alert('Une erreur est survenue. Contactez-moi directement à antoine@cap-ia.pro');
+      }
+    });
+  </script>
+
+</body>
+</html>
