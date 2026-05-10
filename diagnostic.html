@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diagnostic gratuit — Cap IA</title>
-  <meta name="description" content="Répondez à 5 questions pour savoir si un agent IA peut vous faire gagner du temps. Réponse sous 48h.">
+  <title>Diagnostic gratuit — Antoine Fonfreyde · Cap IA</title>
+  <meta name="description" content="5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -407,12 +407,20 @@
   <!-- HERO -->
   <div class="diag-hero">
     <p class="diag-eyebrow">Diagnostic gratuit</p>
-    <h1 class="diag-title">Est-ce qu'un agent IA<br>peut vous faire gagner du temps ?</h1>
+    <h1 class="diag-title">Vous passez des heures sur des tâches<br>qui devraient prendre des minutes ?</h1>
     <p class="diag-sub">5 questions. 3 minutes. Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
     <div class="diag-promise">
       <div class="diag-promise-item"><div class="diag-promise-dot"></div>Sans engagement</div>
       <div class="diag-promise-item"><div class="diag-promise-dot"></div>Sans jargon</div>
       <div class="diag-promise-item"><div class="diag-promise-dot"></div>Réponse sous 48h</div>
+    </div>
+  </div>
+
+  <!-- BLOC RÉASSURANCE -->
+  <div style="background: rgba(200,118,58,0.06); border-top: 1px solid rgba(200,118,58,0.15); border-bottom: 1px solid rgba(200,118,58,0.15); padding: 20px 24px;">
+    <div style="max-width: 600px; margin: 0 auto; display: flex; align-items: flex-start; gap: 16px;">
+      <span style="font-size: 20px; flex-shrink: 0; margin-top: 2px;">✓</span>
+      <p style="font-size: 14px; color: #AAAAAA; line-height: 1.7;">Cette méthode a permis à l'équipe FIT de Liberty Incentives & Congresses (6 chefs de projet, tourisme d'affaires haut de gamme) de passer de 45 minutes à moins d'une minute par dossier. Ce diagnostic s'inspire du même travail de terrain.</p>
     </div>
   </div>
 
@@ -439,7 +447,7 @@
             <button type="button" class="choice-btn" data-value="Communication / PR / Marketing">Communication / PR / Marketing</button>
             <button type="button" class="choice-btn" data-value="RH / Recrutement">RH / Recrutement</button>
             <button type="button" class="choice-btn" data-value="Commerce / E-commerce">Commerce / E-commerce</button>
-            <button type="button" class="choice-btn" data-value="Indépendant / Freelance">Indépendant / Freelance</button>
+            <button type="button" class="choice-btn" data-value="Solo / TPE">Solo / TPE</button>
             <button type="button" class="choice-btn" data-value="Autre">Autre</button>
           </div>
         </div>
@@ -518,7 +526,7 @@
 
         <p class="form-note">Vos réponses restent confidentielles. Je ne les partage avec personne et je ne vous contacte que pour donner suite à ce diagnostic.</p>
 
-        <button type="submit" class="btn-primary" id="submitBtn">Envoyer le diagnostic</button>
+        <button type="submit" class="btn-primary" id="submitBtn">Recevoir mon analyse</button>
 
       </form>
 
@@ -527,6 +535,7 @@
         <div class="confirm-icon">✓</div>
         <p class="confirm-title">Diagnostic reçu.</p>
         <p class="confirm-sub">Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
+        <p style="margin-top: 20px; font-size: 13px; color: #666666;">En attendant, voir comment ROB a été conçu : <a href="/#rob" style="color: var(--ocre); text-decoration: none;">cap-ia.pro/#rob →</a></p>
       </div>
 
     </div>
@@ -602,12 +611,12 @@
           window.scrollTo({ top: document.querySelector('.diag-form-section').offsetTop - 80, behavior: 'smooth' });
         } else {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Envoyer le diagnostic';
+          submitBtn.textContent = 'Recevoir mon analyse';
           alert('Une erreur est survenue. Contactez-moi directement à antoine@cap-ia.pro');
         }
       } catch(err) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Envoyer le diagnostic';
+        submitBtn.textContent = 'Recevoir mon analyse';
         alert('Une erreur est survenue. Contactez-moi directement à antoine@cap-ia.pro');
       }
     });
