@@ -987,7 +987,8 @@
       border: 0.5px solid var(--border);
       border-radius: 8px;
       padding: 16px 18px;
-      cursor: default;
+      cursor: pointer;
+      touch-action: manipulation;
       transition: border-color 0.25s, background 0.25s;
       position: relative;
       overflow: hidden;
@@ -1018,6 +1019,7 @@
       flex-shrink: 0;
       transition: transform 0.25s, color 0.2s;
       line-height: 1;
+      pointer-events: none;
     }
 
     .auto-card:hover .auto-card-title::after,
@@ -1369,6 +1371,55 @@
       <line x1="270" y1="70" x2="242" y2="98" stroke="#C8763A" stroke-width="0.5" opacity="0.4"/>
     </svg>
   </section>
+
+  <!-- BANDE PREUVE SOCIALE -->
+  <div id="preuve" style="background: var(--graphite); border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); padding: 0 48px;">
+    <div style="max-width: 960px; display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; gap: 0;">
+
+      <!-- Témoignage -->
+      <div style="padding: 32px 0;">
+        <p style="font-size: 15px; color: var(--blanc); line-height: 1.6; font-style: italic; margin-bottom: 10px;">"On colle un mail, deux minutes après tout est fait. Mieux que ce qu'on aurait conçu nous-mêmes."</p>
+        <p style="font-size: 11px; font-weight: 500; letter-spacing: 0.5px; color: var(--ocre);">Frédérique Jehl Diop</p>
+        <p style="font-size: 11px; color: var(--gris2); letter-spacing: 0.3px;">FIT Director · Liberty Incentives & Congresses France</p>
+      </div>
+
+      <!-- Séparateur -->
+      <div style="width: 1px; height: 60px; background: var(--border); margin: 0 40px;"></div>
+
+      <!-- Chiffres clés -->
+      <div style="padding: 32px 0; display: flex; gap: 32px; flex-wrap: wrap;">
+        <div>
+          <p style="font-family: 'EB Garamond', serif; font-size: 32px; font-weight: 700; color: var(--blanc); line-height: 1; margin-bottom: 4px;">6</p>
+          <p style="font-size: 11px; color: var(--gris2); letter-spacing: 0.3px;">utilisateurs actifs</p>
+        </div>
+        <div>
+          <p style="font-family: 'EB Garamond', serif; font-size: 32px; font-weight: 700; color: var(--blanc); line-height: 1; margin-bottom: 4px;">&lt;1 min</p>
+          <p style="font-size: 11px; color: var(--gris2); letter-spacing: 0.3px;">par dossier traité</p>
+        </div>
+      </div>
+
+      <!-- Séparateur -->
+      <div style="width: 1px; height: 60px; background: var(--border); margin: 0 40px;"></div>
+
+      <!-- Badge production -->
+      <div style="padding: 32px 0;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(200,118,58,0.08); border: 1px solid rgba(200,118,58,0.2); border-radius: 6px; padding: 10px 16px; margin-bottom: 10px;">
+          <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--ocre); display: inline-block; animation: pulse-rob 2s infinite;"></span>
+          <span style="font-size: 12px; color: var(--ocre); font-weight: 500; letter-spacing: 0.3px;">En production</span>
+        </div>
+        <p style="font-size: 12px; color: var(--gris2); line-height: 1.6;">ROB · Liberty Incentives & Congresses France · Pôle FIT</p>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      #preuve { padding: 0 24px; }
+      #preuve > div { grid-template-columns: 1fr !important; }
+      #preuve > div > div[style*="width: 1px"] { display: none; }
+    }
+  </style>
 
   <!-- À PROPOS -->
   <section id="apropos">
@@ -1777,13 +1828,6 @@
         <div class="ocre-line reveal"></div>
         <p class="contact-sub reveal" data-fr="Sans engagement, sans jargon. Je regarde vos process, j'identifie les gains réels, et je vous dis ce qui est faisable. Écrivez-moi, je réponds sous 48h." data-en="No commitment, no jargon. I look at your processes, identify real gains, and tell you what's feasible. Write to me — I respond within 48 hours.">Sans engagement, sans jargon. Je regarde vos process, j'identifie les gains réels, et je vous dis ce qui est faisable. Écrivez-moi, je réponds sous 48h.</p>
 
-        <!-- TÉMOIGNAGE -->
-        <div class="reveal" style="margin: 28px 0 32px; padding: 20px 24px; border-left: 3px solid var(--ocre); background: rgba(200,118,58,0.05); border-radius: 0 6px 6px 0;">
-          <p style="font-size: 15px; color: var(--gris1); line-height: 1.7; font-style: italic; margin-bottom: 12px;">"On entre le dossier, deux minutes après tout est fait. Et c'est mieux que ce qu'on aurait écrit nous-mêmes."</p>
-          <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.5px; color: var(--ocre);">Frédérique Jehl Diop</p>
-          <p style="font-size: 11px; color: var(--gris2); letter-spacing: 0.3px;">FIT Director, Liberty Incentives & Congresses France</p>
-        </div>
-
         <div class="contact-links reveal">
           <a href="mailto:antoine@cap-ia.pro" class="contact-link-item">
             <p class="contact-link-label">Email</p>
@@ -1868,11 +1912,13 @@
       });
     });
     // Toggle tap pour les cards #automatise (mobile)
-    document.querySelectorAll('.auto-card').forEach(card => {
-      card.addEventListener('click', () => {
+    document.querySelectorAll('#automatise').forEach(section => {
+      section.addEventListener('click', function(e) {
+        const card = e.target.closest('.auto-card');
+        if (!card) return;
         const isOpen = card.classList.contains('open');
-        // Fermer toutes les autres cards de la même famille
-        card.closest('.auto-cards').querySelectorAll('.auto-card').forEach(c => c.classList.remove('open'));
+        // Fermer toutes les cards de toute la section
+        section.querySelectorAll('.auto-card').forEach(c => c.classList.remove('open'));
         if (!isOpen) card.classList.add('open');
       });
     });
