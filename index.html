@@ -993,7 +993,8 @@
       overflow: hidden;
     }
 
-    .auto-card:hover {
+    .auto-card:hover,
+    .auto-card.open {
       border-color: rgba(200,118,58,0.5);
       background: var(--graphite2);
     }
@@ -1004,6 +1005,25 @@
       color: var(--blanc);
       margin-bottom: 0;
       transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .auto-card-title::after {
+      content: '+';
+      font-size: 16px;
+      color: var(--gris2);
+      flex-shrink: 0;
+      transition: transform 0.25s, color 0.2s;
+      line-height: 1;
+    }
+
+    .auto-card:hover .auto-card-title::after,
+    .auto-card.open .auto-card-title::after {
+      transform: rotate(45deg);
+      color: var(--ocre);
     }
 
     .auto-card-example {
@@ -1012,16 +1032,37 @@
       line-height: 1.6;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, margin-top 0.3s ease, color 0.2s;
+      transition: max-height 0.35s ease, margin-top 0.35s ease;
     }
 
-    .auto-card:hover .auto-card-example {
-      max-height: 60px;
+    .auto-card:hover .auto-card-example,
+    .auto-card.open .auto-card-example {
+      max-height: 80px;
       margin-top: 8px;
     }
 
-    .auto-card:hover .auto-card-title {
+    .auto-card:hover .auto-card-title,
+    .auto-card.open .auto-card-title {
       color: var(--ocre);
+    }
+
+    /* Sur touch, désactiver le hover CSS pour ne pas bloquer le toggle */
+    @media (hover: none) {
+      .auto-card:hover {
+        border-color: var(--border);
+        background: var(--graphite);
+      }
+      .auto-card:hover .auto-card-example {
+        max-height: 0;
+        margin-top: 0;
+      }
+      .auto-card:hover .auto-card-title {
+        color: var(--blanc);
+      }
+      .auto-card:hover .auto-card-title::after {
+        transform: none;
+        color: var(--gris2);
+      }
     }
 
     .auto-cta {
@@ -1824,6 +1865,15 @@
         navLinks.classList.remove('open');
         burger.classList.remove('open');
         burger.setAttribute('aria-expanded', false);
+      });
+    });
+    // Toggle tap pour les cards #automatise (mobile)
+    document.querySelectorAll('.auto-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+        // Fermer toutes les autres cards de la même famille
+        card.closest('.auto-cards').querySelectorAll('.auto-card').forEach(c => c.classList.remove('open'));
+        if (!isOpen) card.classList.add('open');
       });
     });
   </script>
