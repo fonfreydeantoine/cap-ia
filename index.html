@@ -982,13 +982,17 @@
       gap: 10px;
     }
 
-    .auto-card {
+    button.auto-card {
+      width: 100%;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
       background: var(--graphite);
       border: 0.5px solid var(--border);
       border-radius: 8px;
       padding: 16px 18px;
       cursor: pointer;
       touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: border-color 0.25s, background 0.25s;
       position: relative;
       overflow: hidden;
@@ -1664,54 +1668,54 @@
       <div class="auto-family reveal">
         <p class="auto-family-label">Traitement entrant</p>
         <div class="auto-cards">
-          <div class="auto-card" ontouchstart="">
+          <button class="auto-card">
             <p class="auto-card-title">Emails entrants</p>
             <p class="auto-card-example">Analyse de la boîte, tâches priorisées et brouillons de réponses générés automatiquement — comme Alfred dans ROB.</p>
-          </div>
-          <div class="auto-card" ontouchstart="">
+          </button>
+          <button class="auto-card">
             <p class="auto-card-title">Qualification de leads</p>
             <p class="auto-card-example">Lecture d'un formulaire ou email entrant, scoring automatique, fiche récap envoyée au commercial en 30 secondes.</p>
-          </div>
-          <div class="auto-card" ontouchstart="">
+          </button>
+          <button class="auto-card">
             <p class="auto-card-title">Analyse documentaire</p>
             <p class="auto-card-example">Lecture d'un PDF, contrat ou dossier client : extraction des données clés et mise en forme structurée sans intervention manuelle.</p>
-          </div>
+          </button>
         </div>
       </div>
 
       <div class="auto-family reveal">
         <p class="auto-family-label">Production automatique</p>
         <div class="auto-cards">
-          <div class="auto-card" ontouchstart="">
+          <button class="auto-card">
             <p class="auto-card-title">Génération de devis</p>
             <p class="auto-card-example">Depuis un brief ou formulaire : devis Word mis en page dans la charte de l'entreprise, prêt à relire et envoyer.</p>
-          </div>
-          <div class="auto-card" ontouchstart="">
+          </button>
+          <button class="auto-card">
             <p class="auto-card-title">Comptes-rendus</p>
             <p class="auto-card-example">Notes de réunion, synthèses de call ou résumés de dossier générés depuis une transcription ou un brief en quelques secondes.</p>
-          </div>
-          <div class="auto-card" ontouchstart="">
+          </button>
+          <button class="auto-card">
             <p class="auto-card-title">Préparation de dossiers</p>
             <p class="auto-card-example">Consolidation d'informations dispersées en un document structuré : fiche client, itinéraire, proposition commerciale.</p>
-          </div>
+          </button>
         </div>
       </div>
 
       <div class="auto-family reveal">
         <p class="auto-family-label">Coordination & copilotes</p>
         <div class="auto-cards">
-          <div class="auto-card" ontouchstart="">
+          <button class="auto-card">
             <p class="auto-card-title">Workflows internes</p>
             <p class="auto-card-example">Transmission automatique entre services, relances, mises à jour CRM ou comptabilité déclenchées sans action manuelle.</p>
-          </div>
-          <div class="auto-card" ontouchstart="">
+          </button>
+          <button class="auto-card">
             <p class="auto-card-title">Réponses SAV</p>
             <p class="auto-card-example">Détection du motif d'un email client, génération d'une réponse adaptée à valider en un clic avant envoi.</p>
-          </div>
-          <div class="auto-card" ontouchstart="">
+          </button>
+          <button class="auto-card">
             <p class="auto-card-title">Copilote métier</p>
             <p class="auto-card-example">Interface dédiée à votre activité : l'agent connaît vos process, vos prestataires, vos modèles — et produit à votre place.</p>
-          </div>
+          </button>
         </div>
       </div>
 
@@ -1911,23 +1915,14 @@
         burger.setAttribute('aria-expanded', false);
       });
     });
-    // Toggle tap pour les cards #automatise
-    // iOS Safari ne déclenche pas click sur les divs non-interactives
-    // On utilise touchend + fallback click pour couvrir tous les cas
-    function toggleCard(e) {
-      const card = e.target.closest('.auto-card');
-      if (!card) return;
-      e.preventDefault();
-      const isOpen = card.classList.contains('open');
-      document.querySelectorAll('.auto-card').forEach(c => c.classList.remove('open'));
-      if (!isOpen) card.classList.add('open');
-    }
-
-    const autoSection = document.getElementById('automatise');
-    if (autoSection) {
-      autoSection.addEventListener('touchend', toggleCard, { passive: false });
-      autoSection.addEventListener('click', toggleCard);
-    }
+    // Toggle cards #automatise — buttons natifs, click standard
+    document.querySelectorAll('.auto-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const isOpen = this.classList.contains('open');
+        document.querySelectorAll('.auto-card').forEach(c => c.classList.remove('open'));
+        if (!isOpen) this.classList.add('open');
+      });
+    });
   </script>
 
 
