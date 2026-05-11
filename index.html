@@ -998,8 +998,14 @@
       overflow: hidden;
     }
 
-    .auto-card:hover,
-    .auto-card.open {
+    @media (hover: hover) {
+      .auto-card:hover {
+        border-color: rgba(200,118,58,0.5);
+        background: var(--graphite2);
+      }
+    }
+
+    button.auto-card.open {
       border-color: rgba(200,118,58,0.5);
       background: var(--graphite2);
     }
@@ -1027,8 +1033,14 @@
       pointer-events: none;
     }
 
-    .auto-card:hover .auto-card-title::after,
-    .auto-card.open .auto-card-title::after {
+    @media (hover: hover) {
+      .auto-card:hover .auto-card-title::after {
+        transform: rotate(45deg);
+        color: var(--ocre);
+      }
+    }
+
+    button.auto-card.open .auto-card-title::after {
       transform: rotate(45deg);
       color: var(--ocre);
     }
@@ -1043,35 +1055,29 @@
       transition: max-height 0.35s ease, margin-top 0.35s ease;
     }
 
-    .auto-card:hover .auto-card-example,
-    .auto-card.open .auto-card-example {
+    @media (hover: hover) {
+      .auto-card:hover .auto-card-example {
+        max-height: 80px;
+        margin-top: 8px;
+      }
+    }
+
+    button.auto-card.open .auto-card-example {
       max-height: 80px;
       margin-top: 8px;
     }
 
-    .auto-card:hover .auto-card-title,
-    .auto-card.open .auto-card-title {
+    @media (hover: hover) {
+      .auto-card:hover .auto-card-title {
+        color: var(--ocre);
+      }
+    }
+
+    button.auto-card.open .auto-card-title {
       color: var(--ocre);
     }
 
-    /* Sur touch, désactiver le hover CSS pour ne pas bloquer le toggle */
-    @media (hover: none) {
-      .auto-card:hover {
-        border-color: var(--border);
-        background: var(--graphite);
-      }
-      .auto-card:hover .auto-card-example {
-        max-height: 0;
-        margin-top: 0;
-      }
-      .auto-card:hover .auto-card-title {
-        color: var(--blanc);
-      }
-      .auto-card:hover .auto-card-title::after {
-        transform: none;
-        color: var(--gris2);
-      }
-    }
+
 
     .auto-cta {
       max-width: 960px;
