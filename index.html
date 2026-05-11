@@ -917,6 +917,333 @@
       font-style: italic;
     }
 
+    /* ── SECTION CE QUE J'AUTOMATISE ── */
+    #automatise {
+      background: var(--charbon);
+      padding: 100px 48px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      #automatise { padding: 80px 24px; }
+    }
+
+    .auto-header {
+      max-width: 960px;
+      margin-bottom: 64px;
+    }
+
+    .auto-title {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      color: var(--blanc);
+      margin-bottom: 16px;
+    }
+
+    .auto-sub {
+      font-size: 15px;
+      color: var(--gris1);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    .auto-families {
+      max-width: 960px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .auto-families { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 580px) {
+      .auto-families { grid-template-columns: 1fr; }
+    }
+
+    .auto-family {
+      border-top: 2px solid var(--border);
+      padding-top: 24px;
+    }
+
+    .auto-family-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ocre);
+      margin-bottom: 20px;
+    }
+
+    .auto-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .auto-card {
+      background: var(--graphite);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      cursor: default;
+      transition: border-color 0.25s, background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auto-card:hover {
+      border-color: rgba(200,118,58,0.5);
+      background: var(--graphite2);
+    }
+
+    .auto-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--blanc);
+      margin-bottom: 0;
+      transition: color 0.2s;
+    }
+
+    .auto-card-example {
+      font-size: 12px;
+      color: var(--gris2);
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, margin-top 0.3s ease, color 0.2s;
+    }
+
+    .auto-card:hover .auto-card-example {
+      max-height: 60px;
+      margin-top: 8px;
+    }
+
+    .auto-card:hover .auto-card-title {
+      color: var(--ocre);
+    }
+
+    .auto-cta {
+      max-width: 960px;
+      margin-top: 48px;
+      padding-top: 40px;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .auto-cta-text {
+      font-size: 15px;
+      color: var(--gris1);
+      max-width: 420px;
+      line-height: 1.7;
+    }
+
+    /* ── ROB ARCHITECTURE STEPS ── */
+    .rob-arch-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #1A1A10;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .rob-arch-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .rob-arch-steps { grid-template-columns: 1fr; }
+      .rob-arch-arrow-right { display: none; }
+    }
+
+    .rob-arch-step {
+      background: #111108;
+      padding: 24px 22px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .rob-arch-step-last .rob-arch-arrow-right { display: none; }
+
+    .rob-arch-arrow-right {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: #2A2A1A;
+      z-index: 2;
+      background: #111108;
+      padding: 4px 2px;
+    }
+
+    .rob-arch-num {
+      font-family: 'EB Garamond', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1E1E12;
+      line-height: 1;
+    }
+
+    .rob-arch-brique {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #555544;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: #1A1A10;
+      border: 1px solid #222215;
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    .rob-arch-brique-yellow {
+      background: rgba(245,200,0,0.06);
+      border-color: rgba(245,200,0,0.2);
+      color: rgba(245,200,0,0.7);
+    }
+
+    .rob-arch-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: #AAAAAA;
+      margin: 0;
+    }
+
+    .rob-arch-desc {
+      font-size: 12px;
+      color: #444433;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── ROB SCHEMA (ancien, conservé pour fallback) ── */
+    .rob-schema {
+      margin-bottom: 48px;
+    }
+
+    .rob-schema-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #F5C800;
+      margin-bottom: 24px;
+    }
+
+    .rob-schema-flux {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 700px) {
+      .rob-schema-flux { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .rob-schema-arrow { transform: rotate(90deg); }
+    }
+
+    .rob-schema-node {
+      background: #1A1A10;
+      border: 1px solid #2A2A1A;
+      border-radius: 8px;
+      padding: 14px 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .rob-schema-node.node-agent {
+      background: rgba(245,200,0,0.08);
+      border-color: rgba(245,200,0,0.3);
+    }
+
+    .rob-schema-node-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666655;
+      margin-bottom: 6px;
+    }
+
+    .rob-schema-node.node-agent .rob-schema-node-label {
+      color: rgba(245,200,0,0.7);
+    }
+
+    .rob-schema-node-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #CCCCCC;
+      line-height: 1.4;
+    }
+
+    .rob-schema-node.node-agent .rob-schema-node-title {
+      color: #F5C800;
+    }
+
+    .rob-schema-arrow {
+      font-size: 18px;
+      color: #2A2A1A;
+      padding: 0 10px;
+      flex-shrink: 0;
+    }
+
+    .rob-schema-outputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    @media (max-width: 700px) {
+      .rob-schema-outputs { grid-template-columns: 1fr 1fr; }
+    }
+
+    .rob-schema-output {
+      background: #1A1A10;
+      border: 1px solid #2A2A1A;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #888877;
+      text-align: center;
+    }
+
+    .rob-schema-output.output-highlight {
+      border-color: rgba(245,200,0,0.2);
+      color: rgba(245,200,0,0.8);
+    }
+
+    .rob-schema-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #1A1A10;
+    }
+
+    .rob-schema-stack-badge {
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid #2A2A1A;
+      color: #444433;
+      background: #111108;
+    }
+
+    .rob-schema-stack-badge.stack-primary {
+      border-color: rgba(245,200,0,0.2);
+      color: rgba(245,200,0,0.6);
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -960,7 +1287,7 @@
     <ul class="nav-links">
       <li><a href="#offres" data-fr="Offres" data-en="Services">Offres</a></li>
       <li><a href="#rob" data-fr="Rob" data-en="Rob">Rob</a></li>
-      <li><a href="#cas" data-fr="Cas d'usage" data-en="Use cases">Cas d'usage</a></li>
+      <li><a href="#automatise" data-fr="Ce que j'automatise" data-en="What I automate">Ce que j'automatise</a></li>
       <li><a href="#apropos" data-fr="À propos" data-en="About">À propos</a></li>
       <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
       <li><a href="/diagnostic.html" style="color: var(--ocre); font-weight: 500;" data-fr="Diagnostic gratuit" data-en="Free diagnostic">Diagnostic gratuit</a></li>
@@ -1125,6 +1452,78 @@
       </div>
       <!-- END ALFRED MODULE -->
 
+      <!-- ROB ARCHITECTURE -->
+      <div class="rob-schema reveal">
+        <p class="rob-schema-label">Architecture</p>
+
+        <!-- Accroche flux simplifié -->
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:32px; flex-wrap:wrap;">
+          <div style="background:#1A1A10; border:1px solid #2A2A1A; border-radius:6px; padding:10px 16px; text-align:center;">
+            <p style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#555544; margin-bottom:4px;">Entrée</p>
+            <p style="font-size:13px; color:#AAAAAA;">Dossier TMT · Brief · Email</p>
+          </div>
+          <div style="font-size:16px; color:#2A2A1A; padding:0 6px;">→</div>
+          <div style="background:rgba(245,200,0,0.08); border:1px solid rgba(245,200,0,0.3); border-radius:6px; padding:10px 20px; text-align:center;">
+            <p style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(245,200,0,0.7); margin-bottom:4px;">Agent IA</p>
+            <p style="font-size:13px; color:#F5C800; font-weight:500;">ROB · 7 modules</p>
+          </div>
+          <div style="font-size:16px; color:#2A2A1A; padding:0 6px;">→</div>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; flex:1; min-width:180px;">
+            <span style="font-size:11px; padding:5px 10px; border-radius:4px; background:#1A1A10; border:1px solid rgba(245,200,0,0.2); color:rgba(245,200,0,0.8);">Mails prestataires</span>
+            <span style="font-size:11px; padding:5px 10px; border-radius:4px; background:#1A1A10; border:1px solid rgba(245,200,0,0.2); color:rgba(245,200,0,0.8);">Devis Word</span>
+            <span style="font-size:11px; padding:5px 10px; border-radius:4px; background:#1A1A10; border:1px solid rgba(245,200,0,0.2); color:rgba(245,200,0,0.8);">Fiche coordination</span>
+            <span style="font-size:11px; padding:5px 10px; border-radius:4px; background:#1A1A10; border:1px solid #2A2A1A; color:#666655;">Itinéraire client</span>
+            <span style="font-size:11px; padding:5px 10px; border-radius:4px; background:#1A1A10; border:1px solid #2A2A1A; color:#666655;">Factures compta</span>
+            <span style="font-size:11px; padding:5px 10px; border-radius:4px; background:#1A1A10; border:1px solid #2A2A1A; color:#666655;">Boîte mail priorisée</span>
+          </div>
+        </div>
+
+        <!-- Flux détaillé 4 étapes -->
+        <div class="rob-arch-steps">
+
+          <div class="rob-arch-step">
+            <div class="rob-arch-num">01</div>
+            <div class="rob-arch-content">
+              <div class="rob-arch-brique">Interface HTML</div>
+              <p class="rob-arch-role">Saisie & résultats</p>
+              <p class="rob-arch-desc">Le chef de projet saisit le dossier TMT dans l'interface. Les données sont envoyées à Make via webhook.</p>
+            </div>
+            <div class="rob-arch-arrow-right">→</div>
+          </div>
+
+          <div class="rob-arch-step">
+            <div class="rob-arch-num">02</div>
+            <div class="rob-arch-content">
+              <div class="rob-arch-brique rob-arch-brique-yellow">Make + Notion</div>
+              <p class="rob-arch-role">Orchestration</p>
+              <p class="rob-arch-desc">Make reçoit les données, récupère le prompt métier dans Notion et prépare la requête pour Claude. Les prompts sont éditables sans toucher au code.</p>
+            </div>
+            <div class="rob-arch-arrow-right">→</div>
+          </div>
+
+          <div class="rob-arch-step">
+            <div class="rob-arch-num">03</div>
+            <div class="rob-arch-content">
+              <div class="rob-arch-brique rob-arch-brique-yellow">Claude API · Anthropic</div>
+              <p class="rob-arch-role">Génération IA</p>
+              <p class="rob-arch-desc">Claude génère les mails, la fiche de coordination, l'itinéraire et les points de vigilance en moins d'une minute.</p>
+            </div>
+            <div class="rob-arch-arrow-right">→</div>
+          </div>
+
+          <div class="rob-arch-step rob-arch-step-last">
+            <div class="rob-arch-num">04</div>
+            <div class="rob-arch-content">
+              <div class="rob-arch-brique">Make + Supabase + Gmail API</div>
+              <p class="rob-arch-role">Retour & contrôle</p>
+              <p class="rob-arch-desc">Make vérifie les droits d'accès via Supabase, renvoie la réponse et déclenche les envois Gmail selon les permissions.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- END ROB ARCHITECTURE -->
+
       <div class="rob-stats reveal">
         <div class="rob-stat">
           <p class="rob-stat-val">6</p>
@@ -1156,6 +1555,79 @@
 
       <p class="rob-note reveal">Premier déploiement Cap IA · 6 utilisateurs actifs · En production.</p>
 
+    </div>
+  </section>
+
+  <!-- CE QUE J'AUTOMATISE -->
+  <section id="automatise">
+    <div class="auto-header reveal">
+      <p class="section-label">Ce que j'automatise</p>
+      <h2 class="auto-title">Vos process répétitifs,<br>transformés en systèmes.</h2>
+      <div class="ocre-line" style="margin-top:14px; margin-bottom:20px;"></div>
+      <p class="auto-sub">Passez la souris sur chaque cas pour voir un exemple concret. Si votre activité implique de traiter de l'information, de produire des documents ou de coordonner des flux, il y a probablement quelque chose à automatiser.</p>
+    </div>
+
+    <div class="auto-families">
+
+      <div class="auto-family reveal">
+        <p class="auto-family-label">Traitement entrant</p>
+        <div class="auto-cards">
+          <div class="auto-card">
+            <p class="auto-card-title">Emails entrants</p>
+            <p class="auto-card-example">Analyse de la boîte, tâches priorisées et brouillons de réponses générés automatiquement — comme Alfred dans ROB.</p>
+          </div>
+          <div class="auto-card">
+            <p class="auto-card-title">Qualification de leads</p>
+            <p class="auto-card-example">Lecture d'un formulaire ou email entrant, scoring automatique, fiche récap envoyée au commercial en 30 secondes.</p>
+          </div>
+          <div class="auto-card">
+            <p class="auto-card-title">Analyse documentaire</p>
+            <p class="auto-card-example">Lecture d'un PDF, contrat ou dossier client : extraction des données clés et mise en forme structurée sans intervention manuelle.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="auto-family reveal">
+        <p class="auto-family-label">Production automatique</p>
+        <div class="auto-cards">
+          <div class="auto-card">
+            <p class="auto-card-title">Génération de devis</p>
+            <p class="auto-card-example">Depuis un brief ou formulaire : devis Word mis en page dans la charte de l'entreprise, prêt à relire et envoyer.</p>
+          </div>
+          <div class="auto-card">
+            <p class="auto-card-title">Comptes-rendus</p>
+            <p class="auto-card-example">Notes de réunion, synthèses de call ou résumés de dossier générés depuis une transcription ou un brief en quelques secondes.</p>
+          </div>
+          <div class="auto-card">
+            <p class="auto-card-title">Préparation de dossiers</p>
+            <p class="auto-card-example">Consolidation d'informations dispersées en un document structuré : fiche client, itinéraire, proposition commerciale.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="auto-family reveal">
+        <p class="auto-family-label">Coordination & copilotes</p>
+        <div class="auto-cards">
+          <div class="auto-card">
+            <p class="auto-card-title">Workflows internes</p>
+            <p class="auto-card-example">Transmission automatique entre services, relances, mises à jour CRM ou comptabilité déclenchées sans action manuelle.</p>
+          </div>
+          <div class="auto-card">
+            <p class="auto-card-title">Réponses SAV</p>
+            <p class="auto-card-example">Détection du motif d'un email client, génération d'une réponse adaptée à valider en un clic avant envoi.</p>
+          </div>
+          <div class="auto-card">
+            <p class="auto-card-title">Copilote métier</p>
+            <p class="auto-card-example">Interface dédiée à votre activité : l'agent connaît vos process, vos prestataires, vos modèles — et produit à votre place.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="auto-cta reveal">
+      <p class="auto-cta-text">Vous ne savez pas encore ce qui est automatisable chez vous ? C'est exactement pour ça que le diagnostic existe.</p>
+      <a href="/diagnostic.html" class="btn-primary">Faire mon diagnostic gratuit →</a>
     </div>
   </section>
 
@@ -1222,77 +1694,17 @@
     </div>
   </section>
 
-  <!-- CAS D'USAGE -->
-  <section id="cas">
+  <!-- CAS D'USAGE — ROB -->
+  <section id="cas" style="background: var(--creme); padding: 100px 48px;">
     <div class="offres-header reveal">
-      <p class="section-label" data-fr="Cas d'usage" data-en="Use cases">Cas d'usage</p>
-      <h2 class="offres-title" style="color:#C8763A;" data-fr="Ce que ça change, concrètement." data-en="What it concretely changes.">Ce que ça change, concrètement.</h2>
+      <p class="section-label" style="color: #8A8078;">Cas réel · En production</p>
+      <h2 class="offres-title" style="color:#C8763A;">ROB — Liberty Incentives & Congresses France</h2>
       <div class="ocre-line" style="margin-top:14px;"></div>
     </div>
 
     <div class="cas-grid">
-
-      <div class="cas-card reveal">
-        <div class="cas-header">
-          <p class="cas-profil-label" data-fr="OPÉRATEUR TOURISME / HÔTELLERIE" data-en="TOURISM / HOSPITALITY OPERATOR">OPÉRATEUR TOURISME / HÔTELLERIE</p>
-          <p class="cas-profil-titre" data-fr="Des livrables qui prennent trop de temps à produire" data-en="Deliverables that take too long to produce">Des livrables qui prennent trop de temps à produire</p>
-        </div>
-        <div class="cas-cols">
-          <div class="cas-avant">
-            <p class="cas-col-label label-avant" data-fr="AVANT" data-en="BEFORE">AVANT</p>
-            <p class="cas-col-text text-avant" data-fr="Rédiger un itinéraire sur mesure, une proposition commerciale, un email de relance — chaque document prend du temps, et ce temps s'accumule." data-en="Writing a custom itinerary, a commercial proposal, a follow-up email — each document takes time, and that time adds up.">Rédiger un itinéraire sur mesure, une proposition commerciale, un email de relance — chaque document prend du temps, et ce temps s'accumule.</p>
-            <span class="cas-stat stat-avant" data-fr="1 à 2h par livrable produit manuellement" data-en="1 to 2h per manually produced deliverable">1 à 2h par livrable produit manuellement</span>
-          </div>
-          <div class="cas-apres">
-            <p class="cas-col-label label-apres" data-fr="APRÈS" data-en="AFTER">APRÈS</p>
-            <p class="cas-col-text text-apres" data-fr="Un agent IA génère 70 à 80 % du document en quelques secondes. L'équipe affine, valide, envoie. La qualité monte, le temps investi chute." data-en="An AI agent generates 70 to 80% of the document in seconds. The team refines, validates, sends. Quality rises, time spent drops.">Un agent IA génère 70 à 80 % du document en quelques secondes. L'équipe affine, valide, envoie. La qualité monte, le temps investi chute.</p>
-            <span class="cas-stat stat-apres" data-fr="Volume multiplié, temps divisé" data-en="Volume multiplied, time divided">Volume multiplié, temps divisé</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cas-card reveal">
-        <div class="cas-header">
-          <p class="cas-profil-label" data-fr="PME / ÉQUIPE COMMERCIALE" data-en="SME / SALES TEAM">PME / ÉQUIPE COMMERCIALE</p>
-          <p class="cas-profil-titre" data-fr="Des tâches chronophages qui empiètent sur le temps utile" data-en="Time-consuming tasks cutting into productive time">Des tâches chronophages qui empiètent sur le temps utile</p>
-        </div>
-        <div class="cas-cols">
-          <div class="cas-avant">
-            <p class="cas-col-label label-avant" data-fr="AVANT" data-en="BEFORE">AVANT</p>
-            <p class="cas-col-text text-avant" data-fr="Reformuler les mails, préparer les rendez-vous, rédiger les comptes rendus. Des tâches qui s'accumulent et empiètent sur le temps commercial." data-en="Rewriting emails, preparing meetings, writing reports. Tasks that pile up and eat into selling time.">Reformuler les mails, préparer les rendez-vous, rédiger les comptes rendus. Des tâches qui s'accumulent et empiètent sur le temps commercial.</p>
-            <span class="cas-stat stat-avant" data-fr="Régularité et impact insuffisants" data-en="Inconsistent output and impact">Régularité et impact insuffisants</span>
-          </div>
-          <div class="cas-apres">
-            <p class="cas-col-label label-apres" data-fr="APRÈS" data-en="AFTER">APRÈS</p>
-            <p class="cas-col-text text-apres" data-fr="Des modèles de prompts personnalisés, une formation rapide, et les équipes gagnent en régularité et en impact sans changer leurs outils." data-en="Custom prompt templates, a quick training session, and teams gain in consistency and impact without changing their tools.">Des modèles de prompts personnalisés, une formation rapide, et les équipes gagnent en régularité et en impact sans changer leurs outils.</p>
-            <span class="cas-stat stat-apres" data-fr="Messages plus impactants, moins de temps" data-en="More impactful messages, less time">Messages plus impactants, moins de temps</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="cas-card reveal">
-        <div class="cas-header">
-          <p class="cas-profil-label" data-fr="DIRIGEANT SOLO / FREELANCE" data-en="SOLO FOUNDER / FREELANCER">DIRIGEANT SOLO / FREELANCE</p>
-          <p class="cas-profil-titre" data-fr="L'IA semble utile, mais rien ne change vraiment" data-en="AI seems useful, but nothing really changes">L'IA semble utile, mais rien ne change vraiment</p>
-        </div>
-        <div class="cas-cols">
-          <div class="cas-avant">
-            <p class="cas-col-label label-avant" data-fr="AVANT" data-en="BEFORE">AVANT</p>
-            <p class="cas-col-text text-avant" data-fr="Outils testés, tutoriels regardés, résultats décevants. L'IA semble prometteuse mais le quotidien n'a pas bougé." data-en="Tools tested, tutorials watched, disappointing results. AI seems promising but daily life hasn't changed.">Outils testés, tutoriels regardés, résultats décevants. L'IA semble prometteuse mais le quotidien n'a pas bougé.</p>
-            <span class="cas-stat stat-avant" data-fr="Temps investi, sans retour concret" data-en="Time invested, no tangible return">Temps investi, sans retour concret</span>
-          </div>
-          <div class="cas-apres">
-            <p class="cas-col-label label-apres" data-fr="APRÈS" data-en="AFTER">APRÈS</p>
-            <p class="cas-col-text text-apres" data-fr="Un audit de 2 heures, 3 usages concrets identifiés et mis en place. Les premiers gains sont visibles dans la semaine." data-en="A 2-hour audit, 3 concrete uses identified and set up. First gains are visible within the week.">Un audit de 2 heures, 3 usages concrets identifiés et mis en place. Les premiers gains sont visibles dans la semaine.</p>
-            <span class="cas-stat stat-apres" data-fr="ROI visible dès la première semaine" data-en="ROI visible from the first week">ROI visible dès la première semaine</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
       <!-- ROB CAS CARD -->
-      <div class="cas-card reveal" style="border-color: rgba(200,118,58,0.4); border-width: 1px; margin-top: 12px; max-width: 960px;">
+      <div class="cas-card reveal" style="border-color: rgba(200,118,58,0.4); border-width: 1px; max-width: 960px;">
         <div class="cas-header" style="background: rgba(200,118,58,0.06); border-bottom-color: rgba(200,118,58,0.2);">
           <p class="cas-profil-label" style="color:var(--ocre);">DMC HAUT DE GAMME / PÔLE FIT</p>
           <p class="cas-profil-titre" data-fr="Des tâches répétitives qui absorbent des heures chaque jour — sur chaque dossier." data-en="Repetitive tasks that absorb hours every day — on every file.">Des tâches répétitives qui absorbent des heures chaque jour — sur chaque dossier.</p>
@@ -1310,9 +1722,8 @@
           </div>
         </div>
       </div>
-      <!-- END ROB CAS CARD -->
+    </div>
 
-    <p class="cas-note">Le cas ROB est un déploiement réel, en production. Les autres exemples sont des cas représentatifs — les résultats varient selon le contexte.</p>
   </section>
 
 
