@@ -1,0 +1,474 @@
+{
+  "index": {
+    "meta_title": {
+      "fr": "Antoine Fonfreyde | Systèmes IA déployés · Paris",
+      "en": "Antoine Fonfreyde | AI systems, built and deployed · Paris"
+    },
+    "meta_description": {
+      "fr": "Je conçois et déploie des systèmes IA qui tiennent en production : agents métier, outils d'accompagnement, produits SaaS. Pensés pour être utilisés dès le premier jour.",
+      "en": "I design and deploy AI systems that hold up in production: business agents, support tools, SaaS products. Built to be used from day one."
+    },
+    "og_title": {
+      "fr": "Antoine Fonfreyde | Systèmes IA déployés · Paris",
+      "en": "Antoine Fonfreyde | AI systems, built and deployed · Paris"
+    },
+    "og_description": {
+      "fr": "Je conçois et déploie des systèmes IA qui tiennent en production : agents métier, outils d'accompagnement, produits SaaS. Pensés pour être utilisés dès le premier jour.",
+      "en": "I design and deploy AI systems that hold up in production: business agents, support tools, SaaS products. Built to be used from day one."
+    },
+    "nav_offres": { "fr": "Offres", "en": "Offers" },
+    "nav_realisations": { "fr": "Réalisations", "en": "Work" },
+    "nav_apropos": { "fr": "À propos", "en": "About" },
+    "nav_contact": { "fr": "Contact", "en": "Contact" },
+    "nav_diagnostic": { "fr": "Diagnostic gratuit", "en": "Free diagnostic" },
+
+    "hero_eyebrow": {
+      "fr": "Expert IA · Systèmes déployés · Paris",
+      "en": "AI specialist · Deployed systems · Paris"
+    },
+    "hero_title": {
+      "fr": "Je conçois des systèmes IA<br><span class=\"accent\">concrets, déployés et utilisés.</span>",
+      "en": "I build AI systems that are<br><span class=\"accent\">concrete, deployed and actually used.</span>"
+    },
+    "hero_sub": {
+      "fr": "Des agents métier, des outils de suivi personnel, des solutions d'analyse et des produits SaaS complets. Toujours pensés pour s'intégrer à des usages réels, avec un minimum de friction et un maximum de fiabilité.",
+      "en": "Business agents, personal check-in tools, analysis solutions and complete SaaS products. Always designed to fit real-world use, with minimal friction and maximum reliability."
+    },
+    "hero_cta_primary": { "fr": "Découvrir mon approche →", "en": "See how I work →" },
+    "hero_cta_secondary": { "fr": "Voir mes réalisations →", "en": "View my work →" },
+
+    "about_label": { "fr": "À propos", "en": "About" },
+    "about_title": {
+      "fr": "<span>De l'usage personnel</span><br><span>à la capacité collective.</span>",
+      "en": "<span>From personal use</span><br><span>to collective capability.</span>"
+    },
+    "about_p1": {
+      "fr": "J'ai commencé par ROB, en automatisant de l'intérieur les process répétitifs d'un métier que je connaissais par cœur. Rien de théorique : chaque dossier, chaque mail, chaque fiche de coordination. C'est là que ma conviction s'est formée : l'IA ne doit pas rester une compétence personnelle, elle peut devenir une infrastructure.",
+      "en": "I started with ROB, automating from the inside the repetitive processes of a job I knew inside out. Nothing theoretical: every file, every email, every coordination sheet. That's where my conviction took shape: AI shouldn't stay a personal skill, it can become infrastructure."
+    },
+    "about_p2": {
+      "fr": "Depuis, je conçois des systèmes qui n'ont presque rien en commun, sauf l'essentiel. Un agent qui traite un dossier en moins d'une minute. Des compagnons qui accompagnent par email la préparation d'un mariage ou d'une grossesse. Un outil qui aide à réorienter une carrière. Un copilote RSE pour PME. Un coach qui prépare un semi-marathon. Le point commun n'est pas la technologie, c'est la manière : partir d'un besoin réel, viser la fiabilité avant l'effet de démonstration, livrer quelque chose que les gens utilisent vraiment.",
+      "en": "Since then, I've built systems that have almost nothing in common except the essentials. An agent that handles a file in under a minute. Companions that support wedding or pregnancy preparation by email. A tool that helps reshape a career. A CSR copilot for SMEs. A coach that prepares you for a half-marathon. The common thread isn't the technology, it's the method: start from a real need, aim for reliability over showmanship, ship something people actually use."
+    },
+    "about_p3": {
+      "fr": "C'est aussi ce que je m'applique à moi-même. Primo, l'agent que j'utilise pour prospecter, analyse une entreprise, évalue son potentiel et rédige l'email d'approche. Je construis pour moi ce que je construis pour les autres.",
+      "en": "I hold myself to the same standard. Primo, the agent I use for prospecting, analyses a company, assesses its potential and drafts the outreach email. I build for myself what I build for others."
+    },
+    "about_p4": {
+      "fr": "Je pars toujours du terrain, sans jargon, avec un accompagnement dans la durée.",
+      "en": "I always start from the field, without jargon, with support over the long term."
+    },
+    "about_tag1_label": { "fr": "Basé à Maisons-Alfort", "en": "Based in Maisons-Alfort" },
+    "about_tag1_value": { "fr": "Région parisienne", "en": "Greater Paris area" },
+    "about_tag2_label": { "fr": "Disponibilité", "en": "Availability" },
+    "about_tag2_value": {
+      "fr": "Projets sur mesure · Déploiement inclus",
+      "en": "Custom projects · Deployment included"
+    },
+
+    "construis_label": { "fr": "Ce que je construis avec l'IA", "en": "What I build with AI" },
+    "construis_title": {
+      "fr": "Des systèmes adaptés à des contextes très différents.",
+      "en": "Systems shaped for very different contexts."
+    },
+    "construis_sub": {
+      "fr": "Toujours pensés pour être robustes, faciles à utiliser et réellement déployés. Détail complet sur la page <a href=\"/realisations\" style=\"color:var(--ocre); text-decoration:none;\">Réalisations</a>.",
+      "en": "Always designed to be robust, easy to use and genuinely deployed. Full detail on the <a href=\"/realisations\" style=\"color:var(--ocre); text-decoration:none;\">Work</a> page."
+    },
+    "construis_card1_tag": { "fr": "Agent IA opérationnel", "en": "AI agent in production" },
+    "construis_card1_text": {
+      "fr": "Agent interne qui traite les dossiers FIT de bout en bout chez Liberty Incentives & Congresses. 30 à 45 minutes ramenées à moins d'une minute, en production quotidienne.",
+      "en": "Internal agent that handles FIT files end to end at Liberty Incentives & Congresses. 30 to 45 minutes brought down to under a minute, in daily production."
+    },
+    "construis_card2_tag": { "fr": "Compagnons de suivi personnel", "en": "Personal check-in companions" },
+    "construis_card2_text": {
+      "fr": "Rituels quotidiens par email pour accompagner des périodes de transformation : mariage, préconception. Résumés hebdomadaires générés par IA, zéro application à installer.",
+      "en": "Daily email rituals to support periods of change: weddings, preconception. AI-generated weekly summaries, zero app to install."
+    },
+    "construis_card3_tag": { "fr": "Outil d'analyse", "en": "Analysis tool" },
+    "construis_card3_title": { "fr": "Cap · orientation professionnelle", "en": "Cap · career guidance" },
+    "construis_card3_text": {
+      "fr": "Croise un CV et un questionnaire personnel pour proposer un archétype professionnel et des pistes concrètes, classées en trois axes.",
+      "en": "Cross-references a CV and a personal questionnaire to suggest a professional archetype and concrete directions, sorted into three tracks."
+    },
+    "construis_card4_tag": { "fr": "Produit SaaS vertical", "en": "Vertical SaaS product" },
+    "construis_card4_text": {
+      "fr": "Copilote RSE complet pour PME : diagnostic, scoring visuel, roadmap IA, génération de documents. En production.",
+      "en": "Complete CSR copilot for SMEs: assessment, visual scoring, AI roadmap, document generation. In production."
+    },
+    "construis_card5_tag": { "fr": "Accompagnement personnalisé", "en": "Personal coaching" },
+    "construis_card5_text": {
+      "fr": "Coach IA pour la préparation d'un semi-marathon : programme adaptatif, journal d'entraînement, check-in hebdomadaire, chat coach.",
+      "en": "AI coach for half-marathon training: adaptive plan, training log, weekly check-in, coach chat."
+    },
+
+    "primo_label": { "fr": "Outils internes · Cap IA", "en": "Internal tools · Cap IA" },
+    "primo_intro": {
+      "fr": "Cap IA automatise ses propres workflows avec les mêmes agents qu'elle déploie chez ses clients.",
+      "en": "Cap IA automates its own workflows with the same agents it deploys for clients."
+    },
+    "primo_role": { "fr": "Agent de prospection", "en": "Prospecting agent" },
+    "primo_status": { "fr": "Opérationnel", "en": "Live" },
+    "primo_step1_title": { "fr": "URL cible", "en": "Target URL" },
+    "primo_step1_text": {
+      "fr": "Primo récupère et lit le contenu public du site.",
+      "en": "Primo fetches and reads the site's public content."
+    },
+    "primo_step2_title": { "fr": "Analyse IA", "en": "AI analysis" },
+    "primo_step2_text": {
+      "fr": "Workflows manuels identifiés, maturité digitale évaluée.",
+      "en": "Manual workflows identified, digital maturity assessed."
+    },
+    "primo_step3_text": {
+      "fr": "ROI potentiel, similarité cas résolus, signal d'intention.",
+      "en": "Potential ROI, similarity to solved cases, intent signal."
+    },
+    "primo_step4_title": { "fr": "Email prêt", "en": "Email ready" },
+    "primo_step4_text": {
+      "fr": "Objet et corps rédigés selon le profil. À relire avant envoi.",
+      "en": "Subject and body written to match the profile. Review before sending."
+    },
+    "primo_usage_note": { "fr": "Usage interne · Cap IA", "en": "Internal use · Cap IA" },
+    "primo_footer_note": {
+      "fr": "La même architecture s'adapte à n'importe quel flux commercial répétitif : qualification d'appels d'offres, veille concurrentielle, analyse de portefeuille.",
+      "en": "The same architecture adapts to any repetitive commercial flow: tender qualification, competitive monitoring, portfolio analysis."
+    },
+
+    "auto_label": { "fr": "Ce que j'automatise", "en": "What I automate" },
+    "auto_title": {
+      "fr": "Vos process répétitifs,<br>transformés en systèmes.",
+      "en": "Your repetitive processes,<br>turned into systems."
+    },
+    "auto_sub": {
+      "fr": "Passez la souris sur chaque cas pour voir un exemple concret. Si votre activité implique de traiter de l'information, de produire des documents ou de coordonner des flux, il y a probablement quelque chose à automatiser.",
+      "en": "Hover over each case to see a concrete example. If your business involves processing information, producing documents or coordinating flows, there's probably something to automate."
+    },
+    "auto_family1_label": { "fr": "Traitement entrant", "en": "Incoming processing" },
+    "auto_card1a_title": { "fr": "Emails entrants", "en": "Incoming emails" },
+    "auto_card1a_example": {
+      "fr": "Analyse de la boîte, tâches priorisées et brouillons de réponses générés automatiquement.",
+      "en": "Inbox analysis, prioritised tasks and reply drafts generated automatically."
+    },
+    "auto_card1b_title": { "fr": "Qualification de leads", "en": "Lead qualification" },
+    "auto_card1b_example": {
+      "fr": "Lecture d'un formulaire ou email entrant, scoring automatique, fiche récap envoyée au commercial en 30 secondes.",
+      "en": "Reads an incoming form or email, scores it automatically, sends a summary to sales in 30 seconds."
+    },
+    "auto_card1c_title": { "fr": "Analyse documentaire", "en": "Document analysis" },
+    "auto_card1c_example": {
+      "fr": "Lecture d'un PDF, contrat ou dossier client : extraction des données clés et mise en forme structurée sans intervention manuelle.",
+      "en": "Reads a PDF, contract or client file: extracts key data and structures it with no manual work."
+    },
+    "auto_family2_label": { "fr": "Production automatique", "en": "Automated output" },
+    "auto_card2a_title": { "fr": "Génération de devis", "en": "Quote generation" },
+    "auto_card2a_example": {
+      "fr": "Depuis un brief ou formulaire : devis Word mis en page dans la charte de l'entreprise, prêt à relire et envoyer.",
+      "en": "From a brief or form: a Word quote laid out in your brand, ready to review and send."
+    },
+    "auto_card2b_title": { "fr": "Comptes-rendus", "en": "Notes & summaries" },
+    "auto_card2b_example": {
+      "fr": "Notes de réunion, synthèses de call ou résumés de dossier générés depuis une transcription ou un brief en quelques secondes.",
+      "en": "Meeting notes, call syntheses or file summaries generated from a transcript or brief in seconds."
+    },
+    "auto_card2c_title": { "fr": "Préparation de dossiers", "en": "File preparation" },
+    "auto_card2c_example": {
+      "fr": "Consolidation d'informations dispersées en un document structuré : fiche client, itinéraire, proposition commerciale.",
+      "en": "Scattered information consolidated into one structured document: client sheet, itinerary, commercial proposal."
+    },
+    "auto_family3_label": { "fr": "Coordination & copilotes", "en": "Coordination & copilots" },
+    "auto_card3a_title": { "fr": "Workflows internes", "en": "Internal workflows" },
+    "auto_card3a_example": {
+      "fr": "Transmission automatique entre services, relances, mises à jour CRM ou comptabilité déclenchées sans action manuelle.",
+      "en": "Automatic handoffs between teams, follow-ups, CRM or accounting updates triggered with no manual action."
+    },
+    "auto_card3b_title": { "fr": "Réponses SAV", "en": "Support replies" },
+    "auto_card3b_example": {
+      "fr": "Détection du motif d'un email client, génération d'une réponse adaptée à valider en un clic avant envoi.",
+      "en": "Detects the intent of a client email, drafts a fitting reply to approve in one click before sending."
+    },
+    "auto_card3c_title": { "fr": "Copilote métier", "en": "Business copilot" },
+    "auto_card3c_example": {
+      "fr": "Interface dédiée à votre activité : l'agent connaît vos process, vos prestataires, vos modèles, et produit à votre place.",
+      "en": "An interface built for your business: the agent knows your processes, suppliers and templates, and produces in your place."
+    },
+    "auto_cta_text": {
+      "fr": "Vous ne savez pas encore ce qui est automatisable chez vous ? C'est exactement pour ça que le diagnostic existe.",
+      "en": "Not sure yet what can be automated in your business? That's exactly what the diagnostic is for."
+    },
+    "auto_cta_btn": { "fr": "Faire mon diagnostic gratuit →", "en": "Get my free diagnostic →" },
+
+    "offres_label": { "fr": "Offres", "en": "Offers" },
+    "offres_title": { "fr": "Comment on travaille ensemble.", "en": "How we work together." },
+    "offres_sub": {
+      "fr": "Un projet qui ne rentre pas dans ces cases ? Je peux évaluer sa faisabilité, ses risques et la meilleure façon de le déployer chez vous.",
+      "en": "A project that doesn't fit these boxes? I can assess its feasibility, its risks and the best way to deploy it for you."
+    },
+    "offre1_badge": { "fr": "Offre principale", "en": "Main offer" },
+    "offre1_tag": { "fr": "Construire", "en": "Build" },
+    "offre1_title": { "fr": "Agent IA sur mesure", "en": "Custom AI agent" },
+    "offre1_p1": {
+      "fr": "J'identifie le process qui vous coûte le plus de temps, je conçois l'agent qui le traite à votre place, et je le déploie dans votre activité.",
+      "en": "I identify the process costing you the most time, design the agent that handles it for you, and deploy it into your business."
+    },
+    "offre1_p2": {
+      "fr": "Automatisations Make, intégrations API, interfaces HTML/CSS : tout est livré prêt à l'usage. Formation de l'équipe et suivi inclus.",
+      "en": "Make automations, API integrations, HTML/CSS interfaces: everything is delivered ready to use. Team training and follow-up included."
+    },
+    "offre1_p3": {
+      "fr": "Exemple : ROB, 45 min par dossier ramenées à moins d'1 minute.",
+      "en": "Example: ROB, 45 min per file brought down to under 1 minute."
+    },
+    "offre1_tarif": { "fr": "Sur devis", "en": "On quote" },
+    "offre1_tarif_sub": {
+      "fr": "Déploiement inclus · Formation équipe",
+      "en": "Deployment included · Team training"
+    },
+    "offre2_tag": { "fr": "Découvrir", "en": "Discover" },
+    "offre2_title": { "fr": "Audit IA", "en": "AI audit" },
+    "offre2_p1": {
+      "fr": "30 minutes offertes pour identifier ce qu'on peut automatiser chez vous. Sans engagement, sans jargon.",
+      "en": "30 minutes free to identify what can be automated in your business. No commitment, no jargon."
+    },
+    "offre2_p2": {
+      "fr": "Si vous souhaitez aller plus loin : 2h d'analyse complète de vos process, livrée sous 48h en document écrit, avec les gains à espérer et les pistes concrètes pour commencer.",
+      "en": "If you want to go further: 2 hours of full process analysis, delivered within 48h as a written document, with the gains to expect and concrete places to start."
+    },
+    "offre2_btn": { "fr": "Faire mon diagnostic gratuit →", "en": "Get my free diagnostic →" },
+    "offre2_tarif": { "fr": "30 min offertes", "en": "30 min free" },
+    "offre2_tarif_sub": {
+      "fr": "Audit complet à 250 € · livrable sous 48h",
+      "en": "Full audit €250 · delivered within 48h"
+    },
+    "offre3_tag": { "fr": "Installer", "en": "Set up" },
+    "offre3_title": { "fr": "Formation & Outillage", "en": "Training & Tooling" },
+    "offre3_p1": {
+      "fr": "Deux façons de rendre votre équipe autonome sur l'IA : la former aux bons usages, ou lui donner l'outil qui manque.",
+      "en": "Two ways to make your team self-sufficient with AI: train them in the right practices, or give them the tool they're missing."
+    },
+    "offre3_p2": {
+      "fr": "<strong style=\"color:var(--blanc); font-weight:500;\">Formation équipe.</strong> Prise en main des outils IA adaptés à votre métier : prompts, workflows, sessions pratiques en présentiel ou à distance.",
+      "en": "<strong style=\"color:var(--blanc); font-weight:500;\">Team training.</strong> Getting to grips with the AI tools suited to your work: prompts, workflows, hands-on sessions on site or remote."
+    },
+    "offre3_p3": {
+      "fr": "<strong style=\"color:var(--blanc); font-weight:500;\">Site web.</strong> HTML/CSS sur mesure, sans CMS ni template, livré prêt à l'emploi.",
+      "en": "<strong style=\"color:var(--blanc); font-weight:500;\">Website.</strong> Custom HTML/CSS, no CMS or template, delivered ready to use."
+    },
+    "offre3_tarif": { "fr": "Sur devis", "en": "On quote" },
+    "offre3_tarif_sub": {
+      "fr": "Formation · Site clés en main",
+      "en": "Training · Turnkey website"
+    },
+
+    "contact_label": { "fr": "Contact", "en": "Contact" },
+    "contact_title": {
+      "fr": "30 minutes pour identifier ce qu'on peut automatiser chez vous.",
+      "en": "30 minutes to identify what can be automated in your business."
+    },
+    "contact_sub": {
+      "fr": "Je regarde vos process, j'identifie les gains réels, et je vous dis ce qui est faisable en clair. Écrivez-moi, je réponds sous 48h.",
+      "en": "I look at your processes, identify the real gains, and tell you plainly what's feasible. Write to me, I reply within 48h."
+    },
+    "contact_email_label": { "fr": "Email", "en": "Email" },
+    "contact_linkedin_label": { "fr": "LinkedIn", "en": "LinkedIn" },
+    "form_nom_label": { "fr": "Nom", "en": "Name" },
+    "form_nom_placeholder": { "fr": "Votre nom", "en": "Your name" },
+    "form_email_label": { "fr": "Email", "en": "Email" },
+    "form_message_label": { "fr": "Message", "en": "Message" },
+    "form_message_placeholder": { "fr": "Votre message...", "en": "Your message..." },
+    "form_submit": { "fr": "Envoyer", "en": "Send" },
+
+    "footer_legal_mentions": { "fr": "Mentions légales", "en": "Legal notice" },
+    "footer_legal_privacy": { "fr": "Politique de confidentialité", "en": "Privacy policy" }
+  },
+
+  "realisations": {
+    "meta_title": {
+      "fr": "Réalisations | Antoine Fonfreyde · Systèmes IA déployés",
+      "en": "Work | Antoine Fonfreyde · AI systems, deployed"
+    },
+    "meta_description": {
+      "fr": "Exemples concrets de systèmes IA conçus et déployés par Antoine Fonfreyde : agent métier, compagnons de suivi personnel, outil d'analyse, produit SaaS et coach sportif.",
+      "en": "Concrete examples of AI systems designed and deployed by Antoine Fonfreyde: business agent, personal check-in companions, analysis tool, SaaS product and sports coach."
+    },
+    "og_title": {
+      "fr": "Réalisations | Antoine Fonfreyde · Systèmes IA déployés",
+      "en": "Work | Antoine Fonfreyde · AI systems, deployed"
+    },
+    "og_description": {
+      "fr": "Exemples concrets de systèmes IA conçus et déployés par Antoine Fonfreyde : agent métier, compagnons de suivi personnel, outil d'analyse, produit SaaS et coach sportif.",
+      "en": "Concrete examples of AI systems designed and deployed by Antoine Fonfreyde: business agent, personal check-in companions, analysis tool, SaaS product and sports coach."
+    },
+    "nav_offres": { "fr": "Offres", "en": "Offers" },
+    "nav_realisations": { "fr": "Réalisations", "en": "Work" },
+    "nav_apropos": { "fr": "À propos", "en": "About" },
+    "nav_contact": { "fr": "Contact", "en": "Contact" },
+    "nav_diagnostic": { "fr": "Diagnostic gratuit", "en": "Free diagnostic" },
+
+    "rh_label": { "fr": "Réalisations", "en": "Work" },
+    "rh_title": {
+      "fr": "Le même geste, appliqué à des besoins très différents.",
+      "en": "The same craft, applied to very different needs."
+    },
+    "rh_intro": {
+      "fr": "Voici des exemples concrets de projets que j'ai conçus et déployés. Chaque système répond à un besoin précis, avec la même exigence de fiabilité et de simplicité d'usage.",
+      "en": "Here are concrete examples of projects I've designed and deployed. Each system answers a specific need, with the same demand for reliability and ease of use."
+    },
+    "p1_tag": { "fr": "ROB · agent IA opérationnel", "en": "ROB · AI agent in production" },
+    "p1_text": {
+      "fr": "Agent interne qui traite les dossiers FIT de bout en bout : mails prestataires, fiches de coordination, devis, factures. Ce qui prenait 30 à 45 minutes se fait aujourd'hui en moins d'une minute, utilisé quotidiennement par 6 personnes. La version 2.1 ajoute Alfred, un module d'analyse et de priorisation de la boîte mail.",
+      "en": "Internal agent that handles FIT files end to end: supplier emails, coordination sheets, quotes, invoices. What took 30 to 45 minutes now happens in under a minute, used daily by 6 people. Version 2.1 adds Alfred, a module for analysing and prioritising the inbox."
+    },
+    "p2_tag": { "fr": "Orée · compagnon émotionnel", "en": "Orée · emotional companion" },
+    "p2_text": {
+      "fr": "Rituel quotidien doux pour les personnes qui préparent leur mariage. Check-in le soir par email (humeur, émotions, signaux du corps, question variable, note libre). Résumé hebdomadaire généré par IA le lundi, restitution finale au moment du mariage. Zéro application à ouvrir : tout passe par email avec des liens sécurisés.",
+      "en": "A gentle daily ritual for people preparing their wedding. Evening check-in by email (mood, emotions, body signals, a rotating question, free note). AI-generated weekly summary on Monday, a final recap at the time of the wedding. Zero app to open: everything runs through email with secure links."
+    },
+    "p3_tag": { "fr": "Luma · compagnon émotionnel", "en": "Luma · emotional companion" },
+    "p3_text": {
+      "fr": "Journal émotionnel intelligent pour la période de préconception. Même philosophie qu'Orée : rituel quotidien par email, résumés hebdomadaires générés par IA, journal permanent accessible à tout moment. Conçu pour une utilisatrice unique, avec un très haut niveau d'exigence sur la confidentialité et la non-intrusion.",
+      "en": "An intelligent emotional journal for the preconception period. Same philosophy as Orée: a daily email ritual, AI-generated weekly summaries, a permanent journal accessible at any time. Built for a single user, with a very high bar on privacy and non-intrusion."
+    },
+    "p4_tag": { "fr": "Cap · outil d'analyse", "en": "Cap · analysis tool" },
+    "p4_title": { "fr": "Cap · orientation professionnelle", "en": "Cap · career guidance" },
+    "p4_text": {
+      "fr": "Application qui croise un CV avec un questionnaire de 15 questions (valeurs, contraintes, plaisirs hors travail, aspirations). L'IA propose un archétype professionnel et des pistes classées en trois catégories : Ancrage, Évolution, Rupture. Déployée via Cloudflare Worker, analyse complète en une trentaine de secondes.",
+      "en": "An app that cross-references a CV with a 15-question survey (values, constraints, joys outside work, aspirations). The AI suggests a professional archetype and directions sorted into three categories: Anchoring, Evolution, Break. Deployed via Cloudflare Worker, full analysis in about thirty seconds."
+    },
+    "p5_tag": { "fr": "HELIO · produit SaaS vertical", "en": "HELIO · vertical SaaS product" },
+    "p5_title": { "fr": "HELIO · copilote RSE pour PME", "en": "HELIO · CSR copilot for SMEs" },
+    "p5_text": {
+      "fr": "Outil complet pour les PME qui découvrent la RSE : diagnostic par questionnaire (48 questions), scoring visuel, génération de roadmap IA, assistant conversationnel, génération de documents, centre de preuves et préparation d'audit. Entièrement déployé en production.",
+      "en": "A complete tool for SMEs discovering CSR: questionnaire-based assessment (48 questions), visual scoring, AI roadmap generation, conversational assistant, document generation, evidence hub and audit preparation. Fully deployed in production."
+    },
+    "p6_tag": { "fr": "Foulée · accompagnement personnalisé", "en": "Foulée · personal coaching" },
+    "p6_text": {
+      "fr": "Coach IA pour la préparation d'un semi-marathon, testé sur un groupe fermé de 4 coureurs. Programme adaptatif sur 14 semaines, journal d'entraînement, check-in hebdomadaire, chat coach en streaming, rapports générés par IA. Emails personnalisés chaque dimanche.",
+      "en": "AI coach for half-marathon training, tested with a closed group of 4 runners. A 14-week adaptive plan, training log, weekly check-in, streaming coach chat, AI-generated reports. Personalised emails every Sunday."
+    },
+    "rc_title": {
+      "fr": "Un projet qui ressemble à l'un de ceux-ci, ou complètement différent ?",
+      "en": "A project like one of these, or something completely different?"
+    },
+    "rc_btn": { "fr": "Parlons-en →", "en": "Let's talk →" },
+
+    "footer_legal_mentions": { "fr": "Mentions légales", "en": "Legal notice" },
+    "footer_legal_privacy": { "fr": "Politique de confidentialité", "en": "Privacy policy" }
+  },
+
+  "diagnostic": {
+    "meta_title": {
+      "fr": "Diagnostic gratuit · Antoine Fonfreyde · Cap IA",
+      "en": "Free diagnostic · Antoine Fonfreyde · Cap IA"
+    },
+    "meta_description": {
+      "fr": "5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.",
+      "en": "5 questions to find out whether an AI agent can transform your workflows. Personalised analysis within 48h, no commitment."
+    },
+    "og_title": {
+      "fr": "Diagnostic gratuit · Cap IA",
+      "en": "Free diagnostic · Cap IA"
+    },
+    "og_description": {
+      "fr": "5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.",
+      "en": "5 questions to find out whether an AI agent can transform your workflows. Personalised analysis within 48h, no commitment."
+    },
+    "nav_back": { "fr": "Retour au site", "en": "Back to site" },
+
+    "diag_eyebrow": { "fr": "Diagnostic gratuit", "en": "Free diagnostic" },
+    "diag_title": {
+      "fr": "Vous passez des heures sur des tâches<br>qui devraient prendre des minutes ?",
+      "en": "Spending hours on tasks<br>that should take minutes?"
+    },
+    "diag_sub": {
+      "fr": "5 questions. 3 minutes. Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.",
+      "en": "5 questions. 3 minutes. I read your situation and reply within 48h with an honest assessment of what's feasible for you."
+    },
+    "diag_promise1": { "fr": "Sans engagement", "en": "No commitment" },
+    "diag_promise2": { "fr": "Sans jargon", "en": "No jargon" },
+    "diag_promise3": { "fr": "Réponse sous 48h", "en": "Reply within 48h" },
+
+    "reassurance_text": {
+      "fr": "Cette méthode a permis à l'équipe FIT de Liberty Incentives & Congresses (6 chefs de projet, tourisme d'affaires haut de gamme) de passer de 45 minutes à moins d'une minute par dossier. Ce diagnostic s'inspire du même travail de terrain.",
+      "en": "This method helped the FIT team at Liberty Incentives & Congresses (6 project managers, high-end business tourism) go from 45 minutes to under a minute per file. This diagnostic draws on the same field work."
+    },
+
+    "q1_label": { "fr": "Quel est votre secteur d'activité ?", "en": "What's your industry?" },
+    "q1_hint": {
+      "fr": "Choisissez ce qui correspond le mieux. Si rien ne correspond, précisez en bas.",
+      "en": "Pick the closest match. If nothing fits, add details below."
+    },
+    "q1_c1": { "fr": "Tourisme / DMC / Voyage d'affaires", "en": "Tourism / DMC / Business travel" },
+    "q1_c2": { "fr": "Immobilier", "en": "Real estate" },
+    "q1_c3": { "fr": "Conseil / Cabinet", "en": "Consulting / Firm" },
+    "q1_c4": { "fr": "Communication / PR / Marketing", "en": "Communications / PR / Marketing" },
+    "q1_c5": { "fr": "RH / Recrutement", "en": "HR / Recruitment" },
+    "q1_c6": { "fr": "Commerce / E-commerce", "en": "Retail / E-commerce" },
+    "q1_c7": { "fr": "Solo / TPE", "en": "Solo / Micro-business" },
+    "q1_c8": { "fr": "Autre", "en": "Other" },
+
+    "q2_label": {
+      "fr": "Quelle tâche vous prend le plus de temps de façon répétitive ?",
+      "en": "Which task takes up the most of your time, over and over?"
+    },
+    "q2_hint": {
+      "fr": "Décrivez en une ou deux phrases. Inutile d'être exhaustif : ce qui vous vient en premier est souvent ce qui coûte le plus cher en temps.",
+      "en": "Describe it in a sentence or two. No need to be exhaustive: what comes to mind first is often what costs you the most time."
+    },
+    "q2_placeholder": {
+      "fr": "Ex : Je rédige manuellement les mêmes emails prestataires sur chaque dossier, ça me prend 30 minutes à chaque fois...",
+      "en": "E.g. I manually write the same supplier emails on every file, it takes me 30 minutes each time..."
+    },
+
+    "q3_label": { "fr": "D'où vient l'information que vous traitez ?", "en": "Where does the information you handle come from?" },
+    "q3_hint": { "fr": "Plusieurs choix possibles.", "en": "Multiple choices allowed." },
+    "q3_c1": { "fr": "Emails entrants", "en": "Incoming emails" },
+    "q3_c2": { "fr": "Documents PDF", "en": "PDF documents" },
+    "q3_c3": { "fr": "Formulaires en ligne", "en": "Online forms" },
+    "q3_c4": { "fr": "Tableurs Excel / Google Sheets", "en": "Excel / Google Sheets" },
+    "q3_c5": { "fr": "Textes / briefs libres", "en": "Free text / briefs" },
+    "q3_c6": { "fr": "Logiciel métier spécifique", "en": "Specific business software" },
+
+    "q4_label": { "fr": "À quelle fréquence cette tâche revient-elle ?", "en": "How often does this task come up?" },
+    "q4_c1": { "fr": "Plusieurs fois par jour", "en": "Several times a day" },
+    "q4_c2": { "fr": "Chaque jour", "en": "Every day" },
+    "q4_c3": { "fr": "Plusieurs fois par semaine", "en": "Several times a week" },
+    "q4_c4": { "fr": "Quelques fois par mois", "en": "A few times a month" },
+
+    "q5_label": { "fr": "Où en êtes-vous avec l'IA aujourd'hui ?", "en": "Where are you with AI today?" },
+    "q5_c1": { "fr": "Je n'ai encore rien testé", "en": "Haven't tried anything yet" },
+    "q5_c2": { "fr": "J'utilise ChatGPT, sans automatisation", "en": "I use ChatGPT, nothing automated" },
+    "q5_c3": { "fr": "J'ai essayé, sans succès réel", "en": "Tried tools, no real success" },
+    "q5_c4": { "fr": "Je sais ce que je veux", "en": "I know what I want" },
+
+    "id_num": { "fr": "Pour vous répondre", "en": "So I can reply" },
+    "id_label": { "fr": "Comment vous joindre ?", "en": "How can I reach you?" },
+    "id_hint": {
+      "fr": "Je reviens vers vous personnellement sous 48h avec une analyse de votre situation.",
+      "en": "I'll get back to you personally within 48h with an analysis of your situation."
+    },
+    "id_placeholder_name": { "fr": "Prénom et nom", "en": "First and last name" },
+    "id_placeholder_company": { "fr": "Votre structure / entreprise", "en": "Your company" },
+    "id_placeholder_email": { "fr": "Votre adresse email", "en": "Your email address" },
+    "id_placeholder_complement": {
+      "fr": "Quelque chose à ajouter ? Un contexte particulier, une contrainte, une question...",
+      "en": "Anything to add? A specific context, a constraint, a question..."
+    },
+    "form_note": {
+      "fr": "Vos réponses restent confidentielles. Je ne les partage avec personne et je ne vous contacte que pour donner suite à ce diagnostic.",
+      "en": "Your answers stay confidential. I don't share them with anyone and only contact you to follow up on this diagnostic."
+    },
+    "submit_btn": { "fr": "Recevoir mon analyse", "en": "Get my analysis" },
+    "confirm_title": { "fr": "Diagnostic reçu.", "en": "Diagnostic received." },
+    "confirm_sub": {
+      "fr": "Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.",
+      "en": "I read your situation and reply within 48h with an honest assessment of what's feasible for you."
+    },
+    "confirm_link": {
+      "fr": "En attendant, voir comment ROB a été conçu : <a href=\"/#rob\" style=\"color: var(--ocre); text-decoration: none;\">cap-ia.pro/#rob →</a>",
+      "en": "Meanwhile, see how ROB was built: <a href=\"/#rob\" style=\"color: var(--ocre); text-decoration: none;\">cap-ia.pro/#rob →</a>"
+    },
+
+    "footer_legal_mentions": { "fr": "Mentions légales", "en": "Legal notice" },
+    "footer_legal_privacy": { "fr": "Politique de confidentialité", "en": "Privacy policy" }
+  }
+}

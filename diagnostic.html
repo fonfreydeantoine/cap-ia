@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-page="diagnostic">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diagnostic gratuit · Antoine Fonfreyde · Cap IA</title>
-  <meta name="description" content="5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.">
-  <meta property="og:title" content="Diagnostic gratuit · Cap IA">
-  <meta property="og:description" content="5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.">
+  <title data-i18n="meta_title">Diagnostic gratuit · Antoine Fonfreyde · Cap IA</title>
+  <meta name="description" data-i18n-content="meta_description" content="5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.">
+  <meta property="og:title" data-i18n-content="og_title" content="Diagnostic gratuit · Cap IA">
+  <meta property="og:description" data-i18n-content="og_description" content="5 questions pour savoir si un agent IA peut transformer vos workflows. Analyse personnalisée sous 48h, sans engagement.">
   <meta property="og:url" content="https://cap-ia.pro/diagnostic.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cap-ia.pro/og-image.png">
@@ -18,6 +18,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="/i18n.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -85,8 +86,43 @@
     .nav-back:hover { color: var(--ocre); }
     .nav-back::before { content: '←'; font-size: 14px; }
 
+    /* ── ZONE DROITE NAV + BASCULE LANGUE ── */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: none;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2px;
+      flex-shrink: 0;
+    }
+    .lang-opt {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--gris2);
+      background: none;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-opt:hover { color: var(--blanc); }
+    .lang-opt.active { color: #1A0A00; background: var(--ocre); font-weight: 500; }
+    .lang-opt.active:hover { color: #1A0A00; }
+
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
+    }
+    @media (max-width: 420px) {
+      .nav-right { gap: 12px; }
+      .nav-back { font-size: 12px; }
     }
 
     /* HERO */
@@ -410,18 +446,24 @@
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo">Cap <span>IA</span></a>
-    <a href="/" class="nav-back">Retour au site</a>
+    <div class="nav-right">
+      <a href="/" class="nav-back" data-i18n="nav_back">Retour au site</a>
+      <div class="lang-toggle" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-opt" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
   </nav>
 
   <!-- HERO -->
   <div class="diag-hero">
-    <p class="diag-eyebrow">Diagnostic gratuit</p>
-    <h1 class="diag-title">Vous passez des heures sur des tâches<br>qui devraient prendre des minutes ?</h1>
-    <p class="diag-sub">5 questions. 3 minutes. Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
+    <p class="diag-eyebrow" data-i18n="diag_eyebrow">Diagnostic gratuit</p>
+    <h1 class="diag-title" data-i18n-html="diag_title">Vous passez des heures sur des tâches<br>qui devraient prendre des minutes ?</h1>
+    <p class="diag-sub" data-i18n="diag_sub">5 questions. 3 minutes. Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
     <div class="diag-promise">
-      <div class="diag-promise-item"><div class="diag-promise-dot"></div>Sans engagement</div>
-      <div class="diag-promise-item"><div class="diag-promise-dot"></div>Sans jargon</div>
-      <div class="diag-promise-item"><div class="diag-promise-dot"></div>Réponse sous 48h</div>
+      <div class="diag-promise-item"><div class="diag-promise-dot"></div><span data-i18n="diag_promise1">Sans engagement</span></div>
+      <div class="diag-promise-item"><div class="diag-promise-dot"></div><span data-i18n="diag_promise2">Sans jargon</span></div>
+      <div class="diag-promise-item"><div class="diag-promise-dot"></div><span data-i18n="diag_promise3">Réponse sous 48h</span></div>
     </div>
   </div>
 
@@ -429,7 +471,7 @@
   <div style="background: rgba(200,118,58,0.06); border-top: 1px solid rgba(200,118,58,0.15); border-bottom: 1px solid rgba(200,118,58,0.15); padding: 20px 24px;">
     <div style="max-width: 600px; margin: 0 auto; display: flex; align-items: flex-start; gap: 16px;">
       <span style="font-size: 20px; flex-shrink: 0; margin-top: 2px;">✓</span>
-      <p style="font-size: 14px; color: #AAAAAA; line-height: 1.7;">Cette méthode a permis à l'équipe FIT de Liberty Incentives & Congresses (6 chefs de projet, tourisme d'affaires haut de gamme) de passer de 45 minutes à moins d'une minute par dossier. Ce diagnostic s'inspire du même travail de terrain.</p>
+      <p style="font-size: 14px; color: #AAAAAA; line-height: 1.7;" data-i18n="reassurance_text">Cette méthode a permis à l'équipe FIT de Liberty Incentives & Congresses (6 chefs de projet, tourisme d'affaires haut de gamme) de passer de 45 minutes à moins d'une minute par dossier. Ce diagnostic s'inspire du même travail de terrain.</p>
     </div>
   </div>
 
@@ -447,66 +489,66 @@
         <!-- Q1 -->
         <div class="q-bloc">
           <p class="q-num">Question 01 / 05</p>
-          <p class="q-label">Quel est votre secteur d'activité ?</p>
-          <p class="q-hint">Choisissez ce qui correspond le mieux. Si rien ne correspond, précisez en bas.</p>
+          <p class="q-label" data-i18n="q1_label">Quel est votre secteur d'activité ?</p>
+          <p class="q-hint" data-i18n="q1_hint">Choisissez ce qui correspond le mieux. Si rien ne correspond, précisez en bas.</p>
           <div class="choices" data-field="secteur">
-            <button type="button" class="choice-btn" data-value="Tourisme / DMC / Voyage d'affaires">Tourisme / DMC / Voyage d'affaires</button>
-            <button type="button" class="choice-btn" data-value="Immobilier">Immobilier</button>
-            <button type="button" class="choice-btn" data-value="Conseil / Cabinet">Conseil / Cabinet</button>
-            <button type="button" class="choice-btn" data-value="Communication / PR / Marketing">Communication / PR / Marketing</button>
-            <button type="button" class="choice-btn" data-value="RH / Recrutement">RH / Recrutement</button>
-            <button type="button" class="choice-btn" data-value="Commerce / E-commerce">Commerce / E-commerce</button>
-            <button type="button" class="choice-btn" data-value="Solo / TPE">Solo / TPE</button>
-            <button type="button" class="choice-btn" data-value="Autre">Autre</button>
+            <button type="button" class="choice-btn" data-value="Tourisme / DMC / Voyage d'affaires" data-i18n="q1_c1">Tourisme / DMC / Voyage d'affaires</button>
+            <button type="button" class="choice-btn" data-value="Immobilier" data-i18n="q1_c2">Immobilier</button>
+            <button type="button" class="choice-btn" data-value="Conseil / Cabinet" data-i18n="q1_c3">Conseil / Cabinet</button>
+            <button type="button" class="choice-btn" data-value="Communication / PR / Marketing" data-i18n="q1_c4">Communication / PR / Marketing</button>
+            <button type="button" class="choice-btn" data-value="RH / Recrutement" data-i18n="q1_c5">RH / Recrutement</button>
+            <button type="button" class="choice-btn" data-value="Commerce / E-commerce" data-i18n="q1_c6">Commerce / E-commerce</button>
+            <button type="button" class="choice-btn" data-value="Solo / TPE" data-i18n="q1_c7">Solo / TPE</button>
+            <button type="button" class="choice-btn" data-value="Autre" data-i18n="q1_c8">Autre</button>
           </div>
         </div>
 
         <!-- Q2 -->
         <div class="q-bloc">
           <p class="q-num">Question 02 / 05</p>
-          <p class="q-label">Quelle tâche vous prend le plus de temps de façon répétitive ?</p>
-          <p class="q-hint">Décrivez en une ou deux phrases. Inutile d'être exhaustif : ce qui vous vient en premier est souvent ce qui coûte le plus cher en temps.</p>
+          <p class="q-label" data-i18n="q2_label">Quelle tâche vous prend le plus de temps de façon répétitive ?</p>
+          <p class="q-hint" data-i18n="q2_hint">Décrivez en une ou deux phrases. Inutile d'être exhaustif : ce qui vous vient en premier est souvent ce qui coûte le plus cher en temps.</p>
           <div class="form-group">
-            <textarea class="form-textarea" name="tache_principale" placeholder="Ex : Je rédige manuellement les mêmes emails prestataires sur chaque dossier, ça me prend 30 minutes à chaque fois..." required></textarea>
+            <textarea class="form-textarea" name="tache_principale" placeholder="Ex : Je rédige manuellement les mêmes emails prestataires sur chaque dossier, ça me prend 30 minutes à chaque fois..." data-i18n-placeholder="q2_placeholder" required></textarea>
           </div>
         </div>
 
         <!-- Q3 -->
         <div class="q-bloc">
           <p class="q-num">Question 03 / 05</p>
-          <p class="q-label">D'où vient l'information que vous traitez ?</p>
-          <p class="q-hint">Plusieurs choix possibles.</p>
+          <p class="q-label" data-i18n="q3_label">D'où vient l'information que vous traitez ?</p>
+          <p class="q-hint" data-i18n="q3_hint">Plusieurs choix possibles.</p>
           <div class="choices" data-field="input" data-multi="true">
-            <button type="button" class="choice-btn" data-value="Emails entrants">Emails entrants</button>
-            <button type="button" class="choice-btn" data-value="Documents PDF">Documents PDF</button>
-            <button type="button" class="choice-btn" data-value="Formulaires en ligne">Formulaires en ligne</button>
-            <button type="button" class="choice-btn" data-value="Tableurs Excel / Google Sheets">Tableurs Excel / Google Sheets</button>
-            <button type="button" class="choice-btn" data-value="Textes / briefs libres">Textes / briefs libres</button>
-            <button type="button" class="choice-btn" data-value="Logiciel métier spécifique">Logiciel métier spécifique</button>
+            <button type="button" class="choice-btn" data-value="Emails entrants" data-i18n="q3_c1">Emails entrants</button>
+            <button type="button" class="choice-btn" data-value="Documents PDF" data-i18n="q3_c2">Documents PDF</button>
+            <button type="button" class="choice-btn" data-value="Formulaires en ligne" data-i18n="q3_c3">Formulaires en ligne</button>
+            <button type="button" class="choice-btn" data-value="Tableurs Excel / Google Sheets" data-i18n="q3_c4">Tableurs Excel / Google Sheets</button>
+            <button type="button" class="choice-btn" data-value="Textes / briefs libres" data-i18n="q3_c5">Textes / briefs libres</button>
+            <button type="button" class="choice-btn" data-value="Logiciel métier spécifique" data-i18n="q3_c6">Logiciel métier spécifique</button>
           </div>
         </div>
 
         <!-- Q4 -->
         <div class="q-bloc">
           <p class="q-num">Question 04 / 05</p>
-          <p class="q-label">À quelle fréquence cette tâche revient-elle ?</p>
+          <p class="q-label" data-i18n="q4_label">À quelle fréquence cette tâche revient-elle ?</p>
           <div class="choices" data-field="volume">
-            <button type="button" class="choice-btn" data-value="Plusieurs fois par jour">Plusieurs fois par jour</button>
-            <button type="button" class="choice-btn" data-value="Chaque jour">Chaque jour</button>
-            <button type="button" class="choice-btn" data-value="Plusieurs fois par semaine">Plusieurs fois par semaine</button>
-            <button type="button" class="choice-btn" data-value="Quelques fois par mois">Quelques fois par mois</button>
+            <button type="button" class="choice-btn" data-value="Plusieurs fois par jour" data-i18n="q4_c1">Plusieurs fois par jour</button>
+            <button type="button" class="choice-btn" data-value="Chaque jour" data-i18n="q4_c2">Chaque jour</button>
+            <button type="button" class="choice-btn" data-value="Plusieurs fois par semaine" data-i18n="q4_c3">Plusieurs fois par semaine</button>
+            <button type="button" class="choice-btn" data-value="Quelques fois par mois" data-i18n="q4_c4">Quelques fois par mois</button>
           </div>
         </div>
 
         <!-- Q5 -->
         <div class="q-bloc">
           <p class="q-num">Question 05 / 05</p>
-          <p class="q-label">Où en êtes-vous avec l'IA aujourd'hui ?</p>
+          <p class="q-label" data-i18n="q5_label">Où en êtes-vous avec l'IA aujourd'hui ?</p>
           <div class="choices" data-field="urgence">
-            <button type="button" class="choice-btn" data-value="Je n'ai encore rien testé, je veux comprendre ce qui est possible">Je n'ai encore rien testé</button>
-            <button type="button" class="choice-btn" data-value="J'utilise ChatGPT de temps en temps mais rien n'est vraiment automatisé">J'utilise ChatGPT, sans automatisation</button>
-            <button type="button" class="choice-btn" data-value="J'ai essayé des outils mais ça n'a pas vraiment fonctionné">J'ai essayé, sans succès réel</button>
-            <button type="button" class="choice-btn" data-value="Je sais ce que je veux, je cherche quelqu'un pour le faire">Je sais ce que je veux</button>
+            <button type="button" class="choice-btn" data-value="Je n'ai encore rien testé, je veux comprendre ce qui est possible" data-i18n="q5_c1">Je n'ai encore rien testé</button>
+            <button type="button" class="choice-btn" data-value="J'utilise ChatGPT de temps en temps mais rien n'est vraiment automatisé" data-i18n="q5_c2">J'utilise ChatGPT, sans automatisation</button>
+            <button type="button" class="choice-btn" data-value="J'ai essayé des outils mais ça n'a pas vraiment fonctionné" data-i18n="q5_c3">J'ai essayé, sans succès réel</button>
+            <button type="button" class="choice-btn" data-value="Je sais ce que je veux, je cherche quelqu'un pour le faire" data-i18n="q5_c4">Je sais ce que je veux</button>
           </div>
         </div>
 
@@ -514,37 +556,37 @@
 
         <!-- IDENTITÉ -->
         <div class="q-bloc">
-          <p class="q-num">Pour vous répondre</p>
-          <p class="q-label">Comment vous joindre ?</p>
-          <p class="q-hint">Je reviens vers vous personnellement sous 48h avec une analyse de votre situation.</p>
+          <p class="q-num" data-i18n="id_num">Pour vous répondre</p>
+          <p class="q-label" data-i18n="id_label">Comment vous joindre ?</p>
+          <p class="q-hint" data-i18n="id_hint">Je reviens vers vous personnellement sous 48h avec une analyse de votre situation.</p>
           <div class="id-grid" style="margin-bottom: 14px;">
             <div class="form-group">
-              <input class="form-input" type="text" name="prenom_nom" placeholder="Prénom et nom" required/>
+              <input class="form-input" type="text" name="prenom_nom" placeholder="Prénom et nom" data-i18n-placeholder="id_placeholder_name" required/>
             </div>
             <div class="form-group">
-              <input class="form-input" type="text" name="structure" placeholder="Votre structure / entreprise"/>
+              <input class="form-input" type="text" name="structure" placeholder="Votre structure / entreprise" data-i18n-placeholder="id_placeholder_company"/>
             </div>
           </div>
           <div class="form-group">
-            <input class="form-input" type="email" name="email" placeholder="Votre adresse email" required style="margin-bottom: 14px;"/>
+            <input class="form-input" type="email" name="email" placeholder="Votre adresse email" data-i18n-placeholder="id_placeholder_email" required style="margin-bottom: 14px;"/>
           </div>
           <div class="form-group">
-            <textarea class="form-textarea" name="complement" placeholder="Quelque chose à ajouter ? Un contexte particulier, une contrainte, une question..." style="min-height: 80px;"></textarea>
+            <textarea class="form-textarea" name="complement" placeholder="Quelque chose à ajouter ? Un contexte particulier, une contrainte, une question..." data-i18n-placeholder="id_placeholder_complement" style="min-height: 80px;"></textarea>
           </div>
         </div>
 
-        <p class="form-note">Vos réponses restent confidentielles. Je ne les partage avec personne et je ne vous contacte que pour donner suite à ce diagnostic.</p>
+        <p class="form-note" data-i18n="form_note">Vos réponses restent confidentielles. Je ne les partage avec personne et je ne vous contacte que pour donner suite à ce diagnostic.</p>
 
-        <button type="submit" class="btn-primary" id="submitBtn">Recevoir mon analyse</button>
+        <button type="submit" class="btn-primary" id="submitBtn" data-i18n="submit_btn">Recevoir mon analyse</button>
 
       </form>
 
       <!-- CONFIRMATION -->
       <div class="confirm-box" id="confirmBox">
         <div class="confirm-icon">✓</div>
-        <p class="confirm-title">Diagnostic reçu.</p>
-        <p class="confirm-sub">Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
-        <p style="margin-top: 20px; font-size: 13px; color: #666666;">En attendant, voir comment ROB a été conçu : <a href="/#rob" style="color: var(--ocre); text-decoration: none;">cap-ia.pro/#rob →</a></p>
+        <p class="confirm-title" data-i18n="confirm_title">Diagnostic reçu.</p>
+        <p class="confirm-sub" data-i18n="confirm_sub">Je lis votre situation et je vous réponds sous 48h avec une évaluation honnête de ce qui est faisable chez vous.</p>
+        <p style="margin-top: 20px; font-size: 13px; color: #666666;" data-i18n-html="confirm_link">En attendant, voir comment ROB a été conçu : <a href="/#rob" style="color: var(--ocre); text-decoration: none;">cap-ia.pro/#rob →</a></p>
       </div>
 
     </div>
@@ -555,8 +597,8 @@
     <div class="footer-logo">Cap <span>IA</span></div>
     <p class="footer-copy">© 2026 Cap IA · Antoine Fonfreyde</p>
     <div class="footer-legal">
-      <a href="/mentions-legales">Mentions légales</a>
-      <a href="/confidentialite">Politique de confidentialité</a>
+      <a href="/mentions-legales" data-i18n="footer_legal_mentions">Mentions légales</a>
+      <a href="/confidentialite" data-i18n="footer_legal_privacy">Politique de confidentialité</a>
     </div>
   </footer>
 

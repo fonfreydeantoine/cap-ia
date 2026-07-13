@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-page="realisations">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Réalisations | Antoine Fonfreyde · Systèmes IA déployés</title>
-  <meta name="description" content="Exemples concrets de systèmes IA conçus et déployés par Antoine Fonfreyde : agent métier, compagnons de suivi personnel, outil d'analyse, produit SaaS et coach sportif.">
-  <meta property="og:title" content="Réalisations | Antoine Fonfreyde · Systèmes IA déployés">
-  <meta property="og:description" content="Exemples concrets de systèmes IA conçus et déployés par Antoine Fonfreyde : agent métier, compagnons de suivi personnel, outil d'analyse, produit SaaS et coach sportif.">
+  <title data-i18n="meta_title">Réalisations | Antoine Fonfreyde · Systèmes IA déployés</title>
+  <meta name="description" data-i18n-content="meta_description" content="Exemples concrets de systèmes IA conçus et déployés par Antoine Fonfreyde : agent métier, compagnons de suivi personnel, outil d'analyse, produit SaaS et coach sportif.">
+  <meta property="og:title" data-i18n-content="og_title" content="Réalisations | Antoine Fonfreyde · Systèmes IA déployés">
+  <meta property="og:description" data-i18n-content="og_description" content="Exemples concrets de systèmes IA conçus et déployés par Antoine Fonfreyde : agent métier, compagnons de suivi personnel, outil d'analyse, produit SaaS et coach sportif.">
   <meta property="og:url" content="https://cap-ia.pro/realisations.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://cap-ia.pro/og-image.png">
@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="/i18n.js" defer></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -87,6 +88,37 @@
     }
     .nav-links a:hover { color: var(--ocre); }
     .nav-links a.active { color: var(--blanc); }
+
+    /* ── ZONE DROITE NAV + BASCULE LANGUE ── */
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: none;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: 2px;
+      flex-shrink: 0;
+    }
+    .lang-opt {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--gris2);
+      background: none;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+    }
+    .lang-opt:hover { color: var(--blanc); }
+    .lang-opt.active { color: #1A0A00; background: var(--ocre); font-weight: 500; }
+    .lang-opt.active:hover { color: #1A0A00; }
 
     /* ── BURGER MENU ── */
     .nav-burger {
@@ -363,25 +395,31 @@
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo">Cap <span>IA</span></a>
-    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links">
-      <li><a href="/#offres">Offres</a></li>
-      <li><a href="/realisations" class="active">Réalisations</a></li>
-      <li><a href="/#apropos">À propos</a></li>
-      <li><a href="/#contact">Contact</a></li>
-      <li><a href="/diagnostic" style="color: var(--ocre); font-weight: 500;">Diagnostic gratuit</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/#offres" data-i18n="nav_offres">Offres</a></li>
+        <li><a href="/realisations" class="active" data-i18n="nav_realisations">Réalisations</a></li>
+        <li><a href="/#apropos" data-i18n="nav_apropos">À propos</a></li>
+        <li><a href="/#contact" data-i18n="nav_contact">Contact</a></li>
+        <li><a href="/diagnostic" style="color: var(--ocre); font-weight: 500;" data-i18n="nav_diagnostic">Diagnostic gratuit</a></li>
+      </ul>
+      <div class="lang-toggle" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-opt" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" class="lang-opt" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- EN-TÊTE DE PAGE -->
   <section id="realisations-head">
     <div class="rh-inner">
-      <p class="section-label reveal">Réalisations</p>
-      <h1 class="rh-title reveal">Le même geste, appliqué à des besoins très différents.</h1>
+      <p class="section-label reveal" data-i18n="rh_label">Réalisations</p>
+      <h1 class="rh-title reveal" data-i18n="rh_title">Le même geste, appliqué à des besoins très différents.</h1>
       <div class="ocre-line reveal" style="margin-bottom:32px;"></div>
-      <p class="rh-intro reveal">Voici des exemples concrets de projets que j'ai conçus et déployés. Chaque système répond à un besoin précis, avec la même exigence de fiabilité et de simplicité d'usage.</p>
+      <p class="rh-intro reveal" data-i18n="rh_intro">Voici des exemples concrets de projets que j'ai conçus et déployés. Chaque système répond à un besoin précis, avec la même exigence de fiabilité et de simplicité d'usage.</p>
     </div>
   </section>
 
@@ -391,9 +429,9 @@
 
       <!-- 1. ROB -->
       <div class="projet-card reveal">
-        <p class="projet-tag">ROB · agent IA opérationnel</p>
+        <p class="projet-tag" data-i18n="p1_tag">ROB · agent IA opérationnel</p>
         <h2 class="projet-title">ROB · Liberty Incentives &amp; Congresses France</h2>
-        <p class="projet-text">Agent interne qui traite les dossiers FIT de bout en bout : mails prestataires, fiches de coordination, devis, factures. Ce qui prenait 30 à 45 minutes se fait aujourd'hui en moins d'une minute, utilisé quotidiennement par 6 personnes. La version 2.1 ajoute Alfred, un module d'analyse et de priorisation de la boîte mail.</p>
+        <p class="projet-text" data-i18n="p1_text">Agent interne qui traite les dossiers FIT de bout en bout : mails prestataires, fiches de coordination, devis, factures. Ce qui prenait 30 à 45 minutes se fait aujourd'hui en moins d'une minute, utilisé quotidiennement par 6 personnes. La version 2.1 ajoute Alfred, un module d'analyse et de priorisation de la boîte mail.</p>
         <div class="projet-pills">
           <span class="projet-pill">Anthropic API</span>
           <span class="projet-pill">Make</span>
@@ -406,9 +444,9 @@
 
       <!-- 2. Orée -->
       <div class="projet-card reveal">
-        <p class="projet-tag">Orée · compagnon émotionnel</p>
+        <p class="projet-tag" data-i18n="p2_tag">Orée · compagnon émotionnel</p>
         <h2 class="projet-title">Orée</h2>
-        <p class="projet-text">Rituel quotidien doux pour les personnes qui préparent leur mariage. Check-in le soir par email (humeur, émotions, signaux du corps, question variable, note libre). Résumé hebdomadaire généré par IA le lundi, restitution finale au moment du mariage. Zéro application à ouvrir : tout passe par email avec des liens sécurisés.</p>
+        <p class="projet-text" data-i18n="p2_text">Rituel quotidien doux pour les personnes qui préparent leur mariage. Check-in le soir par email (humeur, émotions, signaux du corps, question variable, note libre). Résumé hebdomadaire généré par IA le lundi, restitution finale au moment du mariage. Zéro application à ouvrir : tout passe par email avec des liens sécurisés.</p>
         <div class="projet-pills">
           <span class="projet-pill">Anthropic API</span>
           <span class="projet-pill">Brevo</span>
@@ -418,9 +456,9 @@
 
       <!-- 3. Luma -->
       <div class="projet-card reveal">
-        <p class="projet-tag">Luma · compagnon émotionnel</p>
+        <p class="projet-tag" data-i18n="p3_tag">Luma · compagnon émotionnel</p>
         <h2 class="projet-title">Luma</h2>
-        <p class="projet-text">Journal émotionnel intelligent pour la période de préconception. Même philosophie qu'Orée : rituel quotidien par email, résumés hebdomadaires générés par IA, journal permanent accessible à tout moment. Conçu pour une utilisatrice unique, avec un très haut niveau d'exigence sur la confidentialité et la non-intrusion.</p>
+        <p class="projet-text" data-i18n="p3_text">Journal émotionnel intelligent pour la période de préconception. Même philosophie qu'Orée : rituel quotidien par email, résumés hebdomadaires générés par IA, journal permanent accessible à tout moment. Conçu pour une utilisatrice unique, avec un très haut niveau d'exigence sur la confidentialité et la non-intrusion.</p>
         <div class="projet-pills">
           <span class="projet-pill">Anthropic API</span>
           <span class="projet-pill">Brevo</span>
@@ -430,9 +468,9 @@
 
       <!-- 4. Cap -->
       <div class="projet-card reveal">
-        <p class="projet-tag">Cap · outil d'analyse</p>
-        <h2 class="projet-title">Cap · orientation professionnelle</h2>
-        <p class="projet-text">Application qui croise un CV avec un questionnaire de 15 questions (valeurs, contraintes, plaisirs hors travail, aspirations). L'IA propose un archétype professionnel et des pistes classées en trois catégories : Ancrage, Évolution, Rupture. Déployée via Cloudflare Worker, analyse complète en une trentaine de secondes.</p>
+        <p class="projet-tag" data-i18n="p4_tag">Cap · outil d'analyse</p>
+        <h2 class="projet-title" data-i18n="p4_title">Cap · orientation professionnelle</h2>
+        <p class="projet-text" data-i18n="p4_text">Application qui croise un CV avec un questionnaire de 15 questions (valeurs, contraintes, plaisirs hors travail, aspirations). L'IA propose un archétype professionnel et des pistes classées en trois catégories : Ancrage, Évolution, Rupture. Déployée via Cloudflare Worker, analyse complète en une trentaine de secondes.</p>
         <div class="projet-pills">
           <span class="projet-pill">Anthropic API</span>
           <span class="projet-pill">Cloudflare Workers</span>
@@ -441,9 +479,9 @@
 
       <!-- 5. HELIO -->
       <div class="projet-card reveal">
-        <p class="projet-tag">HELIO · produit SaaS vertical</p>
-        <h2 class="projet-title">HELIO · copilote RSE pour PME</h2>
-        <p class="projet-text">Outil complet pour les PME qui découvrent la RSE : diagnostic par questionnaire (48 questions), scoring visuel, génération de roadmap IA, assistant conversationnel, génération de documents, centre de preuves et préparation d'audit. Entièrement déployé en production.</p>
+        <p class="projet-tag" data-i18n="p5_tag">HELIO · produit SaaS vertical</p>
+        <h2 class="projet-title" data-i18n="p5_title">HELIO · copilote RSE pour PME</h2>
+        <p class="projet-text" data-i18n="p5_text">Outil complet pour les PME qui découvrent la RSE : diagnostic par questionnaire (48 questions), scoring visuel, génération de roadmap IA, assistant conversationnel, génération de documents, centre de preuves et préparation d'audit. Entièrement déployé en production.</p>
         <div class="projet-pills">
           <span class="projet-pill">Next.js</span>
           <span class="projet-pill">Supabase</span>
@@ -453,9 +491,9 @@
 
       <!-- 6. Foulée -->
       <div class="projet-card reveal">
-        <p class="projet-tag">Foulée · accompagnement personnalisé</p>
+        <p class="projet-tag" data-i18n="p6_tag">Foulée · accompagnement personnalisé</p>
         <h2 class="projet-title">Foulée</h2>
-        <p class="projet-text">Coach IA pour la préparation d'un semi-marathon, testé sur un groupe fermé de 4 coureurs. Programme adaptatif sur 14 semaines, journal d'entraînement, check-in hebdomadaire, chat coach en streaming, rapports générés par IA. Emails personnalisés chaque dimanche.</p>
+        <p class="projet-text" data-i18n="p6_text">Coach IA pour la préparation d'un semi-marathon, testé sur un groupe fermé de 4 coureurs. Programme adaptatif sur 14 semaines, journal d'entraînement, check-in hebdomadaire, chat coach en streaming, rapports générés par IA. Emails personnalisés chaque dimanche.</p>
         <div class="projet-pills">
           <span class="projet-pill">Vercel</span>
           <span class="projet-pill">Supabase</span>
@@ -468,8 +506,8 @@
 
   <!-- CTA FIN DE PAGE -->
   <section id="realisations-cta">
-    <h2 class="rc-title reveal">Un projet qui ressemble à l'un de ceux-ci, ou complètement différent ?</h2>
-    <a href="/#contact" class="btn-primary reveal">Parlons-en →</a>
+    <h2 class="rc-title reveal" data-i18n="rc_title">Un projet qui ressemble à l'un de ceux-ci, ou complètement différent ?</h2>
+    <a href="/#contact" class="btn-primary reveal" data-i18n="rc_btn">Parlons-en →</a>
   </section>
 
   <!-- FOOTER -->
@@ -477,8 +515,8 @@
     <div class="footer-logo">Cap <span>IA</span></div>
     <p class="footer-copy">© 2026 Cap IA · Antoine Fonfreyde</p>
     <div class="footer-legal">
-      <a href="/mentions-legales">Mentions légales</a>
-      <a href="/confidentialite">Politique de confidentialité</a>
+      <a href="/mentions-legales" data-i18n="footer_legal_mentions">Mentions légales</a>
+      <a href="/confidentialite" data-i18n="footer_legal_privacy">Politique de confidentialité</a>
     </div>
   </footer>
 
