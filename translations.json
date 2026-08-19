@@ -101,6 +101,11 @@
       "fr": "Coach IA pour la préparation d'un semi-marathon : programme adaptatif, journal d'entraînement, check-in hebdomadaire, chat coach.",
       "en": "AI coach for half-marathon training: adaptive plan, training log, weekly check-in, coach chat."
     },
+    "construis_card6_tag": { "fr": "Application PWA personnelle", "en": "Personal PWA app" },
+    "construis_card6_text": {
+      "fr": "Planification de repas sans viande pour un foyer, utilisée au quotidien par deux colocataires. Recherche par ingrédients, module Frigo, sélection hebdomadaire par email, liste de courses consolidée. 200 recettes générées par IA.",
+      "en": "Meat-free meal planning for a household, used daily by two flatmates. Ingredient search, Fridge module, weekly selection by email, consolidated shopping list. 200 AI-generated recipes."
+    },
 
     "primo_label": { "fr": "Outils internes · Cap IA", "en": "Internal tools · Cap IA" },
     "primo_intro": {
@@ -344,6 +349,11 @@
     "p6_text": {
       "fr": "Coach IA pour la préparation d'un semi-marathon, testé sur un groupe fermé de 4 coureurs. Programme adaptatif sur 14 semaines, journal d'entraînement, check-in hebdomadaire, chat coach en streaming, rapports générés par IA. Emails personnalisés chaque dimanche.",
       "en": "AI coach for half-marathon training, tested with a closed group of 4 runners. A 14-week adaptive plan, training log, weekly check-in, streaming coach chat, AI-generated reports. Personalised emails every Sunday."
+    },
+    "p7_tag": { "fr": "Popote · application PWA personnelle", "en": "Popote · personal PWA app" },
+    "p7_text": {
+      "fr": "Application de planification de repas sans viande pour un foyer, utilisée au quotidien par deux colocataires. Recherche floue par nom ou ingrédient, module Frigo pour cuisiner avec ce qu'on a sous la main, sélection hebdomadaire automatique envoyée par email, liste de courses consolidée par rayon. 200 recettes générées par IA, expérience installable en PWA avec lecture hors-ligne.",
+      "en": "Meat-free meal-planning app for a household, used daily by two flatmates. Fuzzy search by name or ingredient, a Fridge module to cook with what's on hand, an automatic weekly selection sent by email, a shopping list consolidated by aisle. 200 AI-generated recipes, installable as a PWA with offline reading."
     },
     "rc_title": {
       "fr": "Un projet qui ressemble à l'un de ceux-ci, ou complètement différent ?",
