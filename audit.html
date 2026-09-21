@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Audit — Cap IA</title>
+  <title>Audit · Cap IA</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -379,7 +379,7 @@
     <div class="lock-box">
       <div class="lock-icon">🔒</div>
       <h1 class="lock-title">Accès réservé</h1>
-      <p class="lock-sub">Outil interne Cap IA — ambassadeurs et équipe uniquement.</p>
+      <p class="lock-sub">Outil interne Cap IA · ambassadeurs et équipe uniquement.</p>
       <input type="password" class="lock-input" id="pwdInput" placeholder="Mot de passe" autocomplete="off"/>
       <button class="lock-btn" onclick="checkPassword()">Accéder</button>
       <p class="lock-error" id="lockError">Mot de passe incorrect.</p>
@@ -392,7 +392,7 @@
     <!-- HEADER AVEC TIMER -->
     <div class="audit-header">
       <div class="audit-header-left">
-        <p class="audit-eyebrow">Cap IA — Guide d'audit</p>
+        <p class="audit-eyebrow">Cap IA · Guide d'audit</p>
         <h1 class="audit-title">Entretien de découverte<br>30 minutes</h1>
         <div class="audit-meta">
           <span class="audit-meta-item"><span class="audit-meta-dot"></span>Remplir en live pendant l'appel</span>
@@ -411,7 +411,7 @@
 
     <div class="audit-body">
       <form id="auditForm" action="https://formspree.io/f/mzdygppn" method="POST">
-        <input type="hidden" name="_subject" value="Audit 30 min — Cap IA"/>
+        <input type="hidden" name="_subject" value="Audit 30 min · Cap IA"/>
         <input type="hidden" name="secteur_selectionne" id="h_secteur"/>
         <input type="hidden" name="api_selectionne" id="h_api"/>
         <input type="hidden" name="input_selectionne" id="h_input"/>
@@ -429,7 +429,7 @@
               <input class="form-input" type="text" name="ambassadeur" placeholder="Votre prénom"/>
             </div>
             <div>
-              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Prospect — Nom</div>
+              <div style="font-size:11px;color:var(--gris2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;">Prospect · Nom</div>
               <input class="form-input" type="text" name="prospect_nom" placeholder="Nom du prospect"/>
             </div>
             <div>
@@ -500,7 +500,7 @@
               <button type="button" class="choice-btn" data-value="API disponible">API disponible</button>
               <button type="button" class="choice-btn" data-value="Export CSV / Excel">Export CSV / Excel</button>
               <button type="button" class="choice-btn" data-value="Webhooks">Webhooks</button>
-              <button type="button" class="choice-btn" data-value="Aucun — copier-coller uniquement">Aucun — copier-coller</button>
+              <button type="button" class="choice-btn" data-value="Aucun : copier-coller uniquement">Aucun : copier-coller</button>
               <button type="button" class="choice-btn" data-value="Inconnu">Inconnu</button>
             </div>
           </div>
@@ -550,7 +550,7 @@
           </div>
 
           <div class="question">
-            <p class="q-label">Output attendu — résultat produit par l'agent</p>
+            <p class="q-label">Output attendu : résultat produit par l'agent</p>
             <input class="form-input" type="text" name="output" placeholder="Document, email, fiche, entrée logiciel..."/>
           </div>
 
@@ -597,16 +597,16 @@
             <div class="question">
               <p class="q-label">Calendrier souhaité</p>
               <div class="choices" data-field="calendrier" style="flex-direction:column; gap:6px;">
-                <button type="button" class="choice-btn" data-value="Immédiat — moins d'1 mois">Immédiat — moins d'1 mois</button>
-                <button type="button" class="choice-btn" data-value="Court terme — 1 à 3 mois">Court terme — 1 à 3 mois</button>
-                <button type="button" class="choice-btn" data-value="Moyen terme — 3 à 6 mois">Moyen terme — 3 à 6 mois</button>
+                <button type="button" class="choice-btn" data-value="Immédiat : moins d'1 mois">Immédiat : moins d'1 mois</button>
+                <button type="button" class="choice-btn" data-value="Court terme : 1 à 3 mois">Court terme : 1 à 3 mois</button>
+                <button type="button" class="choice-btn" data-value="Moyen terme : 3 à 6 mois">Moyen terme : 3 à 6 mois</button>
                 <button type="button" class="choice-btn" data-value="Pas de calendrier défini">Pas de calendrier défini</button>
               </div>
             </div>
           </div>
 
           <div class="question">
-            <p class="q-label">Notes libres — qualification commerciale</p>
+            <p class="q-label">Notes libres : qualification commerciale</p>
             <textarea class="form-textarea" name="notes_commerciales" placeholder="Contraintes budget, parties prenantes, contexte décision..."></textarea>
           </div>
         </div>
@@ -639,15 +639,15 @@
           <div class="question">
             <p class="q-label">Décision</p>
             <div class="decision-grid">
-              <div class="decision-cell" onclick="selectDecision(this, 'PROPOSITION — Envoyer le formulaire de cadrage et proposer dans la foulée', 'selected-proposition')">
+              <div class="decision-cell" onclick="selectDecision(this, 'PROPOSITION : Envoyer le formulaire de cadrage et proposer dans la foulée', 'selected-proposition')">
                 <div class="decision-label" style="color:#4CAF50;">Proposition</div>
                 <div class="decision-desc">Cas clair, décideur présent, urgence réelle. Envoyer le cadrage et proposer.</div>
               </div>
-              <div class="decision-cell" onclick="selectDecision(this, 'À APPROFONDIR — Envoyer le formulaire de cadrage avant de proposer', 'selected-approfondir')">
+              <div class="decision-cell" onclick="selectDecision(this, 'À APPROFONDIR : Envoyer le formulaire de cadrage avant de proposer', 'selected-approfondir')">
                 <div class="decision-label" style="color:var(--ocre);">À approfondir</div>
                 <div class="decision-desc">Potentiel identifié mais éléments manquants. Envoyer le cadrage d'abord.</div>
               </div>
-              <div class="decision-cell" onclick="selectDecision(this, 'HORS CIBLE — Ne pas engager davantage', 'selected-hors-cible')">
+              <div class="decision-cell" onclick="selectDecision(this, 'HORS CIBLE : Ne pas engager davantage', 'selected-hors-cible')">
                 <div class="decision-label" style="color:#C0504A;">Hors cible</div>
                 <div class="decision-desc">Volume insuffisant, pas de décideur, pas d'urgence. Ne pas engager.</div>
               </div>
@@ -655,7 +655,7 @@
           </div>
 
           <div class="question">
-            <p class="q-label">Notes libres — suite à donner</p>
+            <p class="q-label">Notes libres : suite à donner</p>
             <textarea class="form-textarea" name="notes_suite" placeholder="Ce qu'il faut retenir, prochaine étape, ce qui a surpris..." style="min-height:90px;"></textarea>
           </div>
         </div>

@@ -23,16 +23,20 @@
     "nav_diagnostic": { "fr": "Diagnostic gratuit", "en": "Free diagnostic" },
 
     "hero_eyebrow": {
-      "fr": "Expert IA · Systèmes déployés · Paris",
-      "en": "AI specialist · Deployed systems · Paris"
+      "fr": "Agents IA pour TPE & PME · Systèmes déployés · Paris",
+      "en": "AI agents for small businesses · Deployed systems · Paris"
     },
     "hero_title": {
       "fr": "Je conçois des systèmes IA<br><span class=\"accent\">concrets, déployés et utilisés.</span>",
       "en": "I build AI systems that are<br><span class=\"accent\">concrete, deployed and actually used.</span>"
     },
     "hero_sub": {
-      "fr": "Des agents métier, des outils de suivi personnel, des solutions d'analyse et des produits SaaS complets. Toujours pensés pour s'intégrer à des usages réels, avec un minimum de friction et un maximum de fiabilité.",
-      "en": "Business agents, personal check-in tools, analysis solutions and complete SaaS products. Always designed to fit real-world use, with minimal friction and maximum reliability."
+      "fr": "Des agents qui prennent en charge vos tâches répétitives : traitement des dossiers, devis, emails, comptes rendus. Pensés pour s'intégrer à vos usages réels, avec un minimum de friction et un maximum de fiabilité.",
+      "en": "Agents that take over your repetitive tasks: file processing, quotes, emails, summaries. Built to fit your real-world workflows, with minimal friction and maximum reliability."
+    },
+    "proof_rob": {
+      "fr": "<strong style=\"color:var(--ocre); font-weight:600;\">30 à 45 minutes ramenées à moins d'une minute.</strong> ROB est utilisé chaque jour par l'ensemble du pôle FIT chez Liberty Incentives & Congresses.",
+      "en": "<strong style=\"color:var(--ocre); font-weight:600;\">30 to 45 minutes brought down to under a minute.</strong> ROB is used every day by the entire FIT team at Liberty Incentives & Congresses."
     },
     "hero_cta_primary": { "fr": "Découvrir mon approche →", "en": "See how I work →" },
     "hero_cta_secondary": { "fr": "Voir mes réalisations →", "en": "View my work →" },
@@ -141,8 +145,8 @@
 
     "auto_label": { "fr": "Ce que j'automatise", "en": "What I automate" },
     "auto_title": {
-      "fr": "Vos process répétitifs,<br>transformés en systèmes.",
-      "en": "Your repetitive processes,<br>turned into systems."
+      "fr": "Le travail répétitif que vous subissez,<br>pris en charge par un système.",
+      "en": "The repetitive work you put up with,<br>handed over to a system."
     },
     "auto_sub": {
       "fr": "Passez la souris sur chaque cas pour voir un exemple concret. Si votre activité implique de traiter de l'information, de produire des documents ou de coordonner des flux, il y a probablement quelque chose à automatiser.",
@@ -212,16 +216,16 @@
     "offre1_tag": { "fr": "Construire", "en": "Build" },
     "offre1_title": { "fr": "Agent IA sur mesure", "en": "Custom AI agent" },
     "offre1_p1": {
-      "fr": "J'identifie le process qui vous coûte le plus de temps, je conçois l'agent qui le traite à votre place, et je le déploie dans votre activité.",
-      "en": "I identify the process costing you the most time, design the agent that handles it for you, and deploy it into your business."
+      "fr": "Le process qui vous coûte le plus de temps : je conçois l'agent qui le traite à votre place et je le déploie dans votre activité.",
+      "en": "The process costing you the most time: I design the agent that handles it for you and deploy it into your business."
     },
     "offre1_p2": {
       "fr": "Automatisations Make, intégrations API, interfaces HTML/CSS : tout est livré prêt à l'usage. Formation de l'équipe et suivi inclus.",
       "en": "Make automations, API integrations, HTML/CSS interfaces: everything is delivered ready to use. Team training and follow-up included."
     },
     "offre1_p3": {
-      "fr": "Exemple : ROB, 45 min par dossier ramenées à moins d'1 minute.",
-      "en": "Example: ROB, 45 min per file brought down to under 1 minute."
+      "fr": "Exemple : ROB, 30 à 45 min par dossier ramenées à moins d'une minute.",
+      "en": "Example: ROB, 30 to 45 min per file brought down to under a minute."
     },
     "offre1_tarif": { "fr": "Sur devis", "en": "On quote" },
     "offre1_tarif_sub": {
@@ -245,23 +249,19 @@
       "en": "Full audit €250 · delivered within 48h"
     },
     "offre3_tag": { "fr": "Installer", "en": "Set up" },
-    "offre3_title": { "fr": "Formation & Outillage", "en": "Training & Tooling" },
+    "offre3_title": { "fr": "Formation IA", "en": "AI training" },
     "offre3_p1": {
-      "fr": "Deux façons de rendre votre équipe autonome sur l'IA : la former aux bons usages, ou lui donner l'outil qui manque.",
-      "en": "Two ways to make your team self-sufficient with AI: train them in the right practices, or give them the tool they're missing."
+      "fr": "Rendre votre équipe autonome sur l'IA : la former aux bons usages et lui donner les outils adaptés à votre métier.",
+      "en": "Make your team self-sufficient with AI: train them in the right practices and give them the tools suited to your work."
     },
     "offre3_p2": {
       "fr": "<strong style=\"color:var(--blanc); font-weight:500;\">Formation équipe.</strong> Prise en main des outils IA adaptés à votre métier : prompts, workflows, sessions pratiques en présentiel ou à distance.",
       "en": "<strong style=\"color:var(--blanc); font-weight:500;\">Team training.</strong> Getting to grips with the AI tools suited to your work: prompts, workflows, hands-on sessions on site or remote."
     },
-    "offre3_p3": {
-      "fr": "<strong style=\"color:var(--blanc); font-weight:500;\">Site web.</strong> HTML/CSS sur mesure, sans CMS ni template, livré prêt à l'emploi.",
-      "en": "<strong style=\"color:var(--blanc); font-weight:500;\">Website.</strong> Custom HTML/CSS, no CMS or template, delivered ready to use."
-    },
     "offre3_tarif": { "fr": "Sur devis", "en": "On quote" },
     "offre3_tarif_sub": {
-      "fr": "Formation · Site clés en main",
-      "en": "Training · Turnkey website"
+      "fr": "Formation · Prise en main de vos outils IA",
+      "en": "Training · Getting started with your AI tools"
     },
 
     "contact_label": { "fr": "Contact", "en": "Contact" },
@@ -315,13 +315,18 @@
       "en": "The same craft, applied to very different needs."
     },
     "rh_intro": {
-      "fr": "Voici des exemples concrets de projets que j'ai conçus et déployés. Chaque système répond à un besoin précis, avec la même exigence de fiabilité et de simplicité d'usage.",
-      "en": "Here are concrete examples of projects I've designed and deployed. Each system answers a specific need, with the same demand for reliability and ease of use."
+      "fr": "Je teste sur mes propres projets ce que je déploie ensuite chez mes clients. Voici des exemples concrets, chacun répondant à un besoin précis, avec la même exigence de fiabilité et de simplicité d'usage.",
+      "en": "I test on my own projects what I then deploy for my clients. Here are concrete examples, each answering a specific need, with the same demand for reliability and ease of use."
+    },
+    "cat_prod": { "fr": "En production, en usage réel", "en": "In production, in real-world use" },
+    "cat_lab": {
+      "fr": "Laboratoire · produits, projets personnels et sur-mesure",
+      "en": "Laboratory · products, personal and bespoke projects"
     },
     "p1_tag": { "fr": "ROB · agent IA opérationnel", "en": "ROB · AI agent in production" },
     "p1_text": {
-      "fr": "Agent interne qui traite les dossiers FIT de bout en bout : mails prestataires, fiches de coordination, devis, factures. Ce qui prenait 30 à 45 minutes se fait aujourd'hui en moins d'une minute, utilisé quotidiennement par 6 personnes. La version 2.1 ajoute Alfred, un module d'analyse et de priorisation de la boîte mail.",
-      "en": "Internal agent that handles FIT files end to end: supplier emails, coordination sheets, quotes, invoices. What took 30 to 45 minutes now happens in under a minute, used daily by 6 people. Version 2.1 adds Alfred, a module for analysing and prioritising the inbox."
+      "fr": "Agent interne qui traite les dossiers FIT de bout en bout : mails prestataires, fiches de coordination, devis, factures. Ce qui prenait 30 à 45 minutes se fait aujourd'hui en moins d'une minute, utilisé chaque jour par l'ensemble du pôle FIT. La version 2.1 ajoute Alfred, un module d'analyse et de priorisation de la boîte mail.",
+      "en": "Internal agent that handles FIT files end to end: supplier emails, coordination sheets, quotes, invoices. What took 30 to 45 minutes now happens in under a minute, used every day by the entire FIT team. Version 2.1 adds Alfred, a module for analysing and prioritising the inbox."
     },
     "p2_tag": { "fr": "Orée · compagnon émotionnel", "en": "Orée · emotional companion" },
     "p2_text": {
@@ -342,8 +347,8 @@
     "p5_tag": { "fr": "HELIO · produit SaaS vertical", "en": "HELIO · vertical SaaS product" },
     "p5_title": { "fr": "HELIO · copilote RSE pour PME", "en": "HELIO · CSR copilot for SMEs" },
     "p5_text": {
-      "fr": "Outil complet pour les PME qui découvrent la RSE : diagnostic par questionnaire (48 questions), scoring visuel, génération de roadmap IA, assistant conversationnel, génération de documents, centre de preuves et préparation d'audit. Entièrement déployé en production.",
-      "en": "A complete tool for SMEs discovering CSR: questionnaire-based assessment (48 questions), visual scoring, AI roadmap generation, conversational assistant, document generation, evidence hub and audit preparation. Fully deployed in production."
+      "fr": "Outil complet pour les PME qui découvrent la RSE : diagnostic par questionnaire (48 questions), scoring visuel, génération de roadmap IA, assistant conversationnel, génération de documents, centre de preuves et préparation d'audit. Produit conçu et déployé en production, pas encore commercialisé.",
+      "en": "A complete tool for SMEs discovering CSR: questionnaire-based assessment (48 questions), visual scoring, AI roadmap generation, conversational assistant, document generation, evidence hub and audit preparation. A product designed and deployed in production, not yet commercialised."
     },
     "p6_tag": { "fr": "Foulée · accompagnement personnalisé", "en": "Foulée · personal coaching" },
     "p6_text": {
@@ -398,8 +403,8 @@
     "diag_promise3": { "fr": "Réponse sous 48h", "en": "Reply within 48h" },
 
     "reassurance_text": {
-      "fr": "Cette méthode a permis à l'équipe FIT de Liberty Incentives & Congresses (6 chefs de projet, tourisme d'affaires haut de gamme) de passer de 45 minutes à moins d'une minute par dossier. Ce diagnostic s'inspire du même travail de terrain.",
-      "en": "This method helped the FIT team at Liberty Incentives & Congresses (6 project managers, high-end business tourism) go from 45 minutes to under a minute per file. This diagnostic draws on the same field work."
+      "fr": "Cette méthode a permis au pôle FIT de Liberty Incentives & Congresses (tourisme d'affaires haut de gamme) de passer de 30 à 45 minutes à moins d'une minute par dossier. Ce diagnostic s'inspire du même travail de terrain.",
+      "en": "This method helped the FIT team at Liberty Incentives & Congresses (high-end business tourism) go from 30 to 45 minutes to under a minute per file. This diagnostic draws on the same field work."
     },
 
     "q1_label": { "fr": "Quel est votre secteur d'activité ?", "en": "What's your industry?" },
