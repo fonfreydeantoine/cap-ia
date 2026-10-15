@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Appel from '../components/Appel.astro';
+---
+<Base titre="Page introuvable" description="Cette page n'existe pas ou a été déplacée." noindex>
+  <section class="section">
+    <div class="conteneur lecture">
+      <p class="repere">Erreur 404</p>
+      <h1>Cette page n'existe pas, ou plus.</h1>
+      <p class="intro">Le site a été entièrement refait en octobre 2026 : certaines anciennes adresses ont disparu.</p>
+      <p>Vous pouvez repartir de l'<a href="/">accueil</a>, consulter les <a href="/offres">offres</a> et les <a href="/realisations">réalisations</a>, ou directement :</p>
+      <Appel />
+    </div>
+  </section>
+</Base>

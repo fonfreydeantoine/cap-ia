@@ -1,0 +1,15 @@
+---
+import Appel from './Appel.astro';
+interface Props { titre?: string; texte?: string }
+const {
+  titre = 'Parlons de votre quotidien',
+  texte = "En 30 minutes, vous décrivez votre activité, je pose des questions, et je vous dis franchement ce qui me paraît faisable. Vous repartez avec une ou deux pistes, même si nous ne travaillons pas ensemble.",
+} = Astro.props;
+---
+<section class="bandeau-appel" aria-labelledby="titre-bandeau">
+  <div class="conteneur">
+    <h2 id="titre-bandeau">{titre}</h2>
+    <p>{texte}</p>
+    <Appel />
+  </div>
+</section>

@@ -1,0 +1,96 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Appel from '../../components/Appel.astro';
+import BandeauAppel from '../../components/BandeauAppel.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const offres = await getCollection('offres');
+  return offres.map((offre) => ({ params: { slug: offre.id }, props: { offre, toutes: offres } }));
+}
+
+const { offre, toutes } = Astro.props;
+const { Content } = await render(offre);
+const autres = toutes.filter((o) => o.id !== offre.id).sort((a, b) => a.data.ordre - b.data.ordre);
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: offre.data.titreCourt,
+  description: offre.data.resume,
+  provider: { '@id': `${site.url}/#cap-ia` },
+  areaServed: 'FR',
+  url: `${site.url}/offres/${offre.id}`,
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'EUR',
+    priceSpecification: { '@type': 'PriceSpecification', minPrice: offre.data.prixDepuis, priceCurrency: 'EUR' },
+  },
+};
+---
+<Base
+  titre={offre.data.seoTitre}
+  description={offre.data.seoDescription}
+  donneesStructurees={[service]}
+  image={`/og/offre-${offre.id}.png`}
+  ariane={[{ nom: 'Offres', lien: '/offres' }, { nom: offre.data.titreCourt, lien: `/offres/${offre.id}` }]}
+>
+  <article>
+    <header class="section en-tete-offre">
+      <div class="conteneur">
+        <nav class="fil" aria-label="Fil d'Ariane"><a href="/offres">Offres</a> <span aria-hidden="true">›</span> <span aria-current="page">{offre.data.titreCourt}</span></nav>
+        <h1>{offre.data.titre}</h1>
+        <p class="intro">{offre.data.resume}</p>
+        <dl class="resume-offre">
+          <div><dt>Pour qui</dt><dd>{offre.data.pourQui}</dd></div>
+          <div><dt>Ce que vous obtenez</dt><dd>{offre.data.resultat}</dd></div>
+          <div><dt>Prix</dt><dd>{offre.data.prixCarte}{offre.data.prixDetail && <span class="texte-doux">, {offre.data.prixDetail}</span>}</dd></div>
+        </dl>
+        <Appel />
+      </div>
+    </header>
+    <div class="section section--blanc">
+      <div class="conteneur prose prose--large">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <section class="section" aria-labelledby="titre-autres-offres">
+    <div class="conteneur">
+      <h2 id="titre-autres-offres">Les autres offres</h2>
+      <div class="grille grille--2">
+        {autres.map((o) => (
+          <article class="carte">
+            <h3><a href={`/offres/${o.id}`}>{o.data.titreCourt}</a></h3>
+            <p class="texte-doux">{o.data.resume}</p>
+            <p class="prix">{o.data.prixCarte}</p>
+            {o.data.prixDetail && <p class="prix-detail">{o.data.prixDetail}</p>}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <BandeauAppel />
+</Base>
+
+<style>
+  .en-tete-offre { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .fil { font-size: 0.95rem; color: var(--encre-douce); margin-bottom: 1.2rem; }
+  .en-tete-offre h1 { max-width: 22ch; }
+  .resume-offre {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 1.4rem 0;
+    border-block: 1px solid var(--sable);
+    max-width: 60rem;
+  }
+  @media (min-width: 52rem) { .resume-offre { grid-template-columns: 1fr 1.4fr 1fr; gap: 2rem; } }
+  .resume-offre dt { font-weight: 650; font-size: 0.95rem; color: var(--encre-douce); margin-bottom: 0.2rem; }
+  .resume-offre dd { margin: 0; }
+  .prose--large { max-width: 50rem; }
+  .carte h3 a { color: inherit; text-decoration: none; }
+  .carte h3 a:hover { text-decoration: underline; text-decoration-color: var(--terre); }
+</style>

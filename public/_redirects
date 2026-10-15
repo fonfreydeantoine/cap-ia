@@ -1,0 +1,12 @@
+# Anciennes adresses du site (avant la refonte d'octobre 2026)
+/index.html                      /                 301
+/diagnostic                      /rendez-vous      301
+/diagnostic.html                 /rendez-vous      301
+/realisations.html               /realisations     301
+/mentions-legales.html           /mentions-legales 301
+/confidentialite.html            /confidentialite  301
+/contact                         /rendez-vous      301
+/audit                           /outils/audit     301
+/audit.html                      /outils/audit     301
+/capIA_formulaire_cadrage        /outils/cadrage   301
+/capIA_formulaire_cadrage.html   /outils/cadrage   301

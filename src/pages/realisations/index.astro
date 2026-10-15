@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Flux from '../../components/Flux.astro';
+import BandeauAppel from '../../components/BandeauAppel.astro';
+
+const realisations = (await getCollection('realisations')).sort((a, b) => a.data.ordre - b.data.ordre);
+---
+<Base
+  titre="Réalisations : des outils IA qui tournent, montrés de bout en bout"
+  description="Un agent de prospection, un outil de recherche d'emploi avec assistant intégré, une application du quotidien : le besoin de départ, la démarche, les outils et les résultats datés."
+  image="/og/realisations.png"
+  ariane={[{ nom: 'Réalisations', lien: '/realisations' }]}
+>
+  <section class="section">
+    <div class="conteneur">
+      <p class="repere">Réalisations</p>
+      <h1>Vous savez ce qui vous fait perdre du temps. Je vous aide à en faire un outil qui tourne.</h1>
+      <p class="intro">Voici trois outils que j'ai conçus et qui servent aujourd'hui. Aucun n'a été réalisé pour un client : l'un sert mon propre produit, les deux autres des proches. Je les montre parce qu'ils racontent la méthode, du besoin flou à l'outil utilisé chaque jour, limites comprises.</p>
+    </div>
+  </section>
+
+  {realisations.map((r, i) => (
+    <section class:list={['section', { 'section--blanc': i % 2 === 0 }]} aria-labelledby={`titre-${r.id}`}>
+      <div class="conteneur cas">
+        <div class="cas__texte">
+          <span class="etiquette">{r.data.etiquette}{r.data.phare ? ' · réalisation phare' : ''}</span>
+          <h2 id={`titre-${r.id}`}>{r.data.titre}</h2>
+          <p class="texte-doux">{r.data.outil}</p>
+          <p>{r.data.resume}</p>
+          <p><strong>Le besoin de départ.</strong> {r.data.besoin}</p>
+          <p><a class="lien-fleche" href={`/realisations/${r.id}`}>Lire le cas complet<span class="visuellement-cache"> : {r.data.outil}</span></a></p>
+        </div>
+        <div class="cas__flux">
+          <Flux etapes={r.data.flux} vertical />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <BandeauAppel titre="Un besoin qui ressemble à l'un de ceux-ci, ou pas du tout ?" />
+</Base>
+
+<style>
+  .section h1 { max-width: 24ch; }
+  .cas { display: grid; gap: 2.5rem; }
+  @media (min-width: 62rem) {
+    .cas { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  }
+</style>

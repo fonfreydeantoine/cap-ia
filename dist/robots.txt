@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /outils/
+
+Sitemap: https://cap-ia.pro/sitemap-index.xml

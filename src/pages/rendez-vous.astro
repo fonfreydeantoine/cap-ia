@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import Engagements from '../components/Engagements.astro';
+import { site, reservation, formulaire } from '../data/site';
+
+const reservationActive = reservation.url !== '';
+const deroule = [
+  'Vous me décrivez votre activité et ce qui vous prend du temps.',
+  'Je pose des questions concrètes : avec quoi, combien de fois, qui le fait.',
+  "Je vous dis franchement ce qui me paraît faisable, et ce qui ne l'est pas.",
+  'Vous repartez avec une ou deux pistes, même si nous ne travaillons pas ensemble.',
+];
+---
+<Base
+  titre="Réserver un appel découverte"
+  description="Réservez un appel découverte de 30 minutes en visio, gratuit et sans engagement, pour savoir ce que l'IA peut faire pour votre entreprise."
+  image="/og/rendez-vous.png"
+  ariane={[{ nom: 'Rendez-vous', lien: '/rendez-vous' }]}
+>
+  <section class="section">
+    <div class="conteneur rdv">
+      <div class="rdv__intro">
+        <p class="repere">Appel découverte</p>
+        <h1>Réserver un appel découverte</h1>
+        <p class="intro">30 minutes en visio, gratuit et sans engagement. Vous n'avez rien à préparer, sinon une idée des tâches qui vous prennent du temps.</p>
+        <h2 class="rdv__sous-titre">Ce qui se passe pendant ces 30 minutes</h2>
+        <ol class="rdv__deroule">
+          {deroule.map((d) => <li>{d}</li>)}
+        </ol>
+        <h2 class="rdv__sous-titre">Mes engagements</h2>
+        <Engagements />
+      </div>
+
+      <div class="rdv__action">
+        {reservationActive ? (
+          <div class="carte">
+            <h2 class="rdv__sous-titre">Choisissez votre créneau</h2>
+            <iframe class="rdv__calendrier" src={reservation.url} title={`Calendrier de réservation ${reservation.outil}`} loading="lazy"></iframe>
+            <p class="petit">Le calendrier ne s'affiche pas ? <a href={reservation.url} rel="noopener">Ouvrir la page de réservation</a>.</p>
+          </div>
+        ) : (
+          <div class="carte">
+            <h2 class="rdv__sous-titre">Demandez votre créneau</h2>
+            <p class="texte-doux">Choisissez le créneau qui vous arrange. Je vous confirme le rendez-vous et vous envoie le lien de la visio par email, {reservation.delaiReponse}.</p>
+            <form class="formulaire" action={formulaire.action} method="POST" data-envoi data-merci="/merci">
+              <input type="hidden" name="_subject" value="Demande d'appel découverte · Cap IA" />
+              <input type="hidden" name="type" value="Appel découverte" />
+              <div class="piege" aria-hidden="true">
+                <label for="rdv-gotcha">Ne pas remplir ce champ</label>
+                <input type="text" id="rdv-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
+              <div class="champ">
+                <label for="rdv-nom">Prénom et nom</label>
+                <input id="rdv-nom" name="nom" type="text" autocomplete="name" required />
+              </div>
+              <div class="champ">
+                <label for="rdv-email">Email</label>
+                <input id="rdv-email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div class="champ">
+                <label for="rdv-entreprise">Entreprise</label>
+                <input id="rdv-entreprise" name="entreprise" type="text" autocomplete="organization" required />
+              </div>
+              <div class="champ">
+                <label for="rdv-taille">Taille de l'entreprise</label>
+                <select id="rdv-taille" name="taille" required>
+                  <option value="">Choisir</option>
+                  <option>Je travaille seul</option>
+                  <option>2 à 10 personnes</option>
+                  <option>11 à 50 personnes</option>
+                  <option>Plus de 50 personnes</option>
+                </select>
+              </div>
+              <div class="champ">
+                <label for="rdv-creneau">Créneau souhaité</label>
+                <p class="aide" id="rdv-creneau-aide">Dans les trois semaines à venir. Je vous proposerai la date exacte.</p>
+                <select id="rdv-creneau" name="creneau" aria-describedby="rdv-creneau-aide" required>
+                  <option value="">Choisir</option>
+                  {reservation.creneaux.map((c) => <option>{c}</option>)}
+                  <option>Aucun ne me convient, je préfère être recontacté</option>
+                </select>
+              </div>
+              <div class="champ">
+                <label for="rdv-message">Qu'est-ce qui vous prend le plus de temps aujourd'hui ? (facultatif)</label>
+                <textarea id="rdv-message" name="message" rows="4"></textarea>
+              </div>
+              <label class="case" for="rdv-accord">
+                <input id="rdv-accord" name="accord" type="checkbox" value="oui" required />
+                <span>J'accepte que mes informations servent uniquement à organiser cet échange. <a href="/confidentialite">Politique de confidentialité</a>.</span>
+              </label>
+              <p class="message-formulaire" data-message hidden tabindex="-1" role="alert"></p>
+              <div><button class="bouton" type="submit">Demander mon appel découverte</button></div>
+            </form>
+          </div>
+        )}
+
+        <div class="rdv__ecrire">
+          <h2 class="rdv__sous-titre">Vous préférez écrire ?</h2>
+          <p>Écrivez-moi à <a href={`mailto:${site.email}`}>{site.email}</a>. Je réponds {reservation.delaiReponse}.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .rdv { display: grid; gap: 3rem; align-items: start; }
+  @media (min-width: 62rem) { .rdv { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 4rem; } }
+  .rdv__sous-titre { font-family: var(--police-texte); font-size: 1.1rem; font-weight: 650; letter-spacing: 0; margin-top: 2rem; }
+  .carte .rdv__sous-titre { margin-top: 0; }
+  .rdv__deroule { padding-left: 1.3rem; }
+  .rdv__deroule li { margin-bottom: 0.5rem; }
+  .rdv__deroule li::marker { color: var(--terre-fonce); font-weight: 650; }
+  .rdv__calendrier { width: 100%; min-height: 42rem; border: 0; }
+  .rdv__ecrire { margin-top: 2rem; }
+</style>

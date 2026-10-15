@@ -1,0 +1,13 @@
+{
+  "name": "Cap IA",
+  "short_name": "Cap IA",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F7F4EE",
+  "theme_color": "#F7F4EE",
+  "icons": [
+    { "src": "/icones/icone-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icones/icone-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

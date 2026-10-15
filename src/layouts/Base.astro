@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import Entete from '../components/Entete.astro';
+import Pied from '../components/Pied.astro';
+import { site, mesureAudience } from '../data/site';
+
+interface Props {
+  titre: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+  donneesStructurees?: Record<string, unknown>[];
+  ariane?: { nom: string; lien: string }[];
+}
+
+const { titre, description, image = '/og/cap-ia.png', noindex = false, donneesStructurees = [], ariane = [] } = Astro.props;
+const apercu = import.meta.env.CAPIA_APERCU === '1' || process.env.CAPIA_APERCU === '1';
+const chemin = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
+const canonique = new URL(chemin === '/' ? '/' : chemin.replace(/\/$/, ''), site.url).href;
+const imageAbsolue = new URL(image, site.url).href;
+
+const organisation = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${site.url}/#cap-ia`,
+  name: site.nom,
+  url: site.url,
+  email: site.email,
+  description: site.accroche,
+  image: `${site.url}/og/cap-ia.png`,
+  logo: `${site.url}/icones/icone-512.png`,
+  priceRange: '€€',
+  address: { '@type': 'PostalAddress', addressLocality: 'Gentilly', postalCode: '94250', addressRegion: 'Île-de-France', addressCountry: 'FR' },
+  areaServed: [{ '@type': 'AdministrativeArea', name: 'Île-de-France' }, { '@type': 'Country', name: 'France' }],
+  founder: {
+    '@type': 'Person',
+    '@id': `${site.url}/#antoine-fonfreyde`,
+    name: site.fondateur,
+    jobTitle: 'Fondateur de Cap IA, conseil et formation en intelligence artificielle',
+    sameAs: [site.linkedin, site.malt],
+  },
+  knowsLanguage: 'fr',
+};
+
+const arianeJson = ariane.length
+  ? [{
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ nom: 'Accueil', lien: '/' }, ...ariane].map((e, i) => ({
+        '@type': 'ListItem', position: i + 1, name: e.nom, item: new URL(e.lien, site.url).href,
+      })),
+    }]
+  : [];
+
+const json = [organisation, ...arianeJson, ...donneesStructurees];
+const titreComplet = titre.includes('Cap IA') ? titre : `${titre} | Cap IA`;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titreComplet}</title>
+    <meta name="description" content={description} />
+    {(noindex || apercu) && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonique} />
+    <meta name="theme-color" content="#F7F4EE" />
+
+    <link rel="preload" href="/fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/public-sans.woff2" as="font" type="font/woff2" crossorigin />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icones/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Cap IA" />
+    <meta property="og:title" content={titreComplet} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonique} />
+    <meta property="og:image" content={imageAbsolue} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script is:inline src="/js/site.js"></script>
+    {json.map((bloc) => <script type="application/ld+json" set:html={JSON.stringify(bloc)} />)}
+    {mesureAudience.actif && mesureAudience.jeton && !apercu && (
+      <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={`{"token": "${mesureAudience.jeton}"}`}></script>
+    )}
+  </head>
+  <body>
+    <a class="saut-lien" href="#contenu">Aller au contenu</a>
+    <Entete />
+    <main id="contenu">
+      <slot />
+    </main>
+    <Pied />
+  </body>
+</html>

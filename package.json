@@ -1,0 +1,28 @@
+{
+  "name": "cap-ia",
+  "private": true,
+  "type": "module",
+  "version": "2.0.0",
+  "description": "Site vitrine de Cap IA (cap-ia.pro)",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/verifier.mjs",
+    "preview": "astro preview",
+    "verifier": "node scripts/verifier.mjs",
+    "images": "node scripts/generer-images.mjs",
+    "build:apercu": "node scripts/build-apercu.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource-variable/newsreader": "5.3.0",
+    "@fontsource-variable/public-sans": "5.3.0",
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5",
+    "wrangler": "4.151.0"
+  }
+}
