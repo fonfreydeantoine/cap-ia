@@ -14,19 +14,19 @@ Statut : **plan validé le 15 octobre 2026, Antoine a laissé la réalisation en
 | 4. Réalisations | **Fait**, avec les faits datés des dossiers projets (agent Orée au 11 octobre 2026, à mettre à jour) |
 | 5. Rendez-vous, formulaire, légal | **Fait en mode transitoire** : demande de créneau par formulaire (Formspree) en attendant le compte de l'outil de réservation, qu'Antoine doit créer à son nom. Mesure d'audience prête, à activer dans Cloudflare |
 | 6. Recette | **Fait.** Lighthouse mobile : 99 à 100 en performance, 100 en accessibilité, bonnes pratiques et SEO ; pages de 100 à 126 Ko ; contrôles automatiques au build ; vérifié sur ordinateur et téléphone |
-| 7. Mise en ligne | **En attente du feu vert d'Antoine** (fusion de `refonte` dans `main`). Aperçu officiel, construit par Workers Builds sur le vrai Worker : https://refonte-cap-ia.fonfreyde-antoine.workers.dev |
-| 8. Migration d'identité | À faire après la mise en ligne |
+| 7. Mise en ligne | **Fait le 15 octobre 2026.** Nouveau site en ligne sur https://cap-ia.pro (la première compilation a échoué sur une erreur passagère de l'API Cloudflare, relancée avec succès). `www` redirige vers cap-ia.pro, HTTPS forcé, DMARC publié (`p=none`), Web Analytics actif |
+| 8. Migration d'identité | **Supports prêts** dans `supports/` (logos, avatar, bannière LinkedIn, images de portfolio, logo de signature). **Brief Malt** prêt pour une autre session : `docs/BRIEF_MALT.md`. Dossier Cap IA du OneDrive rangé, anciens supports envoyés à la corbeille |
 
 **Ce qui reste à faire par Antoine** (aucune de ces actions ne bloque la mise en ligne, sauf la première) :
 
-1. Donner le feu vert à la mise en ligne.
+1. ~~Donner le feu vert à la mise en ligne.~~ Fait.
 2. Tester une fois le formulaire de `/rendez-vous` (sur l'aperçu ou après mise en ligne) : l'envoi réel n'a pas été testé, pour ne pas t'envoyer de faux message.
-3. Dans le tableau de bord Cloudflare du compte qui héberge cap-ia.pro : créer `www.cap-ia.pro` avec une redirection vers `cap-ia.pro`, activer « Always Use HTTPS », activer Web Analytics et transmettre le jeton.
-4. Ajouter un enregistrement DMARC pour `cap-ia.pro` (par exemple `v=DMARC1; p=none; rua=mailto:antoine@cap-ia.pro`, à durcir ensuite).
+3. ~~Réglages Cloudflare (www, HTTPS, Web Analytics).~~ Faits le 15 octobre 2026 par Claude depuis le tableau de bord.
+4. ~~DMARC.~~ Publié en `p=none` ; à passer en `p=quarantine` après quelques semaines de rapports sans anomalie (vérifier aussi que la signature DKIM de Zoho est bien active).
 5. ~~Créer le compte de prise de rendez-vous.~~ Décision du 15 octobre 2026 : meetergo écarté (payant après l'essai). La demande de créneau par formulaire devient la solution retenue ; une page de réservation Google Agenda, gratuite, pourra être branchée plus tard.
 6. Mettre à jour les chiffres de l'agent Orée (résultats au-delà du 11 octobre 2026).
-7. Retirer `portfolio-liberty.png` de Malt et ne plus diffuser l'ancienne plaquette.
-8. Déplacer les documents de Cap IA hors du OneDrive de l'employeur, puis autoriser la suppression de l'ancien dossier `Cap-IA`.
+7. Mettre à jour Malt en lançant une session Claude Code sur `docs/BRIEF_MALT.md` (le profil actuel détaille encore ROB et Liberty avec des chiffres, dans « À propos » et dans « Expériences »). L'ancienne plaquette est supprimée : ne plus en diffuser de copie.
+8. Déplacer le dossier Cap IA (rangé, voir `LISEZ-MOI.md`) hors du OneDrive de l'employeur. L'ancien dossier `Cap-IA` est déjà à la corbeille.
 
 Hébergement réel constaté pendant l'étape 0 : le site n'est pas sur Cloudflare Pages mais sur **Cloudflare Workers** (Worker `cap-ia`, compte Cloudflare distinct de celui de l'agent Orée), relié au dépôt GitHub par Workers Builds. Le dossier `dist/` est donc versionné et `wrangler.jsonc` indique de servir `./dist` (voir README.md).
 
