@@ -52,9 +52,10 @@ export const formulaire = {
   action: 'https://formspree.io/f/mzdygppn',
 };
 
-// Mesure d'audience. Passer `actif` à true une fois Cloudflare Web Analytics activé pour le domaine
-// et le jeton renseigné : le script est alors ajouté et la politique de confidentialité le mentionne.
+// Mesure d'audience : Cloudflare Web Analytics est actif pour cap-ia.pro depuis le tableau de bord
+// (mode sans script injecté, sans cookie). `actif` fait apparaître la mention dans la politique de
+// confidentialité. Renseigner `jeton` seulement pour passer au mode avec script (déjà autorisé par la CSP).
 export const mesureAudience = {
-  actif: false,
+  actif: true,
   jeton: '',
 };
