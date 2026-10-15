@@ -1,0 +1,101 @@
+---
+import Logo from './Logo.astro';
+import { cta, navigation } from '../data/site';
+const chemin = Astro.url.pathname.replace(/\.html$/, '');
+const estActif = (lien: string) => chemin === lien || chemin.startsWith(lien + '/');
+---
+<header class="entete">
+  <div class="conteneur entete__barre">
+    <Logo />
+    <button class="entete__menu" type="button" aria-expanded="false" aria-controls="navigation-principale" hidden>
+      <span class="entete__menu-icone" aria-hidden="true"></span>
+      <span>Menu</span>
+    </button>
+    <nav id="navigation-principale" class="entete__nav" aria-label="Navigation principale">
+      <ul>
+        {navigation.map((item) => (
+          <li>
+            <a href={item.lien} aria-current={estActif(item.lien) ? 'page' : undefined}>{item.libelle}</a>
+          </li>
+        ))}
+      </ul>
+      <a class="bouton bouton--compact" href={cta.lien}>{cta.libelle}</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .entete {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 244, 238, 0.96);
+    border-bottom: 1px solid var(--sable);
+  }
+  @supports (backdrop-filter: blur(8px)) {
+    .entete { background: rgba(247, 244, 238, 0.88); backdrop-filter: blur(8px); }
+  }
+  .entete__barre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 4.5rem;
+    flex-wrap: wrap;
+  }
+  .entete__nav { display: flex; align-items: center; gap: 2rem; }
+  .entete__nav ul { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+  .entete__nav ul a {
+    color: var(--encre);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-block: 0.4rem;
+    border-bottom: 2px solid transparent;
+  }
+  .entete__nav ul a:hover { border-bottom-color: var(--sable); }
+  .entete__nav ul a[aria-current='page'] { border-bottom-color: var(--terre); }
+
+  .entete__menu {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    background: none;
+    border: 1px solid var(--sable);
+    border-radius: var(--rayon);
+    min-height: 2.75rem;
+    padding: 0.4rem 0.9rem;
+    font: inherit;
+    font-weight: 650;
+    font-size: 0.98rem;
+    color: var(--encre);
+    cursor: pointer;
+  }
+  .entete__menu-icone, .entete__menu-icone::before, .entete__menu-icone::after {
+    display: block;
+    width: 1.1rem;
+    height: 2px;
+    background: currentColor;
+    position: relative;
+  }
+  .entete__menu-icone::before, .entete__menu-icone::after { content: ''; position: absolute; left: 0; }
+  .entete__menu-icone::before { top: -6px; }
+  .entete__menu-icone::after { top: 6px; }
+
+  @media (max-width: 56rem) {
+    .entete__nav ul { gap: 1.25rem; }
+  }
+
+  /* Sur téléphone, le menu se replie derrière le bouton « Menu » (activé par /js/site.js).
+     Sans JavaScript, la navigation reste affichée sous le logo. */
+  @media (max-width: 47.99rem) {
+    .entete__barre { padding-block: 0.6rem; }
+    :global(.js) .entete__menu { display: inline-flex; }
+    .entete__nav { width: 100%; flex-direction: column; align-items: stretch; gap: 1rem; padding-bottom: 1rem; }
+    .entete__nav ul { flex-direction: column; gap: 0; }
+    .entete__nav ul a { display: block; padding: 0.8rem 0; border-bottom: 1px solid var(--sable); }
+    .entete__nav ul a[aria-current='page'] { border-bottom-color: var(--terre); }
+    :global(.js) .entete__nav { display: none; }
+    :global(.js) .entete__nav.est-ouvert { display: flex; }
+  }
+</style>

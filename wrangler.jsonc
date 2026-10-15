@@ -1,0 +1,15 @@
+{
+  // Site statique Cap IA : Worker sans code, qui sert le dossier ./dist généré par Astro.
+  // Workers Builds (relié au dépôt GitHub) exécute « npx wrangler deploy » à chaque push sur main.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cap-ia",
+  "compatibility_date": "2026-10-13",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

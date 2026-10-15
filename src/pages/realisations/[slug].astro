@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Flux from '../../components/Flux.astro';
+import Appel from '../../components/Appel.astro';
+import BandeauAppel from '../../components/BandeauAppel.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const realisations = await getCollection('realisations');
+  return realisations.map((cas) => ({ params: { slug: cas.id }, props: { cas, tous: realisations } }));
+}
+
+const { cas, tous } = Astro.props;
+const { Content } = await render(cas);
+const autres = tous.filter((r) => r.id !== cas.id).sort((a, b) => a.data.ordre - b.data.ordre);
+const date = cas.data.miseAJour.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: cas.data.titre,
+  description: cas.data.resume,
+  dateModified: cas.data.miseAJour.toISOString().slice(0, 10),
+  author: { '@id': `${site.url}/#antoine-fonfreyde` },
+  publisher: { '@id': `${site.url}/#cap-ia` },
+  inLanguage: 'fr',
+  mainEntityOfPage: `${site.url}/realisations/${cas.id}`,
+};
+---
+<Base
+  titre={cas.data.seoTitre}
+  description={cas.data.seoDescription}
+  donneesStructurees={[article]}
+  image={`/og/cas-${cas.id}.png`}
+  ariane={[{ nom: 'Réalisations', lien: '/realisations' }, { nom: cas.data.outil, lien: `/realisations/${cas.id}` }]}
+>
+  <article>
+    <header class="section en-tete-cas">
+      <div class="conteneur">
+        <nav class="fil" aria-label="Fil d'Ariane"><a href="/realisations">Réalisations</a> <span aria-hidden="true">›</span> <span aria-current="page">{cas.data.outil}</span></nav>
+        <span class="etiquette">{cas.data.etiquette}</span>
+        <h1>{cas.data.titre}</h1>
+        <p class="intro">{cas.data.resume}</p>
+        <p class="besoin"><strong>Le besoin de départ.</strong> {cas.data.besoin}</p>
+      </div>
+    </header>
+
+    <div class="section section--blanc">
+      <div class="conteneur">
+        <Flux etapes={cas.data.flux} />
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="conteneur cas">
+        <div class="prose">
+          <Content />
+        </div>
+        <aside class="cas__cote" aria-labelledby="titre-outils">
+          <h2 id="titre-outils" class="cas__cote-titre">Les outils</h2>
+          <ul class="liste-reperes petit">
+            {cas.data.outils.map((o) => <li>{o}</li>)}
+          </ul>
+          <p class="texte-doux petit">Faits vérifiés et mis à jour le {date}.</p>
+          <div class="cas__appel">
+            <p>Un besoin du même genre chez vous ?</p>
+            <Appel compact precision={false} />
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="section section--fond" aria-labelledby="titre-autres-cas">
+    <div class="conteneur">
+      <h2 id="titre-autres-cas">Les autres réalisations</h2>
+      <div class="grille grille--2">
+        {autres.map((r) => (
+          <article class="carte">
+            <span class="etiquette">{r.data.etiquette}</span>
+            <h3><a href={`/realisations/${r.id}`}>{r.data.titre}</a></h3>
+            <p class="texte-doux">{r.data.resume}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <BandeauAppel />
+</Base>
+
+<style>
+  .en-tete-cas { padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .fil { font-size: 0.95rem; color: var(--encre-douce); margin-bottom: 1.2rem; }
+  .en-tete-cas h1 { max-width: 22ch; }
+  .besoin { max-width: var(--largeur-lecture); border-left: 3px solid var(--terre); padding-left: 1rem; }
+  .cas { display: grid; gap: 3rem; }
+  @media (min-width: 62rem) { .cas { grid-template-columns: minmax(0, 1fr) 20rem; gap: 4rem; } }
+  .cas__cote { align-self: start; }
+  @media (min-width: 62rem) { .cas__cote { position: sticky; top: 6.5rem; } }
+  .cas__cote-titre { font-family: var(--police-texte); font-size: 1.05rem; font-weight: 650; letter-spacing: 0; }
+  .cas__appel { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--sable); }
+  .carte h3 a { color: inherit; text-decoration: none; }
+  .carte h3 a:hover { text-decoration: underline; text-decoration-color: var(--terre); }
+</style>

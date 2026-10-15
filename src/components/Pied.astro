@@ -1,0 +1,59 @@
+---
+import Logo from './Logo.astro';
+import { site, navigation, cta } from '../data/site';
+const annee = new Date().getFullYear();
+---
+<footer class="pied">
+  <div class="conteneur pied__grille">
+    <div class="pied__marque">
+      <Logo clair />
+      <p>{site.accroche}.</p>
+      <p>{site.zone}.</p>
+    </div>
+    <nav aria-label="Pied de page">
+      <h2 class="pied__titre">Le site</h2>
+      <ul>
+        {navigation.map((item) => <li><a href={item.lien}>{item.libelle}</a></li>)}
+        <li><a href={cta.lien}>{cta.libelle}</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h2 class="pied__titre">Contact</h2>
+      <ul>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.linkedin} rel="noopener">LinkedIn</a></li>
+        <li><a href={site.malt} rel="noopener">Malt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied__bas">
+    <p>© {annee} Cap IA · Antoine Fonfreyde, entrepreneur individuel</p>
+    <p><a href="/mentions-legales">Mentions légales</a> · <a href="/confidentialite">Confidentialité</a></p>
+  </div>
+</footer>
+
+<style>
+  .pied {
+    background: var(--encre);
+    color: #D9D4CA;
+    padding-top: clamp(3rem, 6vw, 4.5rem);
+    font-size: 0.98rem;
+  }
+  .pied a { color: var(--papier); }
+  .pied :focus-visible { outline-color: var(--papier); }
+  .pied__grille { display: grid; gap: 2.5rem; padding-bottom: 2.5rem; }
+  @media (min-width: 48rem) { .pied__grille { grid-template-columns: 2fr 1fr 1fr; } }
+  .pied__marque p { margin: 0.9rem 0 0; max-width: 24rem; }
+  .pied__titre { font-family: var(--police-texte); font-size: 0.95rem; font-weight: 650; color: var(--papier); margin-bottom: 0.8rem; letter-spacing: 0; }
+  .pied ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+  .pied__bas {
+    border-top: 1px solid #3A4048;
+    padding-block: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem 2rem;
+    font-size: 0.9rem;
+  }
+  .pied__bas p { margin: 0; }
+</style>

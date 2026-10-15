@@ -1,0 +1,91 @@
+---
+// Schéma de flux d'une réalisation : d'où vient l'information, ce que fait l'outil, où l'humain valide, ce qui sort.
+// Rendu en texte réel (accessible, lisible sur téléphone), dessiné comme un tracé de route.
+interface Etape { titre: string; detail: string; type: 'entree' | 'outil' | 'humain' | 'sortie' }
+interface Props { etapes: Etape[]; titre?: string; compact?: boolean; vertical?: boolean }
+const { etapes, titre = 'Comment ça tourne', compact = false, vertical = false } = Astro.props;
+const legende = { entree: 'Ce qui arrive', outil: "L'outil", humain: 'La personne', sortie: 'Ce qui sort' };
+---
+<figure class:list={['flux', { 'flux--compact': compact, 'flux--vertical': vertical }]}>
+  <figcaption class="flux__titre">{titre}</figcaption>
+  <ol class="flux__liste">
+    {etapes.map((e) => (
+      <li class={`flux__etape flux__etape--${e.type}`}>
+        <span class="flux__type">{legende[e.type]}</span>
+        <strong class="flux__nom">{e.titre}</strong>
+        {!compact && <span class="flux__detail">{e.detail}</span>}
+      </li>
+    ))}
+  </ol>
+</figure>
+
+<style>
+  .flux { margin: 0; }
+  .flux__titre { font-weight: 650; margin-bottom: 1rem; }
+  .flux__liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    counter-reset: etape;
+  }
+  .flux__etape {
+    position: relative;
+    display: grid;
+    gap: 0.15rem;
+    padding: 0 0 1.4rem 2.4rem;
+  }
+  /* le tracé */
+  .flux__etape::before {
+    content: '';
+    position: absolute;
+    left: 0.6rem;
+    top: 0.4rem;
+    bottom: -0.4rem;
+    border-left: 2px solid var(--ardoise);
+  }
+  .flux__etape:last-child::before { display: none; }
+  /* le repère de chaque étape */
+  .flux__etape::after {
+    content: '';
+    position: absolute;
+    left: 0.1rem;
+    top: 0.25rem;
+    width: 1.05rem;
+    height: 1.05rem;
+    border-radius: 50%;
+    background: var(--papier);
+    border: 2px solid var(--ardoise);
+  }
+  .flux__etape--humain::after {
+    background: var(--terre);
+    border-color: var(--terre);
+    border-radius: 0;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+  .flux__etape--sortie::after { background: var(--ardoise); }
+  .flux__type { font-size: 0.82rem; color: var(--encre-douce); }
+  .flux__etape--humain .flux__type { color: var(--terre-fonce); font-weight: 650; }
+  .flux__nom { font-weight: 650; line-height: 1.35; }
+  .flux__detail { color: var(--encre-douce); font-size: 0.95rem; line-height: 1.5; }
+
+  /* À partir d'une largeur confortable, le tracé devient horizontal. */
+  @media (min-width: 62rem) {
+    .flux:not(.flux--vertical) .flux__liste {
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .flux:not(.flux--vertical) .flux__etape { padding: 2rem 0 0 0; }
+    .flux:not(.flux--vertical) .flux__etape::before {
+      left: 0.6rem;
+      right: -1.25rem;
+      top: 0.55rem;
+      bottom: auto;
+      border-left: 0;
+      border-top: 2px solid var(--ardoise);
+    }
+    .flux:not(.flux--vertical) .flux__etape::after { top: 0; left: 0.1rem; }
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base
+  titre="Mentions légales"
+  description="Éditeur, hébergement, propriété intellectuelle et médiation de la consommation du site cap-ia.pro."
+  ariane={[{ nom: 'Mentions légales', lien: '/mentions-legales' }]}
+>
+  <section class="section">
+    <div class="conteneur prose">
+      <h1>Mentions légales</h1>
+      <p class="texte-doux">Dernière mise à jour : 15 octobre 2026</p>
+
+      <h2>Éditeur du site</h2>
+      <p>
+        Le site cap-ia.pro est édité par Antoine Fonfreyde, entrepreneur individuel.<br />
+        Nom commercial : Cap IA<br />
+        SIREN : 845 031 699 · SIRET : 845 031 699 00034 · Code APE : 62.02A<br />
+        11 rue du Moulin de la Roche, 94250 Gentilly, France<br />
+        Téléphone : {site.telephone}<br />
+        Email : <a href={`mailto:${site.email}`}>{site.email}</a><br />
+        TVA non applicable, article 293 B du code général des impôts.
+      </p>
+
+      <h2>Directeur de la publication</h2>
+      <p>Antoine Fonfreyde.</p>
+
+      <h2>Hébergement</h2>
+      <p>
+        Le site est hébergé par Cloudflare, Inc. (service Cloudflare Workers)<br />
+        101 Townsend Street, San Francisco, CA 94107, États-Unis<br />
+        <a href="https://www.cloudflare.com" rel="noopener">www.cloudflare.com</a>
+      </p>
+
+      <h2>Propriété intellectuelle</h2>
+      <p>L'ensemble des contenus présents sur ce site (nom Cap IA, textes, visuels, logo, charte graphique) est protégé et ne peut être reproduit ou réutilisé, même partiellement, sans autorisation préalable de Cap IA.</p>
+      <p>Polices de caractères : Newsreader (The Newsreader Project Authors) et Public Sans (USWDS), sous licence SIL Open Font License 1.1, hébergées sur ce site.</p>
+
+      <h2>Responsabilité</h2>
+      <p>Les informations publiées sur ce site sont fournies à titre indicatif. Les résultats présentés dans les réalisations sont datés et correspondent à la situation constatée à la date indiquée. Cap IA ne saurait être tenu responsable de l'utilisation de ces informations ni des éventuelles erreurs ou omissions.</p>
+
+      <h2>Données personnelles</h2>
+      <p>Le traitement des données collectées via les formulaires du site et vos droits sont détaillés dans la <a href="/confidentialite">politique de confidentialité</a>.</p>
+
+      <h2>Médiation de la consommation</h2>
+      <p>Conformément aux articles L.611-1 et suivants du code de la consommation, pour tout litige de consommation qui n'aurait pas été résolu au préalable de façon amiable, vous pouvez recourir gratuitement à un médiateur de la consommation. Le médiateur désigné est le CM2C (Centre de la médiation de la consommation de conciliateurs de justice), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net" rel="noopener">cm2c.net</a>, <a href="mailto:contact@cm2c.net">contact@cm2c.net</a>. La saisine s'effectue via le formulaire en ligne sur son site ou par courrier à l'adresse ci-dessus. Une solution amiable est toujours recherchée en priorité, en écrivant à <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+    </div>
+  </section>
+</Base>

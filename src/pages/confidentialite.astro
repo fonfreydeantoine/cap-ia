@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, reservation, mesureAudience } from '../data/site';
+const reservationActive = reservation.url !== '';
+---
+<Base
+  titre="Politique de confidentialité"
+  description="Quelles données le site cap-ia.pro collecte, pourquoi, avec qui elles transitent, combien de temps elles sont conservées et quels sont vos droits."
+  ariane={[{ nom: 'Confidentialité', lien: '/confidentialite' }]}
+>
+  <section class="section">
+    <div class="conteneur prose">
+      <h1>Politique de confidentialité</h1>
+      <p class="texte-doux">Dernière mise à jour : 15 octobre 2026</p>
+      <p>Cette page explique simplement quelles données sont collectées sur le site cap-ia.pro, pourquoi, avec qui elles transitent et quels sont vos droits. Vos données ne sont jamais revendues et ne servent jamais à de la publicité.</p>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>Antoine Fonfreyde, entrepreneur individuel exerçant sous le nom commercial Cap IA (SIREN 845 031 699), 11 rue du Moulin de la Roche, 94250 Gentilly, France. Pour toute question sur vos données : <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+      <h2>2. Données collectées</h2>
+      <ul>
+        <li><strong>Demande d'appel découverte et formulaire de contact</strong> : nom, email, entreprise, taille de l'entreprise, créneau souhaité et, si vous le remplissez, votre message.</li>
+        {reservationActive && <li><strong>Réservation en ligne</strong> : les informations saisies dans le calendrier de réservation ({reservation.outil}).</li>}
+        <li><strong>Données techniques minimales</strong> : les journaux du serveur nécessaires au bon fonctionnement et à la sécurité du site.</li>
+        {mesureAudience.actif && <li><strong>Mesure d'audience</strong> : des statistiques de fréquentation anonymes (pages vues, provenance des visites), sans cookie et sans suivi d'un site à l'autre.</li>}
+      </ul>
+      <p>Le site ne vous demande aucune donnée sensible et ne crée pas de compte utilisateur. Merci de ne pas indiquer de données sensibles (santé, opinions, etc.) dans le champ libre.</p>
+
+      <h2>3. Finalités</h2>
+      <p>Ces données servent uniquement à organiser l'échange que vous demandez, à vous répondre et à échanger dans un cadre professionnel, ainsi qu'à assurer la sécurité et le bon fonctionnement du site{mesureAudience.actif ? ' et à en mesurer la fréquentation' : ''}.</p>
+
+      <h2>4. Base légale</h2>
+      <p>Le traitement repose sur les mesures précontractuelles prises à votre demande (article 6.1.b du RGPD) et sur l'intérêt légitime à répondre aux demandes reçues et à sécuriser le site (article 6.1.f).</p>
+
+      <h2>5. Durée de conservation</h2>
+      <p>Les données issues des formulaires sont conservées au maximum 3 ans à compter du dernier contact, puis supprimées. Si une relation commerciale s'engage, les documents comptables sont conservés pendant la durée légale.</p>
+
+      <h2>6. Destinataires et sous-traitants</h2>
+      <p>Vos données sont destinées exclusivement à Cap IA. Elles transitent par les prestataires strictement nécessaires au fonctionnement du site :</p>
+      <ul>
+        <li><strong>Formspree</strong> : acheminement des messages envoyés par les formulaires.</li>
+        {reservationActive && <li><strong>{reservation.outil}</strong> : gestion des réservations d'appel découverte.</li>}
+        <li><strong>Cloudflare</strong> : hébergement et diffusion du site{mesureAudience.actif ? ', mesure d\'audience (Cloudflare Web Analytics)' : ''}.</li>
+        <li><strong>Zoho Mail</strong> : messagerie professionnelle, pour les échanges par email.</li>
+      </ul>
+      <p>Les polices de caractères sont hébergées sur le site lui-même : aucune requête n'est envoyée à un service de polices tiers.</p>
+
+      <h2>7. Transferts hors Union européenne</h2>
+      <p>Certains prestataires sont situés aux États-Unis (Formspree, Cloudflare). Ces transferts sont encadrés par des garanties appropriées, comme les clauses contractuelles types de la Commission européenne ou le cadre de protection des données UE et États-Unis.</p>
+
+      <h2>8. Cookies et traceurs</h2>
+      <p>Le site ne dépose aucun cookie et n'utilise aucun traceur publicitaire ni de suivi d'un site à l'autre. C'est pourquoi aucun bandeau de consentement ne vous est présenté.</p>
+
+      <h2>9. Sécurité</h2>
+      <p>Des mesures techniques et organisationnelles raisonnables sont mises en œuvre afin de protéger les données contre la perte, l'accès non autorisé ou la divulgation.</p>
+
+      <h2>10. Vos droits</h2>
+      <p>Conformément au RGPD, vous pouvez à tout moment accéder à vos données, les faire corriger, en demander l'effacement ou une copie (portabilité), vous opposer à un traitement ou en demander la limitation. Écrivez à <a href={`mailto:${site.email}`}>{site.email}</a>. Si vous estimez que vos droits ne sont pas respectés, vous pouvez saisir la CNIL (<a href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).</p>
+
+      <h2>11. Évolutions de cette page</h2>
+      <p>Cette politique peut être mise à jour pour refléter les évolutions du site ou du cadre légal. La date de dernière mise à jour figure en haut de la page.</p>
+    </div>
+  </section>
+</Base>

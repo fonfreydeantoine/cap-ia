@@ -1,0 +1,237 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Appel from '../components/Appel.astro';
+import Flux from '../components/Flux.astro';
+import BandeauAppel from '../components/BandeauAppel.astro';
+import Engagements from '../components/Engagements.astro';
+import portrait from '../assets/antoine-fonfreyde.jpg';
+
+const offres = (await getCollection('offres')).sort((a, b) => a.data.ordre - b.data.ordre);
+const realisations = (await getCollection('realisations')).sort((a, b) => a.data.ordre - b.data.ordre);
+const phare = realisations.find((r) => r.data.phare)!;
+const autres = realisations.filter((r) => !r.data.phare);
+
+const situations = [
+  { titre: 'Les mêmes tâches, chaque semaine', texte: "Les mêmes emails, les mêmes devis, les mêmes relances. Rien de difficile, mais des heures qui s'envolent." },
+  { titre: 'ChatGPT essayé, sans suite', texte: "Vous l'avez testé, c'était impressionnant, puis vous n'avez pas trouvé comment l'utiliser au quotidien." },
+  { titre: 'Des outils qui ne se parlent pas', texte: "Vous recopiez d'un logiciel à l'autre ce qu'un outil bien réglé pourrait transmettre seul." },
+  { titre: 'Une équipe qui improvise', texte: "Chacun utilise l'IA dans son coin, sans méthode, et sans règles sur ce qu'on y met." },
+];
+
+const etapes = [
+  { titre: 'Appel découverte', texte: "30 minutes pour comprendre votre activité. Je vous dis franchement ce qui me paraît faisable, ou pas. Gratuit." },
+  { titre: 'Audit', texte: "Je cartographie vos tâches et je vous remets une feuille de route écrite, dans l'ordre, avec les coûts." },
+  { titre: 'Mise en place', texte: 'Je configure ou je construis les outils retenus, reliés à ceux que vous utilisez déjà, à votre nom.' },
+  { titre: 'Formation et suivi', texte: "Vos équipes savent s'en servir, et je reste là quand quelque chose change." },
+];
+
+const questions = [
+  {
+    q: "Je n'y connais rien en IA. Est-ce pour moi ?",
+    r: "Oui. Je pars de votre activité, pas de la technologie. Pour l'appel découverte, vous n'avez rien à préparer, sinon une idée des tâches qui vous prennent du temps.",
+  },
+  {
+    q: 'Que deviennent mes données ?',
+    r: "Avant de proposer un outil, je regarde où il stocke les données et ce qu'il en fait. Je privilégie les réglages qui excluent vos données de l'entraînement des modèles et, quand c'est possible, un hébergement en Europe. Les comptes sont créés à votre nom : vous gardez la main.",
+  },
+  {
+    q: 'Combien ça coûte ?',
+    r: "L'appel découverte est gratuit. Un audit commence à 490 €, une formation de groupe à 500 € la demi-journée, une mise en place à 690 €. Les détails sont sur la page Offres, et chaque devis est forfaitaire.",
+  },
+  {
+    q: 'Et si ça ne marche pas ?',
+    r: "Chaque mise en place comprend 30 jours de corrections après la livraison. Surtout, je ne vous propose pas un outil sans avoir vérifié qu'il répond à un vrai besoin : si l'IA n'est pas la bonne réponse à votre problème, je vous le dis dès l'audit.",
+  },
+  {
+    q: 'Vos formations sont-elles finançables par mon OPCO ?',
+    r: "Cap IA n'est pas certifié Qualiopi : ses formations ne peuvent pas être prises en charge directement par un OPCO. Si un financement est indispensable, dites-le lors de l'appel et nous regarderons les options possibles.",
+  },
+  {
+    q: 'Qui fait le travail ?',
+    r: "Moi. Cap IA, c'est Antoine Fonfreyde : la personne de l'appel découverte est celle qui conçoit, met en place, forme et assure le suivi. J'interviens à distance partout en France, et sur site en Île-de-France.",
+  },
+];
+
+const faqJson = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: questions.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.r } })),
+};
+---
+<Base
+  titre="Cap IA | Conseil et formation IA pour TPE, PME et indépendants"
+  description="Je vous aide à repérer ce que l'IA peut vraiment faire pour votre entreprise, à mettre en place les bons outils et à former vos équipes. Sans jargon. Appel découverte gratuit."
+  donneesStructurees={[faqJson]}
+>
+  <section class="accueil">
+    <div class="conteneur accueil__grille">
+      <div class="accueil__texte">
+        <p class="repere">Conseil et formation IA pour TPE, PME et indépendants</p>
+        <h1>L'IA au service de votre quotidien, pas l'inverse.</h1>
+        <p class="intro">Je vous aide à repérer ce que l'IA peut vraiment faire pour votre entreprise, à mettre en place les bons outils et à former vos équipes. Sans jargon, à partir de votre façon de travailler.</p>
+        <Appel />
+      </div>
+      <figure class="accueil__portrait">
+        <Image src={portrait} alt="Portrait d'Antoine Fonfreyde, fondateur de Cap IA" widths={[360, 460, 720, 920]} sizes="(min-width: 62rem) 460px, (min-width: 40rem) 360px, 80vw" loading="eager" fetchpriority="high" format="webp" />
+        <figcaption>Antoine Fonfreyde, fondateur de Cap IA</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--fond" aria-labelledby="titre-situations">
+    <div class="conteneur">
+      <p class="repere">Ce que vous vivez peut-être</p>
+      <h2 id="titre-situations">Du temps perdu sur des tâches qui ne demandent pas votre expertise</h2>
+      <div class="grille grille--2 situations">
+        {situations.map((s) => (
+          <div class="carte">
+            <h3>{s.titre}</h3>
+            <p class="texte-doux">{s.texte}</p>
+          </div>
+        ))}
+      </div>
+      <p class="intro situations__chute">C'est souvent là que l'IA, bien choisie et bien réglée, fait gagner du temps. Et quand ce n'est pas la bonne réponse, je vous le dis aussi.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-offres">
+    <div class="conteneur">
+      <p class="repere">Offres</p>
+      <h2 id="titre-offres">Trois façons de travailler ensemble</h2>
+      <div class="grille grille--3">
+        {offres.map((o) => (
+          <article class="carte">
+            <h3><a class="lien-carte" href={`/offres/${o.id}`}>{o.data.titreCourt}</a></h3>
+            <p>{o.data.resume}</p>
+            <p class="texte-doux petit"><strong>Ce que vous obtenez.</strong> {o.data.resultat}</p>
+            <p class="prix">{o.data.prixCarte}</p>
+            {o.data.prixDetail && <p class="prix-detail">{o.data.prixDetail}</p>}
+            <p class="petit"><a href={`/offres/${o.id}`}>Voir le détail<span class="visuellement-cache"> de l'offre {o.data.titreCourt}</span></a></p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--blanc" aria-labelledby="titre-methode">
+    <div class="conteneur">
+      <p class="repere">Méthode</p>
+      <h2 id="titre-methode">Comment je travaille</h2>
+      <ol class="etapes">
+        {etapes.map((e, i) => (
+          <li>
+            <span class="etapes__numero" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{e.titre}</h3>
+            <p class="texte-doux">{e.texte}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="grille grille--2 methode__bas">
+        <div>
+          <h3>Mes engagements</h3>
+          <Engagements />
+        </div>
+        <div class="methode__appel">
+          <p>Vous pouvez vous arrêter après n'importe quelle étape. L'appel découverte suffit parfois à repartir avec une première piste.</p>
+          <Appel />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-realisations">
+    <div class="conteneur">
+      <p class="repere">Réalisations</p>
+      <h2 id="titre-realisations">Des outils qui tournent, montrés de bout en bout</h2>
+      <p class="intro">Je ne montre que ce que j'ai construit et qui sert vraiment, avec ce qui reste à prouver.</p>
+
+      <article class="carte phare">
+        <span class="etiquette">{phare.data.etiquette}</span>
+        <h3><a class="lien-carte" href={`/realisations/${phare.id}`}>{phare.data.titre}</a></h3>
+        <p>{phare.data.resume}</p>
+        <Flux etapes={phare.data.flux} compact titre={phare.data.outil} />
+        <p class="petit"><a href={`/realisations/${phare.id}`}>Lire le cas complet<span class="visuellement-cache"> : {phare.data.outil}</span></a></p>
+      </article>
+
+      <div class="grille grille--2 autres">
+        {autres.map((r) => (
+          <article class="carte">
+            <span class="etiquette">{r.data.etiquette}</span>
+            <h3><a class="lien-carte" href={`/realisations/${r.id}`}>{r.data.titre}</a></h3>
+            <p class="texte-doux">{r.data.resume}</p>
+            <p class="petit"><a href={`/realisations/${r.id}`}>Lire le cas<span class="visuellement-cache"> : {r.data.outil}</span></a></p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--fond" aria-labelledby="titre-qui">
+    <div class="conteneur qui">
+      <Image src={portrait} alt="" widths={[160, 320]} sizes="160px" class="qui__photo" format="webp" />
+      <div class="lecture">
+        <p class="repere">Qui suis-je</p>
+        <h2 id="titre-qui">Un seul interlocuteur, de l'appel au suivi</h2>
+        <p>Je m'appelle Antoine Fonfreyde. AI Manager dans le tourisme d'affaires, j'automatise des tâches opérationnelles au quotidien. J'ai créé Cap IA en avril 2026 pour mettre cette pratique au service des TPE, des PME et des indépendants, quel que soit leur secteur.</p>
+        <p><a class="lien-fleche" href="/a-propos">En savoir plus sur ma démarche</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-faq">
+    <div class="conteneur lecture">
+      <p class="repere">Questions fréquentes</p>
+      <h2 id="titre-faq">Les questions qu'on me pose</h2>
+      <div class="faq">
+        {questions.map((x) => (
+          <details>
+            <summary>{x.q}</summary>
+            <div><p>{x.r}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BandeauAppel />
+</Base>
+
+<style>
+  .accueil { padding-block: clamp(2.5rem, 7vw, 5.5rem); }
+  .accueil__grille { display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 62rem) {
+    .accueil__grille { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 4rem; }
+  }
+  .accueil__texte h1 { max-width: 15ch; }
+  .accueil__texte .intro { margin-bottom: 1.8rem; }
+  .accueil__portrait { margin: 0; max-width: 460px; justify-self: center; }
+  .accueil__portrait :global(img) { width: 100%; aspect-ratio: 928 / 1120; object-fit: cover; border-radius: var(--rayon); }
+  .accueil__portrait figcaption { font-size: 0.9rem; color: var(--encre-douce); margin-top: 0.7rem; }
+  @media (max-width: 61.99rem) {
+    .accueil__portrait { max-width: 360px; justify-self: start; }
+  }
+
+  .situations { margin-top: 2rem; }
+  .situations__chute { margin: 2.2rem 0 0; color: var(--encre); }
+
+  .lien-carte { color: inherit; text-decoration: none; }
+  .lien-carte:hover { text-decoration: underline; text-decoration-color: var(--terre); }
+
+  .etapes { list-style: none; padding: 0; margin: 2rem 0 3rem; display: grid; gap: 1.5rem; }
+  @media (min-width: 52rem) { .etapes { grid-template-columns: repeat(4, 1fr); gap: 2rem; } }
+  .etapes li { border-top: 2px solid var(--ardoise); padding-top: 1rem; }
+  .etapes__numero { font-family: var(--police-titre); font-size: 1rem; color: var(--terre-fonce); font-weight: 600; }
+  .etapes h3 { margin: 0.3rem 0 0.4rem; font-size: 1.35rem; }
+  .methode__bas { align-items: start; }
+  .methode__appel p { max-width: 30rem; }
+
+  .phare { margin: 2rem 0 1.75rem; gap: 0; }
+  .phare :global(.flux) { margin: 1.2rem 0 1.4rem; }
+  .autres .carte .petit:last-child { margin-top: auto; }
+
+  .qui { display: grid; gap: 2rem; align-items: start; }
+  @media (min-width: 48rem) { .qui { grid-template-columns: 160px 1fr; gap: 3rem; } }
+  .qui :global(.qui__photo) { width: 160px; height: 160px; object-fit: cover; object-position: center 20%; border-radius: 50%; }
+</style>

@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, reservation } from '../data/site';
+---
+<Base titre="Merci, votre demande est bien arrivée" description="Confirmation de votre demande auprès de Cap IA." noindex>
+  <section class="section">
+    <div class="conteneur lecture">
+      <p class="repere">C'est noté</p>
+      <h1>Merci, votre demande est bien arrivée.</h1>
+      <p class="intro">Je vous réponds personnellement par email, {reservation.delaiReponse}, pour confirmer le créneau et vous envoyer le lien de la visio.</p>
+      <p>Rien reçu passé ce délai ? Pensez à vérifier vos courriers indésirables, ou écrivez-moi à <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <p>En attendant, vous pouvez voir <a href="/realisations">comment je construis des outils</a>, de bout en bout.</p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,76 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Engagements from '../components/Engagements.astro';
+import BandeauAppel from '../components/BandeauAppel.astro';
+import { site } from '../data/site';
+import portrait from '../assets/antoine-fonfreyde.jpg';
+
+const profil = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: { '@id': `${site.url}/#antoine-fonfreyde` },
+};
+---
+<Base
+  titre="À propos : Antoine Fonfreyde, fondateur de Cap IA"
+  description="Antoine Fonfreyde, AI Manager, a créé Cap IA pour aider les TPE, les PME et les indépendants à mettre l'IA au service de leur quotidien. Sa démarche et ses engagements."
+  donneesStructurees={[profil]}
+  image="/og/a-propos.png"
+  ariane={[{ nom: 'À propos', lien: '/a-propos' }]}
+>
+  <section class="section">
+    <div class="conteneur apropos">
+      <div class="lecture">
+        <p class="repere">À propos</p>
+        <h1>Antoine Fonfreyde, fondateur de Cap IA</h1>
+        <p class="intro">J'aide les entreprises qui n'ont pas le temps de se plonger dans l'IA à en tirer des gains concrets, sans jargon et sans gadget.</p>
+        <p>AI Manager dans le tourisme d'affaires, j'automatise des tâches opérationnelles au quotidien. J'ai créé Cap IA en avril 2026 pour mettre cette pratique au service des TPE, des PME et des indépendants, quel que soit leur secteur. J'anime aussi des formations à l'IA pour des équipes en entreprise.</p>
+        <p>Je construis également des outils pour mon propre produit et pour des proches. C'est là que j'éprouve mes méthodes avant de les proposer : vous pouvez en voir trois, de bout en bout, sur la page <a href="/realisations">Réalisations</a>.</p>
+      </div>
+      <figure class="apropos__portrait">
+        <Image src={portrait} alt="Portrait d'Antoine Fonfreyde" widths={[360, 720]} sizes="(min-width: 62rem) 360px, 70vw" format="webp" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--blanc" aria-labelledby="titre-demarche">
+    <div class="conteneur lecture">
+      <p class="repere">Ma démarche</p>
+      <h2 id="titre-demarche">Ce que j'ai appris en construisant</h2>
+      <h3>Partir du besoin, pas de l'outil</h3>
+      <p>Un outil d'IA ne vaut que par la tâche qu'il allège. Je commence toujours par vous faire décrire ce que vous faites, avec quoi et combien de fois. Le choix de l'outil vient ensuite, et c'est parfois un outil que vous payez déjà sans l'utiliser.</p>
+      <h3>La fiabilité avant l'effet</h3>
+      <p>Une démonstration impressionnante qui se trompe une fois sur dix ne sert à rien dans une entreprise. Je préfère un outil plus modeste qui fonctionne tous les jours, avec des contrôles là où une erreur coûterait cher.</p>
+      <h3>L'humain garde la main</h3>
+      <p>L'IA prépare, trie, rédige, propose. Ce qui engage votre entreprise, un envoi, un devis, une décision, reste validé par une personne. C'est une règle que j'applique à mes propres outils.</p>
+      <h3>Vous devez pouvoir vous passer de moi</h3>
+      <p>Comptes à votre nom, documentation écrite, équipe formée : un bon accompagnement vous rend autonome, il ne crée pas de dépendance.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="titre-engagements">
+    <div class="conteneur lecture">
+      <p class="repere">Engagements</p>
+      <h2 id="titre-engagements">Ce sur quoi vous pouvez compter</h2>
+      <Engagements />
+      <h3 class="pratique">En pratique</h3>
+      <ul class="liste-reperes">
+        <li>Basé dans le Val-de-Marne, j'interviens sur site en Île-de-France et à distance partout en France.</li>
+        <li>Un seul interlocuteur, de l'appel découverte au suivi.</li>
+        <li>Me suivre ou vérifier mon parcours : <a href={site.linkedin} rel="noopener">LinkedIn</a> et <a href={site.malt} rel="noopener">Malt</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <BandeauAppel />
+</Base>
+
+<style>
+  .apropos { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 62rem) { .apropos { grid-template-columns: minmax(0, 1fr) 360px; gap: 4rem; } }
+  .apropos__portrait { margin: 0; max-width: 360px; }
+  .apropos__portrait :global(img) { width: 100%; border-radius: var(--rayon); }
+  .lecture h3 { margin-top: 1.8rem; }
+  .pratique { margin-top: 2.5rem; }
+</style>

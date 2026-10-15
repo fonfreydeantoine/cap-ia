@@ -1,0 +1,7 @@
+node_modules/
+.astro/
+.wrangler/
+.env
+.env.*
+# dist/ est versionné volontairement : Workers Builds déploie ./dist tel quel (voir README.md)
+.claude/

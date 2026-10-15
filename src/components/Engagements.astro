@@ -1,0 +1,13 @@
+---
+// Engagements écrits, repris sur l'accueil, la page À propos et la page de rendez-vous.
+const engagements = [
+  "Pas de promesse de gain chiffré avant d'avoir regardé votre situation.",
+  'Un humain valide toujours ce qui engage votre entreprise : un envoi, un devis, une décision.',
+  'Les comptes et les accès sont créés à votre nom : vous restez propriétaire.',
+  'Chaque outil livré est documenté, pour que vous ne dépendiez pas de moi.',
+  "Si l'IA n'est pas la bonne réponse à votre problème, je vous le dis.",
+];
+---
+<ul class="liste-reperes">
+  {engagements.map((e) => <li>{e}</li>)}
+</ul>

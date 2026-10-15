@@ -1,0 +1,10 @@
+---
+// Le seul bouton d'appel à l'action du site, toujours identique.
+import { cta } from '../data/site';
+interface Props { precision?: boolean; compact?: boolean }
+const { precision = true, compact = false } = Astro.props;
+---
+<div class="appel">
+  <a class:list={['bouton', { 'bouton--compact': compact }]} href={cta.lien}>{cta.libelle}</a>
+  {precision && <p class="appel__precision">{cta.precision}</p>}
+</div>
