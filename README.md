@@ -33,11 +33,13 @@ npx wrangler dev     # sert dist/ comme en production (en-têtes de sécurité, 
 | `public/outils/` | Formulaire de cadrage et guide d'entretien (non indexés, hors navigation) |
 | `scripts/` | Génération des images, vérifications après build, polices TTF utilisées pour les images |
 
-## Activer la prise de rendez-vous en ligne
+## Prise de rendez-vous
 
-Tant que `reservation.url` est vide dans `src/data/site.ts`, la page `/rendez-vous` propose une **demande de créneau par formulaire** (créneaux validés, réponse sous 2 jours ouvrés). Une fois le compte créé chez l'outil retenu (recommandation : meetergo, serveurs en Allemagne) :
+Choix du 15 octobre 2026 : pas d'outil de réservation payant. La page `/rendez-vous` propose une **demande de créneau par formulaire** (créneaux validés, réponse sous 2 jours ouvrés), envoyée par Formspree.
 
-1. renseigner `reservation.url` (adresse de la page de réservation), `reservation.outil` (nom de l'outil) et `reservation.domaines` ;
+Pour brancher plus tard un outil gratuit (par exemple une page de réservation Google Agenda) :
+
+1. renseigner `reservation.url`, `reservation.outil` et `reservation.domaines` dans `src/data/site.ts` ;
 2. dans `public/_headers`, remplacer `frame-src 'none'` par `frame-src https://<domaine de l'outil>` ;
 3. `npm run build`, vérifier `/rendez-vous`, commiter, pousser.
 

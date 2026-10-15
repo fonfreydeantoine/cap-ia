@@ -26,9 +26,10 @@ export const navigation = [
   { libelle: 'À propos', lien: '/a-propos' },
 ];
 
-// Prise de rendez-vous. Tant que `url` est vide, la page /rendez-vous propose une demande de créneau
-// par formulaire. Une fois le compte créé chez l'outil retenu, renseigner `url` (page de réservation)
-// et `domaines` (pour la politique de sécurité du site et la politique de confidentialité).
+// Prise de rendez-vous. Choix du 15 octobre 2026 : pas d'outil payant (meetergo écarté, payant après
+// l'essai). Tant que `url` est vide, la page /rendez-vous propose une demande de créneau par formulaire.
+// Pour brancher plus tard un outil gratuit (par exemple une page de réservation Google Agenda), renseigner
+// `url`, `outil` et `domaines`, puis autoriser le domaine dans `frame-src` (public/_headers).
 export const reservation = {
   url: '',
   outil: '',

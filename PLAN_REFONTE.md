@@ -23,7 +23,7 @@ Statut : **plan validé le 15 octobre 2026, Antoine a laissé la réalisation en
 2. Tester une fois le formulaire de `/rendez-vous` (sur l'aperçu ou après mise en ligne) : l'envoi réel n'a pas été testé, pour ne pas t'envoyer de faux message.
 3. Dans le tableau de bord Cloudflare du compte qui héberge cap-ia.pro : créer `www.cap-ia.pro` avec une redirection vers `cap-ia.pro`, activer « Always Use HTTPS », activer Web Analytics et transmettre le jeton.
 4. Ajouter un enregistrement DMARC pour `cap-ia.pro` (par exemple `v=DMARC1; p=none; rua=mailto:antoine@cap-ia.pro`, à durcir ensuite).
-5. Créer le compte de prise de rendez-vous à ton nom (meetergo recommandé) et transmettre l'adresse de ta page de réservation.
+5. ~~Créer le compte de prise de rendez-vous.~~ Décision du 15 octobre 2026 : meetergo écarté (payant après l'essai). La demande de créneau par formulaire devient la solution retenue ; une page de réservation Google Agenda, gratuite, pourra être branchée plus tard.
 6. Mettre à jour les chiffres de l'agent Orée (résultats au-delà du 11 octobre 2026).
 7. Retirer `portfolio-liberty.png` de Malt et ne plus diffuser l'ancienne plaquette.
 8. Déplacer les documents de Cap IA hors du OneDrive de l'employeur, puis autoriser la suppression de l'ancien dossier `Cap-IA`.
